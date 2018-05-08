@@ -28,7 +28,7 @@ foreach ($_POST['input'] as $key => $value) {
         //header("Location:selectbootstrap.php");
         echo "<script>
         alert('แก้ไขสำเร็จ');
-        window.location.href='select.php';
+        window.location.href='select1.php';
         </script>";
         }
     catch(PDOException $e)

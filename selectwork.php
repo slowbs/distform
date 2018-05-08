@@ -64,18 +64,34 @@ $(document).ready(function () {
        //alert(score)
        var koon = $("#koon"+boxid).val()
        var newscore = score*koon;
+       if(gane1 < gane2){
         if(score <= gane1){
-            var scorekoon = gane1;
+            var scorekoon = 1;
         }
         else if(score <= gane2 && score > gane1){
-            var scorekoon = gane2;
+            var scorekoon = 2;
         }
         else if(score <= gane3 && score > gane2){
-            var scorekoon = gane3;
+            var scorekoon = 3;
         }
         else{
-            var scorekoon = gane4;
+            var scorekoon = 4;
         }
+       }
+       else{
+        if(score <= gane4){
+            var scorekoon = 4;
+        }
+        else if(score <= gane3 && score > gane4){
+            var scorekoon = 3;
+        }
+        else if(score <= gane2 && score > gane3){
+            var scorekoon = 2;
+        }
+        else {
+            var scorekoon = 1;
+        }   
+       }
         $("#box2"+boxid).val(newscore)
         $("#box"+boxid).val(scorekoon)
     });
