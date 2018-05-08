@@ -41,7 +41,7 @@ try {
          ?>
 
           <input type="text" class="form-control" id="result" name="result" value="<?php echo $cal ?>">
-          <input class="test2" id="tot_amount" type="text" name="tot_amount">
+          <input class="test2" id="box<?php echo $row['id']?>" type="text" name="tot_amount">
           <br>
 <?php
 }
@@ -56,7 +56,12 @@ $conn = null;
 <script>
 $(document).ready(function () {
     $(".test").change(function () {
-       alert(this.id)
+       var score = this.value;
+       var boxid = this.id;
+       //alert(score)
+        var newscore = score*2;
+        //$(".test2").val(newscore);
+        $("#box"+boxid).val(newscore)
     }); 
 });
 </script>
