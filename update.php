@@ -6,6 +6,8 @@ echo $_SESSION['abc']; // ผลลัพธ์คือแสดงข้อค
 $count = $_SESSION['abc'];
 //$count = isset($_POST['count']) ? $_POST['count'] : '';
 
+$score = isset($_POST['score']) ? $_POST['score'] : '';
+$score2 = isset($_POST['score2']) ? $_POST['score2'] : '';
 if ( isset( $_POST['input'] ) ){
 foreach ($_POST['input'] as $key => $value) {
     try {
@@ -13,7 +15,7 @@ foreach ($_POST['input'] as $key => $value) {
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        $sql = "UPDATE district SET value = '$value' where id = '$key' ";
+        $sql = "UPDATE district SET value = '$value', valuegane = '$score[$key]', valuekoon = '$score2[$key]'  where id = '$key' ";
     
         // Prepare statement
         $stmt = $conn->prepare($sql);

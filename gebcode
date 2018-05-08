@@ -1,0 +1,16 @@
+    
+    นับ row แล้ว พริ้น
+    $count = $stmt->rowCount();
+    print $count;
+    session_start();
+    ob_start();
+    $_SESSION['abc']= $count;
+
+php เปรียบเทียบคะแนน
+          <?php
+          if($row['gane1'] < 5){
+             $cal = "10";
+          }
+          else {$cal = "20";
+         }
+         ?>
