@@ -36,10 +36,11 @@ try {
           <input type="text" class="form-control test" id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" 
           value="<?php echo $row['value'] ?>" size="4">
           <label for="date">คะแนน</label>
-          <input type="text" class="form-control" id="box<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" value="<?php echo $row['valuekoon'] ?>" size="4">
+          <input type="text" class="form-control" id="box<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" 
+          value="<?php echo $row['valuegane'] ?>" size="4" readonly="readonly">
           <label for="date">คะแนนถ่วงน้ำหนัก</label>
           <input class="test2" id="box2<?php echo $row['id']?>" type="text" name="score2[<?php echo $row['id']?>]" 
-          value="<?php echo $row['valuegane'] ?>" size="4">
+          value="<?php echo $row['valuekoon'] ?>" size="4" readonly="readonly">
           <br>
 <?php
 }
