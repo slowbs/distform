@@ -23,8 +23,6 @@ try {
           <label for="name">name</label>
           <input type="text" class="form-control" name="name" value="<?php echo $row['name'] ?>">
           <label for="price">gane1</label>
-          <input type="text" class="form-control" name="input[<?php echo $row['id']?>]" value="<?php echo $row['value'] ?>">
-          <?php
           <input type="text" class="form-control"  id="gane1<?php echo $row['id']?>" name="gane1" value="<?php echo $row['gane1'] ?>" size="4">
           <label for="price">gane2</label>
           <input type="text" class="form-control"  id="gane2<?php echo $row['id']?>" name="gane2" value="<?php echo $row['gane2'] ?>" size="4">
