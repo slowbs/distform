@@ -6,10 +6,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <style type="text/css">
-    	input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
+        input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
+        input2 {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
         td {margin: 0 !important; padding: 0 !important;}
         #right {border-right-style: none;}
         #left {border-left-style: none;}
+        .foo
+{
+    padding-left: 200px !important;
+}
     </style>
     
   <body>
@@ -17,8 +22,8 @@
   <table class="table table-condensed" style="width:100%">
   <thead class="thead-dark">
     <tr>
-      <th class="right" scope="col">PA/สตป.</th>
-      <th class="right" scope="col">ลำดับ</th>
+      <th scope="col" style="font-size:12px">PA/สตป.</th>
+      <th scope="col" style="font-size:12px">ลำดับ</th>
       <th scope="col" style="font-size:12px; width:100%; text-align:center">ตัวชี้วัดประเมินผล</th>
       <th scope="col" style="font-size:12px">เกณฑ์ ปี 2561</th>
       <th scope="col" style="font-size:12px">แหล่งข้อมูล</th>
@@ -46,7 +51,7 @@ try {
     foreach($result as $row){?>
     <tr>
 
-      <td colspan="14"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+      <td colspan="14"><input type="text" class="form-control foo" value="<?php echo $row['name']?>"
       tabindex="<?php echo $row['id']?>" style="background-color : #d1d1d1"></td>
     </tr>
     <?php
