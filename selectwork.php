@@ -36,10 +36,10 @@ try {
           <input type="text" class="form-control test" id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" 
           value="<?php echo $row['value'] ?>" size="4">
           <label for="date">คะแนน</label>
-          <input type="text" class="form-control" id="box<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" 
+          <input type="text" class="form-control" id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" 
           value="<?php echo $row['valuegane'] ?>" size="4" readonly="readonly">
           <label for="date">คะแนนถ่วงน้ำหนัก</label>
-          <input class="test2" id="box2<?php echo $row['id']?>" type="text" name="score2[<?php echo $row['id']?>]" 
+          <input class="test2" id="box2_<?php echo $row['id']?>" type="text" name="score2[<?php echo $row['id']?>]" 
           value="<?php echo $row['valuekoon'] ?>" size="4" readonly="readonly">
           <br>
 <?php
@@ -64,6 +64,7 @@ $(document).ready(function () {
        //alert(score)
        var koon = $("#koon"+boxid).val()
        var newscore = score*koon;
+       var newscore = parseFloat(newscore).toFixed(2)
        if(gane1 < gane2){
         if(score <= gane1){
             var scorekoon = 1;
@@ -92,8 +93,9 @@ $(document).ready(function () {
             var scorekoon = 1;
         }   
        }
-        $("#box2"+boxid).val(newscore)
-        $("#box"+boxid).val(scorekoon)
+       var scorekoon = parseFloat(scorekoon).toFixed(2)
+        $("#box2_"+boxid).val(newscore)
+        $("#box_"+boxid).val(scorekoon)
     });
 });
 </script>

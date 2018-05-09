@@ -7,7 +7,7 @@
 <form action="update.php" method="POST"> 
 <?php
 include 'db.php';
-$id = isset($_GET['id']) ? $_GET['id'] : '';
+//$id = isset($_GET['id']) ? $_GET['id'] : '';
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -18,8 +18,17 @@ try {
     // set the resulting array to associative
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
     foreach($result as $row){ 
-        if($row['gane5']==1){
-            print("yes");
+        if($row['status']==1){
+            print("1");
+        }
+        else if ($row['status']==2){
+            print("2");
+        }
+        else if ($row['status']==3){
+            print("3");
+        }
+        else if ($row['status']==4){
+            print("4");
         }
         else {
             print("no");
@@ -47,7 +56,7 @@ try {
           <label for="date">คะแนนถ่วงน้ำหนัก</label>
           <input class="test2" id="box2<?php echo $row['id']?>" type="text" name="score2[<?php echo $row['id']?>]" 
           value="<?php echo $row['valuekoon'] ?>" size="4" readonly="readonly">
-          <br>--!>
+          <br>-->
 <?php
 }
 }

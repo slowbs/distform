@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
   <title>Bootstrap 4 Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>
-  .table-condensed{
-  font-size: 10px;
-}
-</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -17,9 +9,8 @@
     	input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
 		td {margin: 0 !important; padding: 0 !important;}
     </style>
-  </head>
   <body>
-      <div class="container-fluid">
+  <div class="container-fluid">
   <table class="table table-condensed">
   <thead class="thead-dark">
     <tr>
@@ -40,6 +31,32 @@
     </tr>
   </thead>
   <tbody>
+  <form action="update.php" method="POST"> 
+<?php
+include 'db.php';
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $stmt = $conn->prepare("SELECT * FROM district"); 
+  $stmt->execute();
+  $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+    foreach($result as $row){ 
+        if($row['status']==1){
+            print("1");
+        }
+        else if ($row['status']==2){
+            print("2");
+        }
+        else if ($row['status']==3){
+            print("3");
+        }
+        else if ($row['status']==4){
+            print("4");
+        }
+        else {
+            print("no");
+        }
+        ?>
     <tr>
       <td><input type="text" class="form-control" style="text-align:center"></td>
       <td><input type="text" class="form-control" style="text-align:center"></td>
@@ -56,46 +73,17 @@
       <td><input type="text" class="form-control" style="text-align:center"></td>
       <td><input type="text" class="form-control" style="text-align:center"></td>
     </tr>
-
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <?php
+}
+}
+catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$conn = null;
+?>
+    </form>
+    </div>
   </tbody>
 </table>
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-  </body>
-</html>
+</body>
