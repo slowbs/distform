@@ -7,16 +7,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <style type="text/css">
     	input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
-		td {margin: 0 !important; padding: 0 !important;}
+        td {margin: 0 !important; padding: 0 !important;}
+        #right {border-right-style: none;}
+        #left {border-left-style: none;}
     </style>
+    
   <body>
   <div class="container-fluid">
-  <table class="table table-condensed">
+  <table class="table table-condensed" style="width:100%">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">PA/สตป.</th>
-      <th scope="col">ลำดับ</th>
-      <th scope="col" style="font-size:12px">ตัวชี้วัดประเมินผล</th>
+      <th class="right" scope="col">PA/สตป.</th>
+      <th class="right" scope="col">ลำดับ</th>
+      <th scope="col" style="font-size:12px; width:100%; text-align:center">ตัวชี้วัดประเมินผล</th>
       <th scope="col" style="font-size:12px">เกณฑ์ ปี 2561</th>
       <th scope="col" style="font-size:12px">แหล่งข้อมูล</th>
       <th scope="col" style="font-size:12px">สสอ</th>
@@ -40,39 +43,12 @@ try {
   $stmt = $conn->prepare("SELECT * FROM district"); 
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-    foreach($result as $row){ 
-        if($row['status']==1){?>
+    foreach($result as $row){?>
     <tr>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td style="width:100%"><input type="text" class="form-control" value="<?php echo $row['name']?>"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
-      <td><input type="text" class="form-control" style="text-align:center"></td>
+
+      <td colspan="14"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+      tabindex="<?php echo $row['id']?>" style="background-color : #d1d1d1"></td>
     </tr>
-        <?php
-        }
-        else if ($row['status']==2){
-            print("2");
-        }
-        else if ($row['status']==3){
-            print("3");
-        }
-        else if ($row['status']==4){
-            print("4");
-        }
-        else {
-            print("no");
-        }
-        ?>
     <?php
 }
 }
