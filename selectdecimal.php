@@ -66,8 +66,6 @@ $(document).ready(function () {
        var gane5 = parseFloat($("#gane5"+boxid).val());
        //alert(score)
        var koon = $("#koon"+boxid).val()
-       var newscore = score*koon;
-       var newscore = parseFloat(newscore).toFixed(2)
        if ( score != "" ){
            if (isNaN(score)){
                alert("not number")
@@ -114,6 +112,8 @@ $(document).ready(function () {
         }   
        }
        var scorekoon = parseFloat(scorekoon).toFixed(2)
+       var newscore = (scorekoon*koon)/100;
+       var newscore = parseFloat(newscore).toFixed(2)
         $("#box2_"+boxid).val(newscore)
         $("#box_"+boxid).val(scorekoon)
        }
