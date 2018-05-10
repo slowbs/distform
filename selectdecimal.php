@@ -69,6 +69,10 @@ $(document).ready(function () {
        var newscore = score*koon;
        var newscore = parseFloat(newscore).toFixed(2)
        if ( score != "" ){
+           if (isNaN(score)){
+               alert("not number")
+           }
+           else{
        if(gane1 < gane2){
         if(score <= gane1){
             var scorekoon = 1;
@@ -112,6 +116,7 @@ $(document).ready(function () {
        var scorekoon = parseFloat(scorekoon).toFixed(2)
         $("#box2_"+boxid).val(newscore)
         $("#box_"+boxid).val(scorekoon)
+       }
        }
        else{
         $("#box2_"+boxid).val("")
