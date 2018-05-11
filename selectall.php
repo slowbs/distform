@@ -13,7 +13,7 @@
         #left {border-left-style: none;}
         .foo
 {
-    padding-left: 200px !important;
+    padding-left: 108px !important;
 }
     </style>
     
@@ -22,7 +22,7 @@
   <table class="table table-condensed" style="width:100%">
   <thead class="thead-dark">
     <tr>
-      <th scope="col" style="font-size:12px">PA/สตป.</th>
+      <th scope="col" style="font-size:12px; width:6%">PA/สตป.</th>
       <th scope="col" style="font-size:12px">ลำดับ</th>
       <th scope="col" style="font-size:12px; width:100%; text-align:center">ตัวชี้วัดประเมินผล</th>
       <th scope="col" style="font-size:12px">เกณฑ์ ปี 2561</th>
@@ -45,16 +45,37 @@ include 'db.php';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT * FROM district"); 
+  $stmt = $conn->prepare("SELECT * FROM form"); 
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-    foreach($result as $row){?>
+    foreach($result as $row){
+      if($row['status']==1){?>
+        <tr>
+        <td colspan="14"><input type="text" class="form-control foo" value="<?php echo $row['name']?>"
+        style="background-color : #d1d1d1"></td>
+      </tr><?php
+    }
+    else if($row['status']==3){?>
     <tr>
-
-      <td colspan="14"><input type="text" class="form-control foo" value="<?php echo $row['name']?>"
-      tabindex="<?php echo $row['id']?>" style="background-color : #d1d1d1"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['pa']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['lumdub']?>"></td>
+      <td style="width:100%"><input type="text" class="form-control" value="<?php echo $row['name']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['data']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['koon']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane1']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane2']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane3']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane4']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane5']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['value']?>"  tabindex="<?php echo $row['id']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuekoon']?>"></td>
+    
     </tr>
     <?php
+  }
+    
 }
 }
 catch(PDOException $e) {
