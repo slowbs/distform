@@ -22,7 +22,7 @@ include 'db.php';
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
-            <a class="btn btn-primary" href="<?php echo $row['year'];?>" role="button"><?php echo $row['year']; ?></a><?php
+            <a class="btn btn-primary"  href="form.php?id=<?php echo $row['year'];?>" role="button"><?php echo $row['year']; ?></a><?php
         }  
     }
     catch(PDOException $e)
