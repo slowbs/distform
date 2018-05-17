@@ -41,7 +41,7 @@ try {
           <input type="text" class="form-control" id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" 
           value="<?php echo $row['valuegane'] ?>" size="3" readonly="readonly">
           <label for="date">คะแนนถ่วงน้ำหนัก</label>
-          <input  id="box2_<?php echo $row['id']?>" type="text" name="score2[<?php echo $row['id']?>]" 
+          <input class="test2" id="box2_<?php echo $row['id']?>" type="text" name="score2[<?php echo $row['id']?>]" 
           value="<?php echo $row['valuekoon'] ?>" size="4" readonly="readonly">
           <br>
 <?php
