@@ -21,6 +21,9 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
 {
     padding-left: 108px !important;
 }
+@page {
+    size: auto;
+}
     </style>
     
   <body>
@@ -140,12 +143,13 @@ else if($row['status']==3){?>
         <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
         ></td><?php
         $i +=1;
-        $stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i"); 
+        $stmt = $conn->prepare("SELECT sum(koon),kor FROM form_$id where kor = $i"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
-        <td><?php echo $row['sum(koon)'];?></td>
-        <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $row['id']?>"></td><?php
+        <?php $maxscore = ($row['sum(koon)']*5)/100;?>
+        <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $row['kor']?>" value="<?php echo $maxscore ?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $row['kor']?>"></td><?php
         }
       }
       else if($row['status']==6){?>
@@ -154,7 +158,14 @@ else if($row['status']==3){?>
       <td><input type="text" class="form-control"></td>
         <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
         ></td>
-        <td><?php echo $i;?></td><?php
+        <?php
+        $stmt = $conn->prepare("SELECT sum(koon),kor FROM form_$id where kor = $i"); 
+        $stmt->execute();
+        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){?>
+        <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" value="<?php echo $row['sum(koon)']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $row['kor']?>"></td><?php
+        }
       }
     }
 }
@@ -169,7 +180,7 @@ $conn = null;
 </table>
 <script>
 $(document).ready(function () {
-    $(".test").keyup(function () {
+    $(".test").keypress(function () {
        var score = this.value;
        var boxid = this.id;
        var gane1 = parseFloat($("#gane1"+boxid).val());
@@ -236,7 +247,28 @@ $(document).ready(function () {
         $("#box_"+boxid).val("")
        }
     });
-    $(".test").keyup(function(){
+    $(".test").keypress(function(){
+        var kor = this.classList[2]
+        var sum = 0;
+        var sum2 = 0;
+        var percent = $("#percent_"+kor).val();
+        var maxscore = $("#maxscore_"+kor).val();
+
+        $('.'+kor).each(function(){
+            var boxid = this.id;
+            if($("#box2_"+boxid).val() != ""){
+           sum += parseFloat($("#box2_"+boxid).val());
+           sum2 = (sum*percent)/maxscore;
+            }
+        });
+        sum = parseFloat(sum).toFixed(2)
+        sum2 = parseFloat(sum2).toFixed(2)
+        $("#box3_"+kor).val(sum)
+        $("#box4_"+kor).val(sum2)
+        //alert(sum)
+        //alert(kor)
+    });
+    /*$(".test").keyup(function(){
         var sum = 0;
         var kor = this.classList[2]
         $('.'+kor).each(function(){
@@ -247,7 +279,7 @@ $(document).ready(function () {
         sum = parseFloat(sum).toFixed(2)
         alert(sum)
         //alert(kor)
-    });
+    });*/
 });
 </script>
 </body>
