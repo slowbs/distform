@@ -69,7 +69,7 @@ try {
       <td style="width:100%"><input type="text" class="form-control" value="<?php echo $row['name']?>"></td>
       <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane']?>"></td>
       <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['data']?>"></td>
-      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['koon']?>"
+      <td><input type="text" class="form-control fuk" style="text-align:center" value="<?php echo $row['koon']?>"
       id="koon<?php echo $row['id']?>"></td>
       <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane1']?>"
       id="gane1<?php echo $row['id']?>"></td>
@@ -81,7 +81,7 @@ try {
       id="gane4<?php echo $row['id']?>"></td>
       <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane5']?>"
       id="gane5<?php echo $row['id']?>"></td>
-      <td><input type="text" class="form-control test" style="text-align:center" value="<?php echo $row['value']?>" 
+      <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row['value']?>" 
       id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
       <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
       id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
@@ -123,7 +123,7 @@ else if($row['status']==3){?>
         <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane5']?>">
         <input type="hidden" class="form-control" style="text-align:center" value="5"
         id="gane5<?php echo $row['id']?>"></td>
-        <td><input type="text" class="form-control test" style="text-align:center" value="<?php echo $row['value']?>" 
+        <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row['value']?>" 
         id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
         <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
         id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
@@ -144,7 +144,8 @@ else if($row['status']==3){?>
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
-        <td><?php echo $row['sum(koon)'];?></td><?php
+        <td><?php echo $row['sum(koon)'];?></td>
+        <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $row['id']?>"></td><?php
         }
       }
       else if($row['status']==6){?>
@@ -234,6 +235,18 @@ $(document).ready(function () {
         $("#box2_"+boxid).val("")
         $("#box_"+boxid).val("")
        }
+    });
+    $(".test").keyup(function(){
+        var sum = 0;
+        var kor = this.classList[2]
+        $('.'+kor).each(function(){
+            if(this.value != ""){
+           sum += parseFloat(this.value);
+            }
+        });
+        sum = parseFloat(sum).toFixed(2)
+        alert(sum)
+        //alert(kor)
     });
 });
 </script>
