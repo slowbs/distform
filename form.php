@@ -180,7 +180,7 @@ $conn = null;
 </table>
 <script>
 $(document).ready(function () {
-    $(".test").keypress(function () {
+    $(".test").on('input', function (e) {
        var score = this.value;
        var boxid = this.id;
        var gane1 = parseFloat($("#gane1"+boxid).val());
@@ -247,7 +247,7 @@ $(document).ready(function () {
         $("#box_"+boxid).val("")
        }
     });
-    $(".test").keypress(function(){
+    $(".test").on('input', function (e){
         var kor = this.classList[2]
         var sum = 0;
         var sum2 = 0;
