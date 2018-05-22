@@ -1,6 +1,7 @@
 <?php
 include 'db.php';
-$id = isset($_GET['id']) ? $_GET['id'] : '';
+$y = isset($_GET['y']) ? $_GET['y'] : '';
+$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
 
 ?>
@@ -28,6 +29,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
     
   <body>
   <div class="container-fluid">
+  <p><a href="index.php">หน้าหลัก/<a href="ampher.php?y=<?php echo $y ?>">อำเภอ</a></p>
   <table class="table table-bordered" style="width:100%">
   <thead class="thead-dark">
     <tr>
@@ -48,13 +50,13 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
     </tr>
   </thead>
   <tbody>
-  <form action="update.php?id=<?php echo $id ?>" method="POST"> 
+  <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>" method="POST"> 
 <?php
 include 'db.php';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT * FROM form_$id"); 
+  $stmt = $conn->prepare("SELECT * FROM form_$y"); 
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
   $i=0;
@@ -144,15 +146,15 @@ else if($row['status']==3){?>
         ></td><?php
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
-        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$id inner join total_score 
-        where total_score.id = 1 && form_2559.kor = $i"); 
+        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
+        where total_score.id = 1 && form_$y.kor = $i"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
         <?php $maxscore = ($row['sum(koon)']*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
-        value="<?php echo $maxscore ?>" name="score[<?php echo $i?>]"></td>
+        value="<?php echo $maxscore ?>" name="score[<?php echo $i?>]" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
         name="score[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td><?php
         }
@@ -164,14 +166,15 @@ else if($row['status']==3){?>
         <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
         ></td>
         <?php
-        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$id inner join total_score 
-        where total_score.id = 1 && form_2559.kor = $i"); 
+        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
+        where total_score.id = 1 && form_$y.kor = $i"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
         <?php //$newid = $row['max(id)'];?>
         <input type="hidden" name="input2[<?php echo $i?>]">
-        <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" value="<?php echo $row['sum(koon)']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
+        value="<?php echo $row['sum(koon)']?>" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
         name="score2[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td><?php
         }
@@ -184,7 +187,7 @@ else if($row['status']==3){?>
         ></td><?php
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
-        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$id inner join total_score 
+        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
         where total_score.id = 1 && kor != 0;"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
@@ -192,7 +195,7 @@ else if($row['status']==3){?>
         <?php $maxscore = ($row['sum(koon)']*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
-        value="<?php echo $maxscore ?>" name="score[<?php echo $i?>]"></td>
+        value="<?php echo $maxscore ?>" name="score[<?php echo $i?>]" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box5"
         name="score[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td><?php
         }
@@ -204,14 +207,15 @@ else if($row['status']==3){?>
       <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
       ></td>
       <?php
-      $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$id inner join total_score 
+      $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
       where total_score.id = 1 && kor != 0;"); 
       $stmt->execute();
       $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
       foreach($result as $row){?>
       <?php //$newid = $row['max(id)'];?>
       <input type="hidden" name="input2[<?php echo $i?>]">
-      <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" value="<?php echo $row['sum(koon)']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
+      value="<?php echo $row['sum(koon)']?>" readonly="readonly"></td>
       <td><input type="text" class="form-control" style="text-align:center" id="box6"
       name="score2[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td><?php
       }

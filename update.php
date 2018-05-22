@@ -5,7 +5,8 @@ ob_start();
 echo $_SESSION['abc']; // ผลลัพธ์คือแสดงข้อความ Hello 
 $count = $_SESSION['abc'];
 //$count = isset($_POST['count']) ? $_POST['count'] : '';
-*/$id2 = isset($_GET['id']) ? $_GET['id'] : '';
+*/$y = isset($_GET['y']) ? $_GET['y'] : '';
+$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $score = isset($_POST['score']) ? $_POST['score'] : '';
 $score2 = isset($_POST['score2']) ? $_POST['score2'] : '';
 if ( isset( $_POST['input'] ) ){
@@ -29,7 +30,7 @@ foreach ($_POST['input'] as $key => $value) {
         //header("Location:selectbootstrap.php");
         echo "<script>
         alert('แก้ไขสำเร็จ');
-        window.location.href='form.php?id=$id2';
+        window.location.href='form.php?y=$y&ap=$ap';
         </script>";
         }
 
@@ -60,7 +61,7 @@ if ( isset( $_POST['input2'] ) ){
             //header("Location:selectbootstrap.php");
             echo "<script>
             alert('แก้ไขสำเร็จ');
-            window.location.href='form.php?id=$id2';
+            window.location.href='form.php?y=$y&ap=$ap';
             </script>";
             }
     
