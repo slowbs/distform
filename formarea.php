@@ -13,10 +13,11 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <style type="text/css">
-        input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
-        border-radius: 0 !important; height: 100% !important; border: none;}
-
-        td {margin: 0 !important; padding: 0 !important; height: 20px;}
+        input {display: block !important; padding: 0 !important; margin: 0 !important; border: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
+td {margin: 0 !important; padding: 0 !important;}
+textarea {display: block !important; padding: 0 !important; margin: 0 !important; border: 0 !important; width: 100% !important; border-radius: 0 !important; line-height: 1 !important;}
+td {margin: 0 !important; padding: 0 !important;}
+        td {margin: 0 !important; padding: 0 !important;}
         #right {border-right-style: none;}
         #left {border-left-style: none;}
         .foo
@@ -26,17 +27,18 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 @page {
     size: auto;
 }
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    position: relative;
+}
     </style>
-<?php
-session_start();
-ob_start();
-?>
+    
   <body>
   <div class="container-fluid">
-  <div class="page-header" align="center">
-  <h1><?php echo $_SESSION['name'][$ap]; ?></h1>
-</div>
-  <p><a href="index.php">หน้าหลัก/<a href="ampher.php?y=<?php echo $y ?>">อำเภอ</p></a>
+  <p><a href="index.php">หน้าหลัก/<a href="ampher.php?y=<?php echo $y ?>">อำเภอ</a></p>
   <table class="table table-bordered" style="width:100%">
   <thead class="thead-dark">
     <tr>
@@ -70,27 +72,34 @@ try {
     foreach($result as $row){
       if($row['status']==1){?>
         <tr>
-        <td colspan="14" style="background-color : #d1d1d1" class="foo"><?php echo $row['name']?></td>
+        <td colspan="14"><input type="text" class="form-control foo" value="<?php echo $row['name']?>"
+        style="background-color : #d1d1d1"></td>
       </tr><?php
     }
     else if($row['status']==2){?>
     <tr>
-      <td align="center"><?php echo $row['pa']?></td>
-      <td align="center"><?php echo $row['lumdub']?></td>
-      <td><?php echo $row['name']?></td>
-      <td align="center"><?php echo $row['gane']?></td>
-      <td align="center"><?php echo $row['data']?></td>
-      <td align="center" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
-      <td align="center" id="gane1<?php echo $row['id']?>"><?php echo $row['gane1']?></td>
-      <td align="center" id="gane2<?php echo $row['id']?>"><?php echo $row['gane2']?></td>
-      <td align="center" id="gane3<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
-      <td align="center" id="gane4<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
-      <td align="center" id="gane5<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['pa']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['lumdub']?>"></td>
+      <td><textarea class="form-control" row="3"><?php echo $row['name']?></textarea></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['data']?>"></td>
+      <td><input type="text" class="form-control fuk" style="text-align:center" value="<?php echo $row['koon']?>"
+      id="koon<?php echo $row['id']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane1']?>"
+      id="gane1<?php echo $row['id']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane2']?>"
+      id="gane2<?php echo $row['id']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane3']?>"
+      id="gane3<?php echo $row['id']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane4']?>"
+      id="gane4<?php echo $row['id']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane5']?>"
+      id="gane5<?php echo $row['id']?>"></td>
       <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row['value']?>" 
       id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
       id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuekoon']?>"
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuekoon']?>"
       id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
     
     </tr>
@@ -98,34 +107,41 @@ try {
     } 
 else if($row['status']==3){?>
         <tr>
-        <td align="center"><?php echo $row['pa']?></td>
-      <td align="center"><?php echo $row['lumdub']?></td>
-        <td colspan="12"><?php echo $row['name']?></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['pa']?>"></td>
+      <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['lumdub']?>"></td>
+        <td colspan="12"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+        ></td>
       </tr><?php
     }
     else if($row['status']==4){?>
       <tr>
-      <td align="center"><?php echo $row['pa']?></td>
-      <td align="center"><?php echo $row['lumdub']?></td>
-      <td><?php echo $row['name']?></td>
-      <td align="center"><?php echo $row['gane']?></td>
-      <td align="center"><?php echo $row['data']?></td>
-        <td align="center" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
-        <td align="center"><?php echo $row['gane1']?></td>
-        <td style="display:none;" id="gane1<?php echo $row['id']?>">1</td>
-        <td align="center"><?php echo $row['gane2']?></td>
-        <td style="display:none;" id="gane2<?php echo $row['id']?>">2</td>
-        <td align="center"><?php echo $row['gane3']?></td>
-        <td style="display:none;" id="gane3<?php echo $row['id']?>">3</td>
-        <td align="center"><?php echo $row['gane4']?></td>
-        <td style="display:none;" id="gane4<?php echo $row['id']?>">4</td>
-        <td align="center"><?php echo $row['gane5']?></td>
-        <td style="display:none;" id="gane5<?php echo $row['id']?>">5</td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['pa']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['lumdub']?>"></td>
+        <td style="width:100%"><input type="text" class="form-control" value="<?php echo $row['name']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['data']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['koon']?>"
+        id="koon<?php echo $row['id']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane1']?>">
+        <input type="hidden" class="form-control" style="text-align:center" value="1"
+        id="gane1<?php echo $row['id']?>"</td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane2']?>">
+        <input type="hidden" class="form-control" style="text-align:center" value="2"
+        id="gane2<?php echo $row['id']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane3']?>">
+        <input type="hidden" class="form-control" style="text-align:center" value="3"
+        id="gane3<?php echo $row['id']?>"</td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane4']?>">
+        <input type="hidden" class="form-control" style="text-align:center" value="4"
+        id="gane4<?php echo $row['id']?>"></td>
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['gane5']?>">
+        <input type="hidden" class="form-control" style="text-align:center" value="5"
+        id="gane5<?php echo $row['id']?>"></td>
         <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row['value']?>" 
         id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
         id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuekoon']?>"
+        <td><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuekoon']?>"
         id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
       
       </tr>
@@ -133,9 +149,10 @@ else if($row['status']==3){?>
       } 
       else if($row['status']==5){?>
         <tr>
-        <td ></td>
-      <td></td>
-        <td colspan="10"><?php echo $row['name']?></td><?php
+        <td><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+        <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+        ></td><?php
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
         $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
@@ -153,9 +170,10 @@ else if($row['status']==3){?>
       }
       else if($row['status']==6){?>
         <tr>
-        <td></td>
-      <td></td>
-        <td colspan="10"><?php echo $row['name']?></td>
+        <td><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+        <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+        ></td>
         <?php
         $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
         where total_score.id = 1 && form_$y.kor = $i"); 
@@ -172,9 +190,10 @@ else if($row['status']==3){?>
       }
       else if($row['status']==7){?>
         <tr>
-        <td></td>
-      <td></td>
-        <td colspan="10"><?php echo $row['name']?></td><?php
+        <td><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+        <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+        ></td><?php
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
         $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
@@ -192,8 +211,10 @@ else if($row['status']==3){?>
     }
     else if($row['status']==8){?>
       <tr>
-      <td></td><td></td>
-      <td colspan="10"><?php echo $row['name']?></td>
+      <td><input type="text" class="form-control"></td>
+    <td><input type="text" class="form-control"></td>
+      <td colspan="10"><input type="text" class="form-control" value="<?php echo $row['name']?>"
+      ></td>
       <?php
       $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
       where total_score.id = 1 && kor != 0;"); 
@@ -225,13 +246,13 @@ $(document).ready(function () {
     $(".test").on('input', function () {
        var score = this.value;
        var boxid = this.id;
-       var gane1 = parseFloat($("#gane1"+boxid).text());
-       var gane2 = parseFloat($("#gane2"+boxid).text());
-       var gane3 = parseFloat($("#gane3"+boxid).text());
-       var gane4 = parseFloat($("#gane4"+boxid).text());
-       var gane5 = parseFloat($("#gane5"+boxid).text());
+       var gane1 = parseFloat($("#gane1"+boxid).val());
+       var gane2 = parseFloat($("#gane2"+boxid).val());
+       var gane3 = parseFloat($("#gane3"+boxid).val());
+       var gane4 = parseFloat($("#gane4"+boxid).val());
+       var gane5 = parseFloat($("#gane5"+boxid).val());
        //alert(score)
-       var koon = $("#koon"+boxid).text()
+       var koon = $("#koon"+boxid).val()
        if ( score != "" ){
            if (isNaN(score)){
                alert("not number")

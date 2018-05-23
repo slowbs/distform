@@ -20,6 +20,9 @@
   <h1 align="center">อำเภอ</h1>
 <?php
 $y = isset($_GET['y']) ? $_GET['y'] : '';
+session_start();
+ob_start();
+
 include 'db.php';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -30,6 +33,7 @@ include 'db.php';
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
             <a href="form.php?y=<?php echo $y?>&ap=<?php echo $row['id']?>" role="button"><button class="btn btn-primary"><?php echo $row['name']; ?></button></a><?php
+            $_SESSION['name'][$row['id']]= $row['name'];
         }  
     }
     catch(PDOException $e)
