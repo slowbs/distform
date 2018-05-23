@@ -63,7 +63,7 @@ include 'db.php';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT * FROM form_$y"); 
+  $stmt = $conn->prepare("SELECT ap$ap.*, form_$y.* from form_$y inner join ap$ap on form_$y.id = ap$ap.id;"); 
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
   $i=0;
@@ -86,11 +86,11 @@ try {
       <td align="center" id="gane3<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
       <td align="center" id="gane4<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" id="gane5<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
-      <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row['value']?>" 
+      <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value_$y"]?>" 
       id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuegane']?>"
+      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane_$y"]?>"
       id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row['valuekoon']?>"
+      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon_$y"]?>"
       id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
     
     </tr>
