@@ -16,7 +16,7 @@ foreach ($_POST['input'] as $key => $value) {
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        $sql = "UPDATE ap1 SET value = '$value', valuegane = '$score[$key]', valuekoon = '$score2[$key]'  
+        $sql = "UPDATE ap1 SET value_$y = '$value', valuegane_$y = '$score[$key]', valuekoon_$y = '$score2[$key]'  
         where id = '$key' ";
     
         // Prepare statement
