@@ -14,9 +14,9 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <style type="text/css">
         input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
-        border-radius: 0 !important; height: 100% !important; border: none;}
+        border-radius: 0 !important; line-height: 1 !important; border: 0 !important;}
 
-        td {margin: 0 !important; padding: 0 !important; height: 20px;}
+        td {margin: 0 !important; padding: 0 !important;}
         #right {border-right-style: none;}
         #left {border-left-style: none;}
         .foo
