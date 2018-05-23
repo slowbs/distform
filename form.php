@@ -1,7 +1,10 @@
 <?php
 include 'db.php';
+session_start();
+ob_start();
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+$apname = $_SESSION['name'][$ap];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
 
 ?>
@@ -28,13 +31,11 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 }
     </style>
 <?php
-session_start();
-ob_start();
 ?>
   <body>
   <div class="container-fluid">
   <div class="page-header" align="center">
-  <h1><?php echo $_SESSION['name'][$ap]; ?></h1>
+  <h1><?php echo $apname ?></h1>
 </div>
   <p><a href="index.php">หน้าหลัก/<a href="ampher.php?y=<?php echo $y ?>">อำเภอ</p></a>
   <table class="table table-bordered" style="width:100%">
@@ -139,7 +140,7 @@ else if($row['status']==3){?>
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
         $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
-        where total_score.id = 1 && form_$y.kor = $i"); 
+        where total_score.name = '$apname' && form_$y.kor = $i && time = $y"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
@@ -148,7 +149,7 @@ else if($row['status']==3){?>
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score[<?php echo $i?>]" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
-        name="score[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td><?php
+        name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td><?php
         }
       }
       else if($row['status']==6){?>
@@ -158,7 +159,7 @@ else if($row['status']==3){?>
         <td colspan="10"><?php echo $row['name']?></td>
         <?php
         $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
-        where total_score.id = 1 && form_$y.kor = $i"); 
+        where total_score.name = '$apname' && form_$y.kor = '$i' && time = '$y'"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
@@ -167,7 +168,7 @@ else if($row['status']==3){?>
         <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
         value="<?php echo $row['sum(koon)']?>" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
-        name="score2[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td><?php
+        name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td><?php
         }
       }
       else if($row['status']==7){?>
@@ -178,7 +179,7 @@ else if($row['status']==3){?>
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
         $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
-        where total_score.id = 1 && kor != 0;"); 
+        where total_score.name = '$apname' && kor != 0 && time = '$y'"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
@@ -187,7 +188,7 @@ else if($row['status']==3){?>
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score[<?php echo $i?>]" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box5"
-        name="score[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td><?php
+        name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td><?php
         }
     }
     else if($row['status']==8){?>
@@ -196,7 +197,7 @@ else if($row['status']==3){?>
       <td colspan="10"><?php echo $row['name']?></td>
       <?php
       $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_$y inner join total_score 
-      where total_score.id = 1 && kor != 0;"); 
+      where total_score.name = '$apname' && kor != 0 && time = '$y'"); 
       $stmt->execute();
       $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
       foreach($result as $row){?>
@@ -205,7 +206,7 @@ else if($row['status']==3){?>
       <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
       value="<?php echo $row['sum(koon)']?>" readonly="readonly"></td>
       <td><input type="text" class="form-control" style="text-align:center" id="box6"
-      name="score2[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td><?php
+      name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td><?php
       }
     }
 }
@@ -307,6 +308,7 @@ $(document).ready(function () {
         sum2 = parseFloat(sum2).toFixed(2)
         $("#box3_"+kor).val(sum)
         $("#box4_"+kor).val(sum2)
+        if($("#box3_1").val() != "" && $("#box3_2").val() != "" && $("#box3_3").val() != "" && $("#box3_4").val() != ""){
         var sum3 = parseFloat($("#box3_1").val())+parseFloat($("#box3_2").val())
         +parseFloat($("#box3_3").val())+parseFloat($("#box3_4").val())
         var sum4 = parseFloat($("#box4_1").val())+parseFloat($("#box4_2").val())
@@ -315,6 +317,8 @@ $(document).ready(function () {
         sum4 = parseFloat(sum4).toFixed(2)
         $("#box5").val(sum3)
         $("#box6").val(sum4)
+        }
+
         //alert(sum)
         //alert(kor)
     });
