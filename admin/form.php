@@ -1,37 +1,13 @@
 <?php
 include 'db.php';
-include('functions.php');
-$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+session_start();
+ob_start();
 $y = isset($_GET['y']) ? $_GET['y'] : '';
+$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
-if (isset($_SESSION['user']) && $_SESSION['user']['apid'] != $ap){
-  $ap = $_SESSION['user']['apid'];
-  echo "<script>window.location.href='form.php?ap=$ap;</script>";
-  }
-/* session_start();
-ob_start(); */
-
-
+$apname = $_SESSION['name'][$ap];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
-include 'db.php';
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM ampher where id = $ap;";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row){
-            $apname = $row['name'];
-            $_SESSION['name'][$ap] = $apname;
-    }
-  }
-    catch(PDOException $e)
-        {
-        echo $sql . "<br>" . $e->getMessage();
-        }
-    
-    $conn = null;
+
 ?>
   <title>Bootstrap 4 Example</title>
   <meta charset="utf-8">
@@ -63,11 +39,9 @@ include 'db.php';
   <div class="page-header" align="center" >
   <h1><?php echo $apname ?></h1>
 </div>
-<div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a></div>
-<div style="float: right"><a href="index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
-<br><br>
+<?php include 'headbut.php' ?>
 </div>
-<div class='container-fluid'>
+<div class="container-fluid">
 <br>
   <table class="table table-bordered" style="width:100%">
   <thead class="thead-dark">
@@ -89,7 +63,7 @@ include 'db.php';
     </tr>
   </thead>
   <tbody>
-  <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>" method="POST"> 
+  <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>" method="POST">
 <?php
 include 'db.php';
 try {

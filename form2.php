@@ -1,13 +1,16 @@
 <?php 
 	include('functions.php');
-/* 	$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
-	if (isset($_SESSION['user']) && (isset($_SESSION['user']['id']) != $ap)){
-		header('location: login.php');
-	} */
-	if (!isLoggedIn()) {
+	$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+	if (isset($_SESSION['user']) && $_SESSION['user']['id'] != $ap || $_SESSION['user']['user_type'] != "admin"){
+		$ap = $_SESSION['user']['id'];
+		echo "<script>window.location.href='form.php?ap=$ap;</script>";
+    }
+    //echo $ap;
+    //echo $_SESSION['user']['id'];
+/* 	if (!isLoggedIn()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: login.php');
-	}
+	} */
 	
 ?>
 <!DOCTYPE html>
@@ -44,7 +47,7 @@
 						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
 						<br>
 						<a href="updateuserform.php?id=<?php echo $_SESSION['user']['id']; ?>" style="color: red;">แก้ไข</a>
-						<a href="index.php?logout='1'" style="color: red;">logout</a>
+						<a href="index.php?logout=''" style="color: red;">logout</a>
 					</small>
 
 				<?php endif ?>

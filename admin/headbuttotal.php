@@ -1,0 +1,2 @@
+<div align="left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
+<a href="ampher.php?y=<?php echo $y ?>&ep=<?php echo $ep?>"><button type="button" class="btn btn-success">ย้อนกลับ</button></a></div>

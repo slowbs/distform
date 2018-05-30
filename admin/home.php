@@ -1,24 +1,29 @@
 <?php 
-	include('functions.php');
-/* 	$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
-	if (isset($_SESSION['user']) && (isset($_SESSION['user']['id']) != $ap)){
-		header('location: login.php');
-	} */
-	if (!isLoggedIn()) {
+	include('../functions.php');
+
+	if (!isAdmin()) {
 		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
+		header('location: ../login.php');
 	}
-	
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<style>
+	.header {
+		background: #003366;
+	}
+	button[name=register_btn] {
+		background: #003366;
+	}
+	</style>
 </head>
 <body>
 	<div class="header">
-		<h2>Home Page</h2>
+		<h2>Admin - Home Page</h2>
 	</div>
 	<div class="content">
 		<!-- notification message -->
@@ -32,9 +37,10 @@
 				</h3>
 			</div>
 		<?php endif ?>
+
 		<!-- logged in user information -->
 		<div class="profile_info">
-			<img src="images/user_profile.png"  >
+			<img src="../images/admin_profile.png"  >
 
 			<div>
 				<?php  if (isset($_SESSION['user'])) : ?>
@@ -43,13 +49,17 @@
 					<small>
 						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
 						<br>
-						<a href="updateuserform.php?id=<?php echo $_SESSION['user']['id']; ?>" style="color: red;">แก้ไข</a>
-						<a href="index.php?logout='1'" style="color: red;">logout</a>
+						<a href="home.php?logout='1'" style="color: red;">logout</a>
+						&nbsp; <a href="create_user.php"> + add user</a>
 					</small>
 
 				<?php endif ?>
 			</div>
 		</div>
+
+
+
 	</div>
+		
 </body>
 </html>

@@ -1,3 +1,12 @@
+<?php
+include('functions.php');
+	//$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+    //$ap = $_SESSION['user']['apid'];
+    if (!isAdmin()) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: ../login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,15 +27,15 @@
 <body>
 <div class="container" align="center">
   <h1 align="center">อำเภอ</h1></div>
-  <div class="container-fluid">
-  <div align="left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button>
+  <div class="container">
+  <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
   </div>
-  <div class="container" align="center">
+  <div class="container">
+  <div style="float: right"><a href="../index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
+  <br><br><br><div class="container" align="center">
 <?php
-session_start();
-ob_start();
 include 'db.php';
-include 'campher.php';
+include '../campher.php';
 ?>
 <br><a href="total.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-warning">รายมิติ</button></a>
 <a href="totalform.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-danger">รวมคะแนนทุกอำเภอ</button></a>

@@ -57,8 +57,8 @@ include 'db.php';
             INSERT INTO ap21 (`value_$newyear`) select '' from form_$newyear where not exists (select id from ap21 where form_$newyear.id = ap21.id);
             INSERT INTO ap22 (`value_$newyear`) select '' from form_$newyear where not exists (select id from ap22 where form_$newyear.id = ap22.id);
             INSERT INTO ap23 (`value_$newyear`) select '' from form_$newyear where not exists (select id from ap23 where form_$newyear.id = ap23.id);
-            INSERT INTO total_score (`name`,`time`) select ampher.name , year.year from ampher INNER join year where not exists (select time from total_score
-            where total_score.time = year.year)ORDER by year.year, ampher.id ;
+            INSERT INTO total_score (`name`,`time`, `ep`) select ampher.name , year.year, year.ep from ampher INNER join year where not exists (select time from total_score
+            where total_score.time = year.year)ORDER by year.year, year.ep, ampher.id ;
             ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();

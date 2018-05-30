@@ -15,3 +15,10 @@ php เปรียบเทียบคะแนน
          }
          ?>
 
+	include('functions.php');
+	$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+	if (isset($_SESSION['user']) && $_SESSION['user']['id'] != $ap || $_SESSION['user']['user_type'] != "admin"){
+		$ap = $_SESSION['user']['id'];
+		echo "<script>window.location.href='form.php?ap=$ap;</script>";
+    }
+
