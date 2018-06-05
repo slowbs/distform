@@ -13,6 +13,7 @@ $apname = $_SESSION['name'][$ap];
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="fuk.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -86,12 +87,12 @@ try {
       <td><?php echo $row['name']?></td>
       <td align="center"><?php echo $row['gane']?></td>
       <td align="center"><?php echo $row['data']?></td>
-      <td align="center" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
-      <td align="center" id="gane1_<?php echo $row['id']?>"><?php echo $row['gane1']?></td>
-      <td align="center" id="gane2_<?php echo $row['id']?>"><?php echo $row['gane2']?></td>
-      <td align="center" id="gane3_<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
-      <td align="center" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
-      <td align="center" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
+      <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
+      <td align="center" class="cl1" id="gane1_<?php echo $row['id']?>"><?php echo $row['gane1']?></td>
+      <td align="center" class="cl1" id="gane2_<?php echo $row['id']?>"><?php echo $row['gane2']?></td>
+      <td align="center" class="cl1" id="gane3_<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
+      <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
+      <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
       <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value_{$ep}_$y"]?>" 
       id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
       <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane_{$ep}_$y"]?>"
@@ -116,16 +117,16 @@ else if($row['status']==3){?>
       <td><?php echo $row['name']?></td>
       <td align="center"><?php echo $row['gane']?></td>
       <td align="center"><?php echo $row['data']?></td>
-        <td align="center" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
-        <td align="center"><?php echo $row['gane1']?></td>
+        <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
+        <td align="center" class="cl1"><?php echo $row['gane1']?></td>
         <td style="display:none;" id="gane1_<?php echo $row['id']?>">1</td>
-        <td align="center"><?php echo $row['gane2']?></td>
+        <td align="center" class="cl1"><?php echo $row['gane2']?></td>
         <td style="display:none;" id="gane2_<?php echo $row['id']?>">2</td>
-        <td align="center"><?php echo $row['gane3']?></td>
+        <td align="center" class="cl1"><?php echo $row['gane3']?></td>
         <td style="display:none;" id="gane3_<?php echo $row['id']?>">3</td>
-        <td align="center"><?php echo $row['gane4']?></td>
+        <td align="center" class="cl1"><?php echo $row['gane4']?></td>
         <td style="display:none;" id="gane4_<?php echo $row['id']?>">4</td>
-        <td align="center"><?php echo $row['gane5']?></td>
+        <td align="center" class="cl1"><?php echo $row['gane5']?></td>
         <td style="display:none;" id="gane5_<?php echo $row['id']?>">5</td>
         <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value_{$ep}_$y"]?>" 
         id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>

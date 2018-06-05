@@ -192,29 +192,90 @@ else if($row['status']==3){?>
         <tr>
         <td ></td>
       <td></td>
-        <td colspan="10"><?php echo $row['name']?></td></tr><?php
+        <td colspan="9"><?php echo $row['name']?></td>
+        <?php
+        $i +=1;
+        $r =0;
+        //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
+        $stmt = $conn->prepare("select m$i from total_score 
+        where time = '$y' && ep = $ep"); 
+        $stmt->execute();
+        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+          $r +=1;?>
+        <td colspan="2"></td>
+        <td style="text-align:center"><strong><font color="black"><?php echo $row["m$i"]?></strong></td>
+        <?php
+        }
+        ?>
+        </tr><?php
         
       }
       else if($row['status']==6){?>
         <tr>
-        <td></td>
+        <td ></td>
       <td></td>
-        <td colspan="10"><?php echo $row['name']?></td></td></tr><?php
-        
+        <td colspan="9"><?php echo $row['name']?></td>
+        <?php
+        $r =0;
+        //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
+        $stmt = $conn->prepare("select mp$i from total_score 
+        where time = '$y' && ep = $ep"); 
+        $stmt->execute();
+        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+          $r +=1;?>
+        <td colspan="2"></td>
+        <td style="text-align:center"><strong><font color="black"><?php echo $row["mp$i"]?></strong></td>
+        <?php
+        }
+        ?>
+        </tr><?php
       }
       else if($row['status']==7){?>
         <tr>
-        <td></td>
+        <td ></td>
       <td></td>
-        <td colspan="10"><?php echo $row['name']?></td></td></tr><?php
+        <td colspan="9"><?php echo $row['name']?></td>
+        <?php
+        $i +=1;
+        $r =0;
+        //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
+        $stmt = $conn->prepare("select m$i from total_score 
+        where time = '$y' && ep = $ep"); 
+        $stmt->execute();
+        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+          $r +=1;?>
+        <td colspan="2"></td>
+        <td style="text-align:center"><strong><font color="blue"><?php echo $row["m$i"]?></strong></td>
+        <?php
+        }
+        ?>
+        </tr><?php
         
-    }
-    else if($row['status']==8){?>
-      <tr>
-      <td></td><td></td>
-      <td colspan="10"><?php echo $row['name']?></td></td></tr><?php
-      
-    }
+      }
+      else if($row['status']==8){?>
+        <tr>
+        <td ></td>
+      <td></td>
+        <td colspan="9"><?php echo $row['name']?></td>
+        <?php
+        $r =0;
+        //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
+        $stmt = $conn->prepare("select mp$i from total_score 
+        where time = '$y' && ep = $ep"); 
+        $stmt->execute();
+        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+          $r +=1;?>
+        <td colspan="2"></td>
+        <td style="text-align:center"><strong><font color="blue"><?php echo $row["mp$i"]?></strong></td>
+        <?php
+        }
+        ?>
+        </tr><?php
+      }
 }
 }
 catch(PDOException $e) {

@@ -1,5 +1,9 @@
 <?php include('functions.php');
-$id = isset($_GET['id']) ? $_GET['id'] : '';?>
+$id = isset($_GET['id']) ? $_GET['id'] : '';
+if (!isset($_SESSION['user']) || $_SESSION['user']['id'] != $id){
+    header('location: login.php');
+    }
+?>
 
 <!DOCTYPE html>
 <html>

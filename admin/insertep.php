@@ -1,5 +1,9 @@
 <?php
 include 'db.php';
+if (!isAdmin()) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: ../login.php');
+}
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -60,6 +64,10 @@ include 'db.php';
             INSERT INTO ap23 (`value_{$newep}_$newyear`) select '' from form_{$newep}_$newyear where not exists (select id from ap23 where form_{$newep}_$newyear.id = ap23.id);
             INSERT INTO total_score (`name`,`time`, `ep`) select ampher.name , year.year, year.ep from ampher INNER join year where not exists (select time from total_score
             where total_score.time = year.year)ORDER by year.year, year.ep, ampher.id ;
+            INSERT INTO log (`apid`,`name`,`year`, `ep`)
+            SELECT ampher.id, ampher.name, year.year, year.ep from ampher inner join year where not EXISTS
+            (select time, ep from log where log.year = year.year AND log.year = year.ep)ORDER by year.year, 
+            year.ep, ampher.id ;
             ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
