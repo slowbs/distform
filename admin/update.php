@@ -11,6 +11,7 @@ if (!isAdmin()) {
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
+$t = isset($_GET['t']) ? $_GET['t'] : '';
 $apname = $_SESSION['name'][$ap];
 $score = isset($_POST['score']) ? $_POST['score'] : '';
 $score2 = isset($_POST['score2']) ? $_POST['score2'] : '';
@@ -24,9 +25,10 @@ foreach ($_POST['input'] as $key => $value) {
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        $sql = "UPDATE ap$ap SET value_{$ep}_$y = '$value', valuegane_{$ep}_$y = '$score[$key]', valuekoon_{$ep}_$y = '$score2[$key]'  
-        where id = '$key' ;
-        UPDATE log SET time = NOW(), username = '$userd' where apid = '$ap' && year = '$y' && ep = '$ep';
+        $sql = "UPDATE ap$ap SET value = '$value', valuegane = '$score[$key]', valuekoon = '$score2[$key]'  
+        where rid = '$key' and type = '$t' and year = '$y' and ep = '$ep';
+        UPDATE log SET time = NOW(), username = '$userd' 
+        where apid = '$ap' && year = '$y' && ep = '$ep' && type = '$t';
         ";
     
         // Prepare statement
@@ -54,8 +56,10 @@ if ( isset( $_POST['input2'] ) ){
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-            $sql = "UPDATE total_score SET m$key2 = '$scorei[$key2]', mp$key2 = '$score2i[$key2]' where name = '$apname' && time = '$y' && ep = '$ep';
-            UPDATE log SET time = NOW(), username = '$userd' where apid = '$ap' && year = '$y' && ep = '$ep';
+            $sql = "UPDATE total_score SET m$key2 = '$scorei[$key2]', mp$key2 = '$score2i[$key2]' 
+            where apid = '$ap' && time = '$y' && ep = '$ep' && type = '$t';
+            UPDATE log SET time = NOW(), username = '$userd' 
+            where apid = '$ap' && year = '$y' && ep = '$ep' && type = '$t';
             ";
         
             // Prepare statement
@@ -80,7 +84,7 @@ if ( isset( $_POST['input2'] ) ){
 }
 echo "<script>
 alert('แก้ไขสำเร็จ');
-window.location.href='form.php?y=$y&ap=$ap&ep=$ep';
+window.location.href='form.php?y=$y&ap=$ap&ep=$ep&t=$t';
 </script>";
 }
 ?>

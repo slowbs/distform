@@ -4,6 +4,7 @@ include ('functions.php');
 $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
+$t = isset($_GET['t']) ? $_GET['t'] : '';
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
   header('location: login.php');
   }
@@ -77,7 +78,7 @@ include 'db.php';
       <th scope="col" style="font-size:12px; width:100%; text-align:center">ตัวชี้วัดประเมินผล</th>
       <th scope="col" style="font-size:12px">เกณฑ์ ปี 2561</th>
       <th scope="col" style="font-size:12px">แหล่งข้อมูล</th>
-      <th scope="col" style="font-size:12px">สสอ</th>
+      <th scope="col" style="font-size:12px">น้ำหนัก</th>
       <th scope="col" style="font-size:12px">ระดับ1</th>
       <th scope="col" style="font-size:12px">ระดับ2</th>
       <th scope="col" style="font-size:12px">ระดับ3</th>
@@ -89,13 +90,16 @@ include 'db.php';
     </tr>
   </thead>
   <tbody>
-  <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>" method="POST"> 
+  <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>&t=<?php echo $t?>" method="POST"> 
 <?php
 include 'db.php';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT ap$ap.*, form_{$ep}_$y.* from form_{$ep}_$y inner join ap$ap on form_{$ep}_$y.id = ap$ap.id;"); 
+  $stmt = $conn->prepare("SELECT ap$ap.*, form_{$ep}_$y.* from form_{$ep}_$y inner join ap$ap on 
+  form_{$ep}_$y.id = ap$ap.rid
+  where ap$ap.year = $y and ap$ap.ep = $ep and ap$ap.type = $t;
+  "); 
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
   $i=0;
@@ -112,18 +116,17 @@ try {
       <td><?php echo $row['name']?></td>
       <td align="center"><?php echo $row['gane']?></td>
       <td align="center"><?php echo $row['data']?></td>
-      <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
+      <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row["koon$t"]?></td>
       <td align="center" class="cl1" id="gane1_<?php echo $row['id']?>"><?php echo $row['gane1']?></td>
       <td align="center" class="cl1" id="gane2_<?php echo $row['id']?>"><?php echo $row['gane2']?></td>
       <td align="center" class="cl1" id="gane3_<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
       <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
-      <td style="height:25px"><input type="text" class="form-control test <?php echo $row['kor']?>" 
-      style="text-align:center; vertical-align: text-top" value="<?php echo $row["value_{$ep}_$y"]?>" 
+      <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
       id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane_{$ep}_$y"]?>"
+      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
       id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon_{$ep}_$y"]?>"
+      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
       id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
     
     </tr>
@@ -143,7 +146,7 @@ else if($row['status']==3){?>
       <td><?php echo $row['name']?></td>
       <td align="center"><?php echo $row['gane']?></td>
       <td align="center"><?php echo $row['data']?></td>
-        <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row['koon']?></td>
+        <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row["koon$t"]?></td>
         <td align="center" class="cl1"><?php echo $row['gane1']?></td>
         <td style="display:none;" id="gane1_<?php echo $row['id']?>">1</td>
         <td align="center" class="cl1"><?php echo $row['gane2']?></td>
@@ -154,11 +157,11 @@ else if($row['status']==3){?>
         <td style="display:none;" id="gane4_<?php echo $row['id']?>">4</td>
         <td align="center" class="cl1"><?php echo $row['gane5']?></td>
         <td style="display:none;" id="gane5_<?php echo $row['id']?>">5</td>
-        <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value_{$ep}_$y"]?>" 
+        <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
         id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane_{$ep}_$y"]?>"
+        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
         id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon_{$ep}_$y"]?>"
+        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
         id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
       
       </tr>
@@ -171,12 +174,13 @@ else if($row['status']==3){?>
         <td colspan="10"><?php echo $row['name']?></td><?php
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
-        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_{$ep}_$y inner join total_score 
-        where total_score.name = '$apname' && form_{$ep}_$y.kor = $i && time = $y"); 
+        $stmt = $conn->prepare("SELECT total_score.*, kor, sum(koon$t) from form_{$ep}_$y inner join total_score 
+        where total_score.apid = '$ap' and form_{$ep}_$y.kor = '$i' and total_score.time = $y
+        and total_score.ep = $ep and total_score.type = $t;"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
-        <?php $maxscore = ($row['sum(koon)']*5)/100;?>
+        <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
@@ -190,15 +194,16 @@ else if($row['status']==3){?>
       <td></td>
         <td colspan="10"><?php echo $row['name']?></td>
         <?php
-        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_{$ep}_$y inner join total_score 
-        where total_score.name = '$apname' && form_{$ep}_$y.kor = '$i' && time = '$y'"); 
+        $stmt = $conn->prepare("SELECT total_score.*, kor, sum(koon$t) from form_{$ep}_$y inner join total_score 
+        where total_score.apid = '$ap' and form_{$ep}_$y.kor = '$i' and total_score.time = $y
+        and total_score.ep = $ep and total_score.type = $t;"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
         <?php //$newid = $row['max(id)'];?>
         <input type="hidden" name="input2[<?php echo $i?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
-        value="<?php echo $row['sum(koon)']?>" readonly="readonly"></td>
+        value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
         name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
         }
@@ -210,12 +215,13 @@ else if($row['status']==3){?>
         <td colspan="10"><?php echo $row['name']?></td><?php
         $i +=1;
         //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score"); 
-        $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_{$ep}_$y inner join total_score 
-        where total_score.name = '$apname' && kor != 0 && time = '$y'"); 
+        $stmt = $conn->prepare("SELECT total_score.*, kor, sum(koon$t) from form_{$ep}_$y inner join total_score 
+        where total_score.apid = '$ap' and form_{$ep}_$y.kor != '0' and total_score.time = $y
+        and total_score.ep = $ep and total_score.type = $t;"); 
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
-        <?php $maxscore = ($row['sum(koon)']*5)/100;?>
+        <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
@@ -228,15 +234,16 @@ else if($row['status']==3){?>
       <td></td><td></td>
       <td colspan="10"><?php echo $row['name']?></td>
       <?php
-      $stmt = $conn->prepare("select total_score.*, kor, sum(koon) from form_{$ep}_$y inner join total_score 
-      where total_score.name = '$apname' && kor != 0 && time = '$y'"); 
+      $stmt = $conn->prepare("SELECT total_score.*, kor, sum(koon$t) from form_{$ep}_$y inner join total_score 
+      where total_score.apid = '$ap' and form_{$ep}_$y.kor != '0' and total_score.time = $y
+      and total_score.ep = $ep and total_score.type = $t;"); 
       $stmt->execute();
       $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
       foreach($result as $row){?>
       <?php //$newid = $row['max(id)'];?>
       <input type="hidden" name="input2[<?php echo $i?>]">
       <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
-      value="<?php echo $row['sum(koon)']?>" readonly="readonly"></td>
+      value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
       <td><input type="text" class="form-control" style="text-align:center" id="box6"
       name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
       }

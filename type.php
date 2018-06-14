@@ -1,16 +1,16 @@
-<?php
-include 'functions.php';
-//$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
-//$ap = $_SESSION['user']['apid'];
-if (!isAdmin()) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: ../login.php');
-}
+<?php 
+	include('functions.php');
+	//$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+    //$ap = $_SESSION['user']['apid'];
+    if (!isLoggedIn()) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+    }
+$ap = $_SESSION['user']['apid'];
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,22 +32,17 @@ $t = isset($_GET['t']) ? $_GET['t'] : '';
 <div class="container" align="center">
   <h1 align="center">อำเภอ</h1></div>
   <div class="container">
-  <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
-  <a href="type.php?y=<?php echo $y ?>&ep=<?php echo $ep ?>"><button type="button" class="btn btn-success">ย้อนกลับ</button></a>
-  </div>
+  <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
   </div>
   <div class="container">
-  <div style="float: right"><a href="../index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
+  <div style="float: right"><a href="index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
   <br><br><br><div class="container" align="center">
 <?php
 include 'db.php';
-//include '../campher.php';
+//include '../ctype.php';
 ?>
-<a href="total.php?y=<?php echo $y ?>&ep=<?php echo $ep ?>&t=<?php echo $t ?>"<button class="btn btn-warning">รายมิติ</button></a>
-<a href="totalform.php?y=<?php echo $y ?>&ep=<?php echo $ep ?>&t=<?php echo $t ?>"
-<button class="btn btn-danger">รวมคะแนนทุกอำเภอ</button></a>
-  <br>
-  <table class="table table-hover table-sm">
+<br>
+<table class="table table-hover table-sm">
   <thead style="text-align:center" class="thead-dark">
     <tr>
       <th scope="col">ลำดับที่</th>
@@ -57,23 +52,20 @@ include 'db.php';
     </tr>
   </thead>
   <tbody style="text-align:center">
-  <?php
-/* $y = isset($_GET['y']) ? $_GET['y'] : '';
-$ep = isset($_GET['ep']) ? $_GET['ep'] : '';
-$t = isset($_GET['t']) ? $_GET['t'] : ''; */
-
+<?php
 include 'db.php';
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT * FROM log where year = $y and ep = $ep and type = $t";
+    $sql = "SELECT pa.*, log.apid, log.time, log.username from log left join pa on log.type = pa.id where log.apid = $ap and log.year = $y and log.ep = $ep
+    GROUP By log.id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-    foreach ($result as $row) {?>
+    foreach($result as $row){?>
         <tr>
-      <th scope="row"><?php echo $row['apid'] ?></th>
-      <th><a href="form.php?y=<?php echo $y ?>&ap=<?php echo $row['apid'] ?>&ep=<?php echo $ep ?>&t=<?php echo $t ?>"
+      <th scope="row"><?php echo $row['id'] ?></th>
+      <th><a href="form.php?y=<?php echo $y ?>&ap=<?php echo $row['apid'] ?>&ep=<?php echo $ep ?>&t=<?php echo $row['type'] ?>"
             role="button"><?php echo $row['name']; ?></button></a>
             <?php $_SESSION['name'][$row['apid']] = $row['name'];
                   $_SESSION['time'][$row['apid']] = $row['time'];  
@@ -81,16 +73,17 @@ try {
       <td><?php echo $row['time'] ?></td>
       <td><?php echo $row['username'] ?></td>
     </tr>
-<?php
+    <?php
+    }  
+    
 }
-
-} catch (PDOException $e) {
+catch(PDOException $e)
+    {
     echo $sql . "<br>" . $e->getMessage();
-}
+    }
 
 $conn = null;
 ?>
-  <div align="right"><a href="index.php">หน้าหลัก</a></div>
 </div>
 
 </body>

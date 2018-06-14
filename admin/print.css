@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* viewtopic_print.css
+	สิทธิพร อันทะวงษา
+	www.thaicss.com
+	13 พฤษภาคม 2550
+	
+	สร้างมาเพื่อรองรับปริ้นมีเดีย
+ */
+
+html { 
+	height: 100%;
+}
+
+body {
+	font-family: Tahoma, Verdana, sans-serif; 
+	font-size: 0.8em; 
+		}
+html IMG {
+	border: solid 2px  #FFFFFF;
+	margin-right: auto;
+	margin-left: auto;
+	float: none;
+}
+#thaicss_name {
+	padding-bottom: 10px;
+	border-bottom: solid 3px #666666;
+}
+/*Normal Link Part*/
+a {
+	text-decoration: none;
+	color: #FF9900;
+	}
+	
+#header ul {
+	display: none;
+}
+	
+#header {
+}
+
+#wrap {
+}
+#wrap #content {
+}
+.l {
+
+}
+.presenting p, p code, p li, p li code, code {
+	font-size: 1.0em !important;
+	line-height: 17px;
+}
+.presenting p li code, code {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.presenting h3, h4, h5, h6 {
+	padding: 0;
+	margin: 2px 0;
+}
+.presenting h4 {
+	font-size: 1.4em;
+}
+.presenting h5 {
+	font-size: 1.3em;
+}
+.presenting h6 {
+	font-size: 1.2em;
+}
+
+.r {
+	display: none;
+}
+.r P EM {
+	font-style: normal;
+	color: #CCCCCC;
+}
+
+h4 {
+	color: #b31023;
+	padding: 2px;
+
+}
+h3 {
+color: #fff000;
+}
+h2 {
+	line-height: 25px;
+}
+ FORM INPUT {
+	border: solid 1px #000000;
+	color: #000000;
+	background-color: #c0cbcc;
+}
+FORM TEXTAREA {
+	border: solid 1px #000000;
+	color: #000000;
+	background-color: #c0cbcc;
+}
+fieldset {
+	padding: 10px;
+	border: solid 1px #5d6e79;
+}
+label {
+	float: left;
+	width: 100px;
+	margin-right: 2px;
+	padding-right: 2px;
+	text-align: right;
+}
+.view {
+	display: table;
+}
+.comment_zone {
+	display: none;
+}
+p.commentzone {
+	/*border-bottom: solid 2px #c5c2bb;*/
+}
+.comm {
+	padding: 2px;
+}
+.comm span {
+	padding: 2px;
+	font-weight: bold;
+}
+.comm em {
+	padding: 1px 4px;
+	border: solid 1px #72838d;
+	font-style: normal;
+}
+.posted {
+	color: #c2d2dc;
+	padding: 2px;
+	border-bottom: dashed 1px #b6c7d1;
+	width: auto;
+}
+
+#footer {
+	margin: 0 auto;
+	border-top: solid 2px #333333;
+	padding-top: 10px;
+}

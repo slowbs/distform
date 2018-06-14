@@ -38,7 +38,7 @@ try {
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
     foreach($result as $row){?>
-        <a class="btn btn-primary"  href="form.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>&ap=<?php echo $ap?>" role="button">
+        <a class="btn btn-primary"  href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>&ap=<?php echo $ap?>" role="button">
         <?php echo "{$row['ep']}/{$row['year']}"; ?></a><?php
     }  
 }

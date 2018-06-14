@@ -18,9 +18,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <?php
-  $y = isset($_GET['y']) ? $_GET['y'] : '';
+/*   $y = isset($_GET['y']) ? $_GET['y'] : '';
   $t = isset($_GET['t']) ? $_GET['t'] : '';
-  $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
+  $ep = isset($_GET['ep']) ? $_GET['ep'] : ''; */
   ?>
   <style>
   @page {

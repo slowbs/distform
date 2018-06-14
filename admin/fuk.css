@@ -8,6 +8,18 @@ input {display: block !important; padding: 0 !important; margin: 0 !important; w
 {
 padding-left: 108px !important;
 }
+@media print {
+    .noprint { 
+        display: none
+    }
+    .mypages div.compare {
+        white-space: normal
+    }
+
+    .mypages .compare .estate {
+        padding-bottom: 110px
+    }
+}
 @page {
 size: auto;
 }
