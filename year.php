@@ -21,7 +21,8 @@
 </head>
 <body>
 <div class="container" align="center">
-  <h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข</h1>
+<h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
+  <h2 align="center">สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช</h2>
   <br>
 <div align="right"><a href="updateuserform.php?id=<?php echo $_SESSION['user']['id']; ?>">
 <button type="button" class="btn btn-warning">แก้ไขรหัสผ่าน</button></a>

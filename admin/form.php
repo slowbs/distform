@@ -8,6 +8,7 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $apname = $_SESSION['name'][$ap];
 $time = $_SESSION['time'][$ap];
+$typename = $_SESSION['typename'][$ap];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
 
 ?>
@@ -40,7 +41,8 @@ $time = $_SESSION['time'][$ap];
   <body> 
   <div class="container">
   <div class="page-header" align="center" >
-  <h1><?php echo $apname ?></h1>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
 </div>
 <?php include 'headbutform.php' ?>
 </div>

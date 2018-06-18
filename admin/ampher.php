@@ -9,6 +9,7 @@ if (!isAdmin()) {
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
+$typename = $_SESSION['typename'][$t];
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,9 @@ $t = isset($_GET['t']) ? $_GET['t'] : '';
 
 <body>
 <div class="container" align="center">
-  <h1 align="center">อำเภอ</h1></div>
+<br>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
   <div class="container">
   <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
   <a href="type.php?y=<?php echo $y ?>&ep=<?php echo $ep ?>"><button type="button" class="btn btn-success">ย้อนกลับ</button></a>
@@ -76,7 +79,8 @@ try {
       <th><a href="form.php?y=<?php echo $y ?>&ap=<?php echo $row['apid'] ?>&ep=<?php echo $ep ?>&t=<?php echo $t ?>"
             role="button"><?php echo $row['name']; ?></button></a>
             <?php $_SESSION['name'][$row['apid']] = $row['name'];
-                  $_SESSION['time'][$row['apid']] = $row['time'];  
+                  $_SESSION['time'][$row['apid']] = $row['time'];
+                  $_SESSION['typename'][$row['apid']] = $typename;
             ?></td>
       <td><?php echo $row['time'] ?></td>
       <td><?php echo $row['username'] ?></td>

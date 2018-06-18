@@ -5,6 +5,7 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
+$typename = $_SESSION['name']["$t"];
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
   header('location: login.php');
   }
@@ -62,7 +63,8 @@ include 'db.php';
   <body> 
   <div class="container">
   <div class="page-header" align="center" >
-  <h1><?php echo $apname ?></h1>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
 </div>
 <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a></div>
 <div style="float: right"><a href="index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>

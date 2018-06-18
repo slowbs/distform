@@ -30,7 +30,8 @@ $t = isset($_GET['t']) ? $_GET['t'] : '';
 
 <body>
 <div class="container" align="center">
-  <h1 align="center">อำเภอ</h1></div>
+<h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
   <div class="container">
   <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
   </div>
@@ -57,7 +58,7 @@ include 'db.php';
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT pa.*, log.apid, log.time, log.username from log left join pa on log.type = pa.id where log.apid = $ap and log.year = $y and log.ep = $ep
+    $sql = "SELECT pa.*,log.apid, log.time, log.username from log left join pa on log.type = pa.id where log.apid = $ap and log.year = $y and log.ep = $ep
     GROUP By log.id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -67,8 +68,8 @@ try {
       <th scope="row"><?php echo $row['id'] ?></th>
       <th><a href="form.php?y=<?php echo $y ?>&ap=<?php echo $row['apid'] ?>&ep=<?php echo $ep ?>&t=<?php echo $row['type'] ?>"
             role="button"><?php echo $row['name']; ?></button></a>
-            <?php $_SESSION['name'][$row['apid']] = $row['name'];
-                  $_SESSION['time'][$row['apid']] = $row['time'];  
+            <?php $_SESSION['name'][$row['id']] = $row['name'];
+                  $_SESSION['time'][$row['id']] = $row['time'];                   
             ?></td>
       <td><?php echo $row['time'] ?></td>
       <td><?php echo $row['username'] ?></td>

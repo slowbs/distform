@@ -126,7 +126,7 @@ try {
     $result = $stmt->FetchAll(PDO::FETCH_BOTH);
     //$i=0;
     foreach ($result as $row) {
-        if ($row['id'] == 2) {
+        if ($row['id'] == 1) {
             ?>
   <table class="table table-bordered testimonial-group" >
   <thead class="thead-light">
@@ -271,7 +271,7 @@ $apnend +=3; */
 $i += 1;
             //$r =0;
             //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score");
-            $stmt = $conn->prepare("SELECT GROUP_CONCAT(total_score.m$i ORDER by type) as ap$i
+      $stmt = $conn->prepare("SELECT GROUP_CONCAT(total_score.m$i ORDER by type) as ap$i
       FROM total_score WHERE total_score.time = $y and ep = $ep and apid > $apnstart and apid <= $apnend
       GROUP by apid ORDER by apid");
             $stmt->execute();
@@ -373,6 +373,5 @@ $conn = null;
 ?>
 
   </tbody></table>
-fuk
 </form>
 </body>

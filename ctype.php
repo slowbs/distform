@@ -11,6 +11,7 @@ include 'db.php';
         foreach($result as $row){?>
             <a href="ampher.php?y=<?php echo $y?>&ep=<?php echo $ep?>&t=<?php echo $row['type']?>" 
             role="button"><button class="btn btn-primary"><?php echo $row['name']; ?></button></a><?php
+            $_SESSION['typename'][$row['id']] = $row['name'];
         }  
         
     }
