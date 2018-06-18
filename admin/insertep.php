@@ -1,9 +1,10 @@
 <?php
-include 'db.php';
+include 'functions.php';
 if (!isAdmin()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
 }
+include 'db.php';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -12,10 +13,10 @@ if (!isAdmin()) {
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
-            {$newep}_$newyear = $row['max(year)']+1;
+            $newyear = $row['max(year)'];
             $newep = $row['max(ep)']+1;
             //echo {$newep}_$newyear;
-            $sql = "INSERT INTO year (year) VALUES ($newyear);
+            $sql = "INSERT INTO year (year,ep) VALUES ($newyear,$newep);
             INSERT INTO ap1(`year`,`ep`, `rid`, `type`) 
 select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
 inner join pa where not exists 
@@ -185,7 +186,8 @@ INSERT INTO total_score (`name`,`apid`,`time`, `ep`,`type`)
 INSERT INTO log (`apid`,`name`,`year`, `ep`,`type`)
             SELECT ampher.id, ampher.name, year.year, year.ep, pa.type from ampher inner join year 
             inner join pa where not EXISTS
-            (select time, ep from log where log.year = year.year AND log.year = year.ep and log.type = pa.type)
+            (select time, ep from log 
+	        where log.year = year.year AND log.ep = year.ep and log.type = pa.type)
             ORDER by year.year, year.ep, pa.type, ampher.id;
             ";
             $stmt = $conn->prepare($sql);

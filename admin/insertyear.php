@@ -186,7 +186,7 @@ INSERT INTO total_score (`name`,`apid`,`time`, `ep`,`type`)
 INSERT INTO log (`apid`,`name`,`year`, `ep`,`type`)
             SELECT ampher.id, ampher.name, year.year, year.ep, pa.type from ampher inner join year 
             inner join pa where not EXISTS
-            (select time, ep from log where log.year = year.year AND log.year = year.ep and log.type = pa.type)
+            (select time, ep from log where log.ep = year.year AND log.year = year.ep and log.type = pa.type)
             ORDER by year.year, year.ep, pa.type, ampher.id;
             ";
             $stmt = $conn->prepare($sql);
