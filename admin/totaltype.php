@@ -318,8 +318,8 @@ $conn = null;
     </div>
   </tbody>
 </table>
-<div>
+<!-- <div>
 <button onclick="exportTableToCSV('members.csv')">Export HTML Table To CSV File</button>
-<a href="print.php?y=<?php echo $y ?>&ep=<?php echo $ep?>"><button type="button" class="btn btn-success">พิมพ์</button></a></div>
+<a href="print.php?y=<?php echo $y ?>&ep=<?php echo $ep?>"><button type="button" class="btn btn-success">พิมพ์</button></a></div> -->
 </form>
 </body>
