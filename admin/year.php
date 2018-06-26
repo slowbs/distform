@@ -41,7 +41,7 @@ $ap = $_SESSION['user']['apid'];
   </button>
   <div class="dropdown-menu">
   <a class="dropdown-item" href="create_user.php">เพิ่มชื่อผู้ใช้</a>
-    <a class="dropdown-item" href="updateuserform.php?id=<?php echo $_SESSION['user']['id'] ?>">แก้ไขรหัสผ่าน</a>
+    <a class="dropdown-item" href="updateuserform.php?id=<?php echo $_SESSION['user']['id'] ?>">เปลี่ยนรหัสผ่าน</a>
     <a class="dropdown-item" href="totaluser.php">จัดการผู้ใช้</a>
   </div>
 </div>

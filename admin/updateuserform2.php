@@ -38,7 +38,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
 		?>
 		<div class="input-group">
 			<label>ลำดับชื่อผู้ใช้</label>
-			<input type="text" name="id" value="<?php echo $id?>">
+			<input type="text" name="id" value="<?php echo $id?>" readonly="readonly">
 		</div>
 		<div class="input-group">
 			<label>ชื่อผู้ใช้</label>

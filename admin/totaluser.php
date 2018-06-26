@@ -34,7 +34,12 @@
 <div class="container" align="center">
 
 <h2>คะแนนรวม</h2>
-<?php include 'headbutform.php' ?>
+<!-- <?php include 'headbutform.php' ?> -->
+<div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
+</div>
+
+<div style="float: right"><a href="../index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
+<br><br>
 <br>
 <table class="table table-hover table-bordered table-striped table-sm">
   <thead style="text-align:center" class="thead-dark">

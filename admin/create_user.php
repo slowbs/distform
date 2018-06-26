@@ -40,15 +40,15 @@
 		</div> -->
 		<div class="input-group">
 			<label>ประเภทผู้ใช้</label>
-			<select name="user_type" id="user_type" >
-				<option value=""></option>
-				<option value="admin">Admin</option>
-				<option value="user">User</option>
+			<select name="user_type" id="user_type" style="width:93%; height:30px">
+				<option value="" style="font-size:14px;"></option>
+				<option value="admin" style="font-size:14px;">Admin</option>
+				<option value="user" style="font-size:14px;">User</option>
 			</select>
 		</div>
         <div class="input-group">
 		<label>อำเภอ</label>
-		<select name="ampher" id="user_type" >
+		<select name="ampher" id="user_type" style="width:93%; height:30px" >
 		<option value=""></option>
 		<?php
 include 'db.php';
@@ -60,7 +60,7 @@ include 'db.php';
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){?>
-			<option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
+			<option value="<?php echo $row['id']?>" style="font-size:14px;"><?php echo $row['name']?></option>
  
 <?php
 		}  ?>
