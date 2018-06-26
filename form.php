@@ -192,9 +192,9 @@ else if($row['status']==3){?>
         foreach($result as $row){?>
         <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
-        <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
+        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
-        <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
+        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
         name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td></tr><?php
         }
       }
@@ -212,9 +212,9 @@ else if($row['status']==3){?>
         foreach($result as $row){?>
         <?php //$newid = $row['max(id)'];?>
         <input type="hidden" name="input2[<?php echo $i?>]">
-        <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
+        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
         value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
-        <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
+        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
         name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
         }
       }
@@ -233,9 +233,9 @@ else if($row['status']==3){?>
         foreach($result as $row){?>
         <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
-        <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
+        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
-        <td><input type="text" class="form-control" style="text-align:center" id="box5"
+        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box5"
         name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td></tr><?php
         }
     }
@@ -252,9 +252,9 @@ else if($row['status']==3){?>
       foreach($result as $row){?>
       <?php //$newid = $row['max(id)'];?>
       <input type="hidden" name="input2[<?php echo $i?>]">
-      <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
+      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
       value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
-      <td><input type="text" class="form-control" style="text-align:center" id="box6"
+      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box6"
       name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
       }
     }

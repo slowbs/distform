@@ -26,6 +26,9 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 @media print {
     table {page-break-after: always;}
 }
+.table th, .table td{
+    border: black solid 1px !important;
+}
 </style>
 <?php
 ?>
@@ -136,7 +139,7 @@ try {
     foreach ($result as $row) {
         if ($row['id'] == 1) {
             ?>
-  <table class="table table-bordered testimonial-group" >
+  <table class="table table-bordered">
   <thead class="thead-light">
   <tr>
       <th scope="col" rowspan="2" style="font-size:12px">PA/สตป.</th>

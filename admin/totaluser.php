@@ -32,8 +32,8 @@
 <body>
 
 <div class="container" align="center">
-
-<h2>คะแนนรวม</h2>
+<br>
+<h2>รายชื่อบัญชีผู้ใช้</h2>
 <!-- <?php include 'headbutform.php' ?> -->
 <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
 </div>
