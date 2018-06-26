@@ -11,7 +11,10 @@ $(document).ready(function fuk() {
        var koon = $("#koon"+boxid).text()
        if ( score != "" ){
            if (isNaN(score)){
-               alert("not number")
+               alert("กรุณากรอกเฉพาะตัวเลข")
+               $("#"+boxid).val("")
+               $("#box2_"+boxid).val("")
+               $("#box_"+boxid).val("")
            }
            else{
        if(gane1 < gane5){

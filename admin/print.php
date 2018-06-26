@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+//include 'db.php';
 include '../functions.php';
 //$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 //$ap = $_SESSION['user']['apid'];
@@ -22,19 +22,27 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="fuk.css">
   <script src="fuk.js"></script>
+<style>
+@media print {
+    table {page-break-after: always;}
+}
+</style>
 <?php
 ?>
-  <body>
-  <div class="container">
+  <body onload="window.print()">
+  <div class="container-fluid">
   <div class="page-header" align="center">
-  <h1>รวมคะแนนทุกอำเภอ</h1>
+  <br>
+<h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 
 </div>
-<?php include 'headbutform.php'?>
+</div>
+<div class="container">
+<?php include 'headbuta.php'?>
 </div>
 <div class="container-fluid">
 <br>
-  <form action="update.php?y=<?php echo $y ?>&ap=<?php echo $ap ?>" method="POST">
 <?php
 include 'db.php';
 $apnstart = 0;
@@ -43,85 +51,85 @@ $i = 0;
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT form_1_2558.*,
-  GROUP_CONCAT(ap1.valuekoon ORDER by ap1.type) as ap1,
-  GROUP_CONCAT(ap2.valuekoon ORDER by ap3.type) as ap2,
-  GROUP_CONCAT(ap3.valuekoon ORDER by ap3.type) as ap3
-  from form_1_2558, ap1, ap2, ap3
-  where ap1.rid = form_1_2558.id
-  and ap1.year = 2558 and ap1.ep = 1
-  and ap1.id = ap2.id and ap1.id = ap3.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap4.valuekoon ORDER by ap4.type) as ap1,
-  GROUP_CONCAT(ap5.valuekoon ORDER by ap5.type) as ap2,
-  GROUP_CONCAT(ap6.valuekoon ORDER by ap6.type) as ap3
-  from form_1_2558, ap4, ap5, ap6
-  where ap4.rid = form_1_2558.id
-  and ap4.year = 2558 and ap4.ep = 1
-  and ap4.id = ap5.id and ap4.id = ap6.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap7.valuekoon ORDER by ap7.type) as ap1,
-  GROUP_CONCAT(ap8.valuekoon ORDER by ap8.type) as ap2,
-  GROUP_CONCAT(ap9.valuekoon ORDER by ap9.type) as ap3
-  from form_1_2558, ap7, ap8, ap9
-  where ap7.rid = form_1_2558.id
-  and ap7.year = 2558 and ap7.ep = 1
-  and ap7.id = ap8.id and ap7.id = ap9.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap10.valuekoon ORDER by ap10.type) as ap1,
-  GROUP_CONCAT(ap11.valuekoon ORDER by ap11.type) as ap2,
-  GROUP_CONCAT(ap12.valuekoon ORDER by ap12.type) as ap3
-  from form_1_2558, ap10, ap11, ap12
-  where ap10.rid = form_1_2558.id
-  and ap10.year = 2558 and ap10.ep = 1
-  and ap10.id = ap11.id and ap10.id = ap12.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap13.valuekoon ORDER by ap13.type) as ap1,
-  GROUP_CONCAT(ap14.valuekoon ORDER by ap14.type) as ap2,
-  GROUP_CONCAT(ap15.valuekoon ORDER by ap15.type) as ap3
-  from form_1_2558, ap13, ap14, ap15
-  where ap13.rid = form_1_2558.id
-  and ap13.year = 2558 and ap13.ep = 1
-  and ap13.id = ap14.id and ap13.id = ap15.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap16.valuekoon ORDER by ap16.type) as ap1,
-  GROUP_CONCAT(ap17.valuekoon ORDER by ap17.type) as ap2,
-  GROUP_CONCAT(ap18.valuekoon ORDER by ap18.type) as ap3
-  from form_1_2558, ap16, ap17, ap18
-  where ap16.rid = form_1_2558.id
-  and ap16.year = 2558 and ap16.ep = 1
-  and ap16.id = ap17.id and ap16.id = ap18.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap19.valuekoon ORDER by ap19.type) as ap1,
-  GROUP_CONCAT(ap20.valuekoon ORDER by ap20.type) as ap2,
-  GROUP_CONCAT(ap21.valuekoon ORDER by ap21.type) as ap3
-  from form_1_2558, ap19, ap20, ap21
-  where ap19.rid = form_1_2558.id
-  and ap19.year = 2558 and ap19.ep = 1
-  and ap19.id = ap20.id and ap19.id = ap21.id
-  GROUP by form_1_2558.id
-  UNION ALL
-  select form_1_2558.*,
-  GROUP_CONCAT(ap22.valuekoon ORDER by ap22.type) as ap1,
-  GROUP_CONCAT(ap23.valuekoon ORDER by ap23.type) as ap2,
-  '' as ap3
-  from form_1_2558, ap22, ap23
-  where ap22.rid = form_1_2558.id
-  and ap22.year = 2558 and ap22.ep = 1
-  and ap22.id = ap23.id
-  GROUP by form_1_2558.id");
+    $stmt = $conn->prepare("SELECT form_{$ep}_$y.*,
+    GROUP_CONCAT(ap1.valuekoon ORDER by ap1.type) as ap1,
+    GROUP_CONCAT(ap2.valuekoon ORDER by ap3.type) as ap2,
+    GROUP_CONCAT(ap3.valuekoon ORDER by ap3.type) as ap3
+    from form_{$ep}_$y, ap1, ap2, ap3
+    where ap1.rid = form_{$ep}_$y.id
+    and ap1.year = 2558 and ap1.ep = 1
+    and ap1.id = ap2.id and ap1.id = ap3.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap4.valuekoon ORDER by ap4.type) as ap1,
+    GROUP_CONCAT(ap5.valuekoon ORDER by ap5.type) as ap2,
+    GROUP_CONCAT(ap6.valuekoon ORDER by ap6.type) as ap3
+    from form_{$ep}_$y, ap4, ap5, ap6
+    where ap4.rid = form_{$ep}_$y.id
+    and ap4.year = 2558 and ap4.ep = 1
+    and ap4.id = ap5.id and ap4.id = ap6.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap7.valuekoon ORDER by ap7.type) as ap1,
+    GROUP_CONCAT(ap8.valuekoon ORDER by ap8.type) as ap2,
+    GROUP_CONCAT(ap9.valuekoon ORDER by ap9.type) as ap3
+    from form_{$ep}_$y, ap7, ap8, ap9
+    where ap7.rid = form_{$ep}_$y.id
+    and ap7.year = 2558 and ap7.ep = 1
+    and ap7.id = ap8.id and ap7.id = ap9.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap10.valuekoon ORDER by ap10.type) as ap1,
+    GROUP_CONCAT(ap11.valuekoon ORDER by ap11.type) as ap2,
+    GROUP_CONCAT(ap12.valuekoon ORDER by ap12.type) as ap3
+    from form_{$ep}_$y, ap10, ap11, ap12
+    where ap10.rid = form_{$ep}_$y.id
+    and ap10.year = 2558 and ap10.ep = 1
+    and ap10.id = ap11.id and ap10.id = ap12.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap13.valuekoon ORDER by ap13.type) as ap1,
+    GROUP_CONCAT(ap14.valuekoon ORDER by ap14.type) as ap2,
+    GROUP_CONCAT(ap15.valuekoon ORDER by ap15.type) as ap3
+    from form_{$ep}_$y, ap13, ap14, ap15
+    where ap13.rid = form_{$ep}_$y.id
+    and ap13.year = 2558 and ap13.ep = 1
+    and ap13.id = ap14.id and ap13.id = ap15.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap16.valuekoon ORDER by ap16.type) as ap1,
+    GROUP_CONCAT(ap17.valuekoon ORDER by ap17.type) as ap2,
+    GROUP_CONCAT(ap18.valuekoon ORDER by ap18.type) as ap3
+    from form_{$ep}_$y, ap16, ap17, ap18
+    where ap16.rid = form_{$ep}_$y.id
+    and ap16.year = 2558 and ap16.ep = 1
+    and ap16.id = ap17.id and ap16.id = ap18.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap19.valuekoon ORDER by ap19.type) as ap1,
+    GROUP_CONCAT(ap20.valuekoon ORDER by ap20.type) as ap2,
+    GROUP_CONCAT(ap21.valuekoon ORDER by ap21.type) as ap3
+    from form_{$ep}_$y, ap19, ap20, ap21
+    where ap19.rid = form_{$ep}_$y.id
+    and ap19.year = 2558 and ap19.ep = 1
+    and ap19.id = ap20.id and ap19.id = ap21.id
+    GROUP by form_{$ep}_$y.id
+    UNION ALL
+    select form_{$ep}_$y.*,
+    GROUP_CONCAT(ap22.valuekoon ORDER by ap22.type) as ap1,
+    GROUP_CONCAT(ap23.valuekoon ORDER by ap23.type) as ap2,
+    '' as ap3
+    from form_{$ep}_$y, ap22, ap23
+    where ap22.rid = form_{$ep}_$y.id
+    and ap22.year = 2558 and ap22.ep = 1
+    and ap22.id = ap23.id
+    GROUP by form_{$ep}_$y.id");
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_BOTH);
     //$i=0;
@@ -373,5 +381,4 @@ $conn = null;
 ?>
 
   </tbody></table>
-</form>
 </body>

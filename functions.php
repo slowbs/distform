@@ -75,7 +75,7 @@
 
 				$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
 				$_SESSION['success']  = "You are now logged in";
-				header('location: index.php');				
+				header('location: year.php');				
 			}
 
 		}

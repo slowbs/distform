@@ -10,6 +10,7 @@ if (!isAdmin()) {
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
+$typename = $_SESSION['typename'][$t];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
 
 ?>
@@ -27,7 +28,9 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   <body>
   <div class="container">
   <div class="page-header" align="center">
-  <h1>รวมคะแนนทุกอำเภอ</h1>
+<br>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>รวมคะแนนทุกอำเภอ ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
 
 </div>
 <?php include 'headbutform.php' ?>

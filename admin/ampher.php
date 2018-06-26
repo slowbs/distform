@@ -69,7 +69,7 @@ include 'db.php';
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT * FROM log where year = $y and ep = $ep and type = $t";
+    $sql = "SELECT name,apid,time_format(time, '%d/%m/%Y %H:%i') as time, username FROM log where year = $y and ep = $ep and type = $t";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);

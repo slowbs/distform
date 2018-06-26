@@ -1,16 +1,38 @@
 <?php
-include 'db.php';
-session_start();
-ob_start();
+include 'functions.php';
+if (!isAdmin()) {
+  $_SESSION['msg'] = "You must log in first";
+  header('location: ../login.php');
+}
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
-$apname = $_SESSION['name'][$ap];
-$time = $_SESSION['time'][$ap];
+//$apname = $_SESSION['name'][$ap];
+//$time = $_SESSION['time'][$ap];
 $typename = $_SESSION['typename'][$ap];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
-
+include 'db.php';
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT name,apid,time_format(time, '%d/%m/%Y %H:%i') as time, username FROM log where apid = $ap && year = $y && ep = $ep && type = $t;";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $apname = $row['name'];
+            //$_SESSION['apname'][$ap] = $apname;
+            $time = $row['time'];
+            $editname = $row['username'];
+    }
+  }
+    catch(PDOException $e)
+        {
+        echo $sql . "<br>" . $e->getMessage();
+        }
+    
+    $conn = null;
 ?>
   <title>Bootstrap 4 Example</title>
   <meta charset="utf-8">
@@ -39,6 +61,7 @@ $typename = $_SESSION['typename'][$ap];
 <?php
 ?>
   <body> 
+  <br>
   <div class="container">
   <div class="page-header" align="center" >
   <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
@@ -47,6 +70,7 @@ $typename = $_SESSION['typename'][$ap];
 <?php include 'headbutform.php' ?>
 </div>
 <div class="container-fluid">
+<div style="float: right"><p>แก้ไขล่าสุดโดย <?php echo $editname ?> เวลา <?php echo $time ?></p></div>
 <br>
   <table class="table table-bordered" style="width:100%">
   <thead class="thead-dark">

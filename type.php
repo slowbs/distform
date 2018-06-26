@@ -58,7 +58,7 @@ include 'db.php';
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT pa.*,log.apid, log.time, log.username from log left join pa on log.type = pa.id where log.apid = $ap and log.year = $y and log.ep = $ep
+    $sql = "SELECT pa.*,log.apid, time_format(log.time, '%d/%m/%Y %H:%i') as time, log.username from log left join pa on log.type = pa.id where log.apid = $ap and log.year = $y and log.ep = $ep
     GROUP By log.id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();

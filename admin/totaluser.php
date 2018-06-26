@@ -21,7 +21,6 @@
   $y = isset($_GET['y']) ? $_GET['y'] : '';
   $t = isset($_GET['t']) ? $_GET['t'] : '';
   $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
-  $typename = $_SESSION['typename'][$t];
   ?>
   <style>
   @page {
@@ -33,22 +32,18 @@
 <body>
 
 <div class="container" align="center">
-<br>
-<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
-<?php echo "<h2 align='center'>รายมิติ ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
+
+<h2>คะแนนรวม</h2>
 <?php include 'headbutform.php' ?>
 <br>
 <table class="table table-hover table-bordered table-striped table-sm">
   <thead style="text-align:center" class="thead-dark">
     <tr>
       <th scope="col">ลำดับที่</th>
-      <th scope="col">ชื่อ</th>
-      <th scope="col">มิติที่ 1</th>
-      <th scope="col">มิติที่ 2</th>
-      <th scope="col">มิติที่ 3</th>
-      <th scope="col">มิติที่ 4</th>
-      <th scope="col">รวม 4 มิติ</th>
-      <th scope="col">คะแนนรวม</th>
+      <th scope="col">ชื่อผู้ใช้</th>
+      <th scope="col">อำเภอ</th>
+      <th scope="col">แก้ไข</th>
+      <th scope="col">ลบ</th>
     </tr>
   </thead>
   <tbody style="text-align:center">
@@ -58,22 +53,47 @@ $i = 0;
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM total_score where time = $y && ep = $ep && type = $t order by mp5 desc;";
+        //$sql = "SELECT * FROM total_score where time = $y && ep = $ep && type = $t order by mp5 desc;";
+        $sql = "SELECT users.*, ampher.name FROM users left join ampher on users.apid = ampher.id";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
              $i+=1;
             ?><tr>
-      <th scope="row"><?php echo $i ?></th>
+      <th scope="row"><?php echo $row['id'] ?></th>
+      <td><?php echo $row['username']?></td>
       <td><?php echo $row['name']?></td>
-      <td><?php echo $row['mp1']?></td>
-      <td><?php echo $row['mp2']?></td>
-      <td><?php echo $row['mp3']?></td>
-      <td><?php echo $row['mp4']?></td>
-      <td><?php echo $row['mp5']?></td>
-      <td><?php echo $row['m5']?></td>
+      <td><a href="updateuserform2.php?id=<?php echo $row['id'] ?>">
+      <button type="button" class="btn btn-warning">แก้ไข</button></td>
+      <td>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_<?php echo $row['id']?>">
+  ลบ
+</button>
+      </td>
     </tr>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal_<?php echo $row['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ลบชื่อผู้ใช้</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ยืนยันที่จะลบ
+      </div>
+      <div class="modal-footer">
+      <a href = "deleteuser.php?id=<?php echo $row['id']?>">
+      <button type="button" class="btn btn-danger">ยืนยัน</button></a>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
     <?php
         }  
     }
@@ -87,6 +107,5 @@ $i = 0;
   </tbody>
 </table>
 </div>
-
 </body>
 </html>

@@ -6,6 +6,7 @@ $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $typename = $_SESSION['name']["$t"];
+//$time = $_SESSION['time']["$t"];
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
   header('location: login.php');
   }
@@ -18,13 +19,15 @@ include 'db.php';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM ampher where id = $ap;";
+        $sql = "SELECT name, time_format(time, '%d/%m/%Y %H:%i') as time, username  FROM log where apid = $ap && year = $y && ep = $ep && type = $t;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
             $apname = $row['name'];
-            $_SESSION['name'][$ap] = $apname;
+            //$_SESSION['apname'][$ap] = $apname;
+            $time = $row['time'];
+            $editname = $row['username'];
     }
   }
     catch(PDOException $e)
@@ -61,16 +64,21 @@ include 'db.php';
 <?php
 ?>
   <body> 
+  <br>
   <div class="container">
   <div class="page-header" align="center" >
   <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
 </div>
-<div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a></div>
+<div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
+<a href="type.php?y=<?php echo $y ?>&ep=<?php echo $ep?>&ap=<?php echo $ap?>"><button type="button" class="btn btn-success">ย้อนกลับ</button></a>
+</div>
 <div style="float: right"><a href="index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
+
 <br><br>
 </div>
 <div class='container-fluid'>
+<div style="float: right"><p>แก้ไขล่าสุดโดย <?php echo $editname ?> เวลา <?php echo $time ?></p></div>
 <br>
   <table class="table table-bordered" style="width:100%">
   <thead class="thead-dark">

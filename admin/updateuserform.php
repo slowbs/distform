@@ -24,7 +24,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['id'] != $id || $_SESSION['us
 		<h2>แก้ไขรหัสผ่าน</h2>
 	</div>
 	
-	<form method="post" action="updateuserform.php">
+	<form method="post" action="updateuserform.php?id=<?php echo $id?>">
 
 		<?php echo display_error(); ?>
 

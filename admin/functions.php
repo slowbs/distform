@@ -17,6 +17,10 @@
 	if (isset($_POST['updateuser_btn'])) {
 		updateuser();
 	}
+	
+	if (isset($_POST['edituser_btn'])) {
+		edituser();
+	}
 
 	// call the login() function if register_btn is clicked
 	if (isset($_POST['login_btn'])) {
@@ -126,6 +130,55 @@
 				$_SESSION['success']  = "Update Successed";
 				//echo $id;
 				header('location: year.php');
+			}else{
+/* 				$query = "INSERT INTO users (username, user_type, password) 
+						  VALUES('$username', 'user', '$password')";
+				mysqli_query($db, $query);
+
+				// get id of the created user
+				$logged_in_user_id = mysqli_insert_id($db);
+
+				$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
+				$_SESSION['success']  = "You are now logged in";
+				header('location: index.php');		 */		
+			}
+
+		}
+
+	// EDIT USER
+	function edituser(){
+		global $db, $errors;
+
+		// receive all input values from the form
+		$passnew_1  =  e($_POST['passnew_1']);
+		$passnew_2  =  e($_POST['passnew_2']);
+		$id2 = e($_POST['id']);
+
+		// form validation: ensure that the form is correctly filled
+/* 		if (empty($email)) { 
+			array_push($errors, "Email is required"); 
+		} */
+
+		if (empty($passnew_1)) { 
+			array_push($errors, "กรุณากรอกรหัสผ่านใหม่"); 
+		}
+		if ($passnew_1 != $passnew_2) {
+			array_push($errors, "รหัสผ่านใหม่ไม่ตรงกัน");
+		}
+
+		// register user if there are no errors in the form
+		if (count($errors) == 0) {
+			//encrypt the password before saving in the database
+			$passnew_1 = md5($passnew_1);
+			
+
+			//if (isset($_POST['user_type'])) {
+				//$user_type = e($_POST['user_type']);
+				$query = "UPDATE users SET password = '$passnew_1' where id = '$id2'";
+				mysqli_query($db, $query);
+				$_SESSION['success']  = "Update Successed";
+				//echo $id;
+				header('location: totaluser.php');
 			}else{
 /* 				$query = "INSERT INTO users (username, user_type, password) 
 						  VALUES('$username', 'user', '$password')";

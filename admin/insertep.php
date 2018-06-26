@@ -8,15 +8,37 @@ include 'db.php';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT max(year),max(ep) FROM year ORDER BY year DESC, ep DESC LIMIT 1;";
+        $sql = "SELECT count(*) as tnum, Max(year), Max(ep) from 
+        (
+         SELECT *,max(year) FROM information_schema.tables, ssj.year WHERE table_schema = 'ssj' 
+        and year = (select max(year) from ssj.year) GROUP by table_name) as fuk;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
-            $newyear = $row['max(year)'];
-            $newep = $row['max(ep)']+1;
+            $newyear = $row['Max(year)'];
+            $newep = $row['Max(ep)']+1;
+            $tnum = $row['tnum'];
             //echo {$newep}_$newyear;
             $sql = "INSERT INTO year (year,ep) VALUES ($newyear,$newep);
+             RENAME TABLE `table $tnum` TO form_{$newep}_$newyear;
+            DELETE FROM `form_{$newep}_$newyear` WHERE `COL 14` = 'status';
+            ALTER TABLE form_{$newep}_$newyear add column id int PRIMARY key NOT NULL AUTO_INCREMENT first;
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 1` pa varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 2` lumdub varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 3` name varchar(200);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 4` gane varchar(15);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 5` data varchar(15);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 6` koon1 decimal(10,2);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 7` koon2 decimal(10,2);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 8` koon3 decimal(10,2);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 9` gane1 varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 10` gane2 varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 11` gane3 varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 12` gane4 varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 13` gane5 varchar(10);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 14` status int(5);
+            ALTER TABLE form_{$newep}_$newyear CHANGE `COL 15` kor int(3);
             INSERT INTO ap1(`year`,`ep`, `rid`, `type`) 
 select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
 inner join pa where not exists 
