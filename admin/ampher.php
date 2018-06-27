@@ -94,7 +94,7 @@ try {
 
 $conn = null;
 ?>
-  <div align="right"><a href="index.php">หน้าหลัก</a></div>
+  <!-- <div align="right"><a href="index.php">หน้าหลัก</a></div> -->
 </div>
 
 </body>

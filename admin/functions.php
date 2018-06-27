@@ -46,16 +46,16 @@
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($username)) { 
-			array_push($errors, "Username is required"); 
+			array_push($errors, "กรุณากรอกชื่อผู้ใช้"); 
 		}
 /* 		if (empty($email)) { 
 			array_push($errors, "Email is required"); 
 		} */
 		if (empty($password_1)) { 
-			array_push($errors, "Password is required"); 
+			array_push($errors, "กรุณากรอกรหัสผ่าน"); 
 		}
 		if ($password_1 != $password_2) {
-			array_push($errors, "The two passwords do not match");
+			array_push($errors, "ยืนยันรหัสผ่านไม่ถูกต้อง");
 		}
 
 		// register user if there are no errors in the form

@@ -37,15 +37,22 @@
 			<img src="images/user_profile.png"  >
 
 			<div>
-				<?php  if (isset($_SESSION['user'])) : ?>
-					<strong><?php echo $_SESSION['user']['username']; ?></strong>
+				<?php  if (isset($_SESSION['user'])) : 
+					if($_SESSION['user']['user_type'] == 'admin') {
+						header('location: admin/year.php');
+					}
+						else{
+							header('location: year.php');
+						}
+						?>
+<!-- 					<strong><?php echo $_SESSION['user']['username']; ?></strong>
 
 					<small>
 						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
 						<br>
 						<a href="updateuserform.php?id=<?php echo $_SESSION['user']['id']; ?>" style="color: red;">แก้ไข</a>
 						<a href="index.php?logout='1'" style="color: red;">logout</a>
-					</small>
+					</small> -->
 
 				<?php endif ?>
 			</div>

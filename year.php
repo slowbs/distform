@@ -51,7 +51,7 @@ catch(PDOException $e)
 $conn = null;
 ?>
   <br>
-  <a href="insertyear.php">Insert year</a>
+  <!-- <a href="insertyear.php">Insert year</a> -->
 </div>
 
 </body>

@@ -1,141 +1,164 @@
-@charset "utf-8";
-/* viewtopic_print.css
-	สิทธิพร อันทะวงษา
-	www.thaicss.com
-	13 พฤษภาคม 2550
-	
-	สร้างมาเพื่อรองรับปริ้นมีเดีย
- */
+input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
+    border-radius: 0 !important; line-height: 1 !important; border: 0 !important;}
 
-html { 
-	height: 100%;
+    td {margin: 0 !important; padding: 0 !important;}
+    #right {border-right-style: none;}
+    #left {border-left-style: none;}
+    .foo
+{
+padding-left: 108px !important;
 }
+@media print {
+    .noprint { 
+        display: none
+    }
+    .mypages div.compare {
+        white-space: normal
+    }
 
-body {
-	font-family: Tahoma, Verdana, sans-serif; 
-	font-size: 0.8em; 
-		}
-html IMG {
-	border: solid 2px  #FFFFFF;
-	margin-right: auto;
-	margin-left: auto;
-	float: none;
-}
-#thaicss_name {
-	padding-bottom: 10px;
-	border-bottom: solid 3px #666666;
-}
-/*Normal Link Part*/
-a {
-	text-decoration: none;
-	color: #FF9900;
+    .mypages .compare .estate {
+        padding-bottom: 110px
 	}
-	
-#header ul {
-	display: none;
+	.cl1{
+		background-color:#F5A9A9 !important;
+		}
+		.cl2{
+		background-color:#F5BCA9 !important;
+		}
+		.cl3{
+		background-color:#F5D0A9 !important;
+		}
+		.cl4{
+		background-color:#F7D358 !important;
+		}
+		.cl5{
+		background-color:#F4FA58 !important;
+		}
+		.cl6{
+		background-color:#ACFA58 !important;
+		}
+		.cl7{
+		background-color:#81F7BE !important;
+		}
+		.cl8{
+		background-color:#A9D0F5 !important;
+		}
+		.cl9{
+		background-color:#A9A9F5 !important;
+		}
+		.cl10{
+		background-color:#D0A9F5 !important;
+		}
+		.cl11{
+		background-color:#04B45F !important;
+		}
+		.cl12{
+		background-color:#9AFE2E !important;
+		}
+		.cl13{
+		background-color:#2EFE2E !important;
+		}
+		.cl14{
+		background-color:#F5A9A9 !important;
+		}
+		.cl15{
+		background-color:#F5BCA9 !important;
+		}
+		.cl16{
+		background-color:#F5D0A9 !important;
+		}
+		.cl17{
+		background-color:#F7D358 !important;
+		}
+		.cl18{
+		background-color:#F4FA58 !important;
+		}
+		.cl19{
+		background-color:#ACFA58 !important;
+		}
+		.cl20{
+		background-color:#81F7BE !important;
+		}
+		.cl21{
+		background-color:#A9D0F5 !important;
+		}
+		.cl22{
+		background-color:#A9A9F5 !important;
+		}
+		.cl23{
+		background-color:#D0A9F5 !important;
+		}
+		
 }
-	
-#header {
+@page {
+size: auto;
 }
-
-#wrap {
+.cl1{
+background-color:#F5A9A9 !important;
 }
-#wrap #content {
+.cl2{
+background-color:#F5BCA9 !important;
 }
-.l {
-
+.cl3{
+background-color:#F5D0A9 !important;
 }
-.presenting p, p code, p li, p li code, code {
-	font-size: 1.0em !important;
-	line-height: 17px;
+.cl4{
+background-color:#F7D358 !important;
 }
-.presenting p li code, code {
-	font-family: Georgia, "Times New Roman", Times, serif;
+.cl5{
+background-color:#F4FA58 !important;
 }
-.presenting h3, h4, h5, h6 {
-	padding: 0;
-	margin: 2px 0;
+.cl6{
+background-color:#ACFA58 !important;
 }
-.presenting h4 {
-	font-size: 1.4em;
+.cl7{
+background-color:#81F7BE !important;
 }
-.presenting h5 {
-	font-size: 1.3em;
+.cl8{
+background-color:#A9D0F5 !important;
 }
-.presenting h6 {
-	font-size: 1.2em;
+.cl9{
+background-color:#A9A9F5 !important;
 }
-
-.r {
-	display: none;
+.cl10{
+background-color:#D0A9F5 !important;
 }
-.r P EM {
-	font-style: normal;
-	color: #CCCCCC;
+.cl11{
+background-color:#04B45F !important;
 }
-
-h4 {
-	color: #b31023;
-	padding: 2px;
-
+.cl12{
+background-color:#9AFE2E !important;
 }
-h3 {
-color: #fff000;
+.cl13{
+background-color:#2EFE2E !important;
 }
-h2 {
-	line-height: 25px;
+.cl14{
+background-color:#F5A9A9 !important;
 }
- FORM INPUT {
-	border: solid 1px #000000;
-	color: #000000;
-	background-color: #c0cbcc;
+.cl15{
+background-color:#F5BCA9 !important;
 }
-FORM TEXTAREA {
-	border: solid 1px #000000;
-	color: #000000;
-	background-color: #c0cbcc;
+.cl16{
+background-color:#F5D0A9 !important;
 }
-fieldset {
-	padding: 10px;
-	border: solid 1px #5d6e79;
+.cl17{
+background-color:#F7D358 !important;
 }
-label {
-	float: left;
-	width: 100px;
-	margin-right: 2px;
-	padding-right: 2px;
-	text-align: right;
+.cl18{
+background-color:#F4FA58 !important;
 }
-.view {
-	display: table;
+.cl19{
+background-color:#ACFA58 !important;
 }
-.comment_zone {
-	display: none;
+.cl20{
+background-color:#81F7BE !important;
 }
-p.commentzone {
-	/*border-bottom: solid 2px #c5c2bb;*/
+.cl21{
+background-color:#A9D0F5 !important;
 }
-.comm {
-	padding: 2px;
+.cl22{
+background-color:#A9A9F5 !important;
 }
-.comm span {
-	padding: 2px;
-	font-weight: bold;
-}
-.comm em {
-	padding: 1px 4px;
-	border: solid 1px #72838d;
-	font-style: normal;
-}
-.posted {
-	color: #c2d2dc;
-	padding: 2px;
-	border-bottom: dashed 1px #b6c7d1;
-	width: auto;
-}
-
-#footer {
-	margin: 0 auto;
-	border-top: solid 2px #333333;
-	padding-top: 10px;
+.cl23{
+background-color:#D0A9F5 !important;
 }

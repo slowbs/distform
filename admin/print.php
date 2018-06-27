@@ -189,7 +189,7 @@ $apnend +=3; */
   </thead>
   <tbody>
   <tr>
-      <td colspan="13" style="background-color : #b1b9af" class="foo"><?php echo $row['name'] ?></td>
+      <td colspan="13" class="foo"><?php echo $row['name'] ?></td>
       <?php for ($r = 1; $r <= $apnum; $r++) {?>
       <td class="cl<?php echo $r ?>"></td>
       <td class="cl<?php echo $r ?>"></td>
@@ -201,7 +201,7 @@ $apnend +=3; */
 
         } else if ($row['status'] == 1) {?>
       <tr>
-      <td colspan="13" style="background-color : #b1b9af" class="foo"><?php echo $row['name'] ?></td>
+      <td colspan="13" class="foo"><?php echo $row['name'] ?></td>
       <?php for ($r = 1; $r <= $apnum; $r++) {?>
       <td class="cl<?php echo $r ?>"></td>
       <td class="cl<?php echo $r ?>"></td>
@@ -277,7 +277,7 @@ $apnend +=3; */
       <tr>
       <td ></td>
     <td></td>
-      <td colspan="11"><?php echo $row['name'] ?></td>
+      <td colspan="11" style="background-color : #e2eae0 !important;" ><?php echo $row['name'] ?></td>
       <?php
 $i += 1;
             //$r =0;
@@ -290,9 +290,9 @@ $i += 1;
             foreach ($result as $row) {
                 $vk = explode(",", $row["ap$i"]);
                 //$r +=1;?>
-      <td style="text-align:center" class="cl<?php echo $r ?>"><?php echo $vk[0] ?></td>
-      <td style="text-align:center" class="cl<?php echo $r ?>"><?php echo $vk[1] ?></td>
-      <td style="text-align:center" class="cl<?php echo $r ?>"><?php echo $vk[2] ?></td>
+      <td style="text-align:center; background-color : #e2eae0 !important;"><?php echo $vk[0] ?></td>
+      <td style="text-align:center; background-color : #e2eae0 !important;"><?php echo $vk[1] ?></td>
+      <td style="text-align:center; background-color : #e2eae0 !important;"><?php echo $vk[2] ?></td>
       <?php
 }
             ?>
@@ -302,7 +302,7 @@ $i += 1;
       <tr>
       <td ></td>
     <td></td>
-      <td colspan="11"><?php echo $row['name'] ?></td>
+      <td colspan="11" style="background-color : #e2eae0 !important;"><?php echo $row['name'] ?></td>
       <?php
 //$r =0;
             //$stmt = $conn->prepare("SELECT sum(koon) FROM form_$id where kor = $i; select * from total_score");
@@ -314,9 +314,9 @@ $i += 1;
             foreach ($result as $row) {
                 $vk = explode(",", $row["ap$i"]);
                 //$r +=1;?>
-      <td style="text-align:center" class="cl<?php echo $r ?>"><?php echo $vk[0] ?></td>
-      <td style="text-align:center" class="cl<?php echo $r ?>"><?php echo $vk[1] ?></td>
-      <td style="text-align:center" class="cl<?php echo $r ?>"><?php echo $vk[2] ?></td>
+      <td style="text-align:center; background-color : #e2eae0 !important;"><?php echo $vk[0] ?></td>
+      <td style="text-align:center; background-color : #e2eae0 !important;"><?php echo $vk[1] ?></td>
+      <td style="text-align:center; background-color : #e2eae0 !important;"><?php echo $vk[2] ?></td>
       <?php
 }
             ?>

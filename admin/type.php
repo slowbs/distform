@@ -45,7 +45,7 @@ include '../ctype.php';
 <br><!--<a href="total.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-warning">รายมิติ</button></a>-->
 <a href="totaltype.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-dark">รวมคะแนนทุกระดับ</button></a>
   <br>
-  <div align="right"><a href="index.php">หน้าหลัก</a></div>
+  <!-- <div align="right"><a href="index.php">หน้าหลัก</a></div> -->
 </div>
 
 </body>

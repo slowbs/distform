@@ -162,10 +162,10 @@
 
 		// make sure form is filled properly
 		if (empty($username)) {
-			array_push($errors, "Username is required");
+			array_push($errors, "กรุณากรอกชื่อผู้ใช้");
 		}
 		if (empty($password)) {
-			array_push($errors, "Password is required");
+			array_push($errors, "กรุณากรอกรหัสผ่าน");
 		}
 
 		// attempt login if no errors on form
@@ -193,7 +193,7 @@
 					
 				}
 			}else {
-				array_push($errors, "Wrong username/password combination");
+				array_push($errors, "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
 			}
 		}
 	}
