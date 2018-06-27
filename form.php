@@ -80,7 +80,9 @@ include 'db.php';
 </div>
 <div class='container-fluid'>
 <div style="float: right"><p>แก้ไขล่าสุดโดย <?php echo $editname ?> เวลา <?php echo $time ?></p></div>
+<div style="float: left"><p>กดปุ่ม Tab เพื่อเลื่อนเป็นช่องถัดไป</p></div>
 <br>
+
   <table class="table table-bordered" style="width:100%">
   <thead class="thead-dark">
     <tr>
