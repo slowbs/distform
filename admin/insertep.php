@@ -3,21 +3,22 @@ include 'functions.php';
 if (!isAdmin()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
+    exit();
 }
 include 'db.php';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT count(*) as tnum, Max(year), Max(ep) from 
+        $sql = "         SELECT count(*) as tnum, Max(year), Max(ep2) from 
         (
-         SELECT *,max(year) FROM information_schema.tables, ssj.year WHERE table_schema = 'ssj' 
+         SELECT *,max(year), max(ep) as ep2 FROM information_schema.tables, ssj.year WHERE table_schema = 'ssj' 
         and year = (select max(year) from ssj.year) GROUP by table_name) as fuk;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
             $newyear = $row['Max(year)'];
-            $newep = $row['Max(ep)']+1;
+            $newep = $row['Max(ep2)']+1;
             $tnum = $row['tnum'];
             //echo {$newep}_$newyear;
             $sql = "INSERT INTO year (year,ep) VALUES ($newyear,$newep);

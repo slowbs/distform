@@ -5,6 +5,7 @@ include 'functions.php';
 if (!isAdmin()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
+    exit();
 }
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';

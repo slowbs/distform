@@ -4,6 +4,7 @@ include 'db.php';
 if (!isAdmin()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
+    exit();
 }
 //echo $_SESSION['abc']; // ผลลัพธ์คือแสดงข้อความ Hello 
 

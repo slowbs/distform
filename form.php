@@ -9,6 +9,7 @@ $typename = $_SESSION['name']["$t"];
 //$time = $_SESSION['time']["$t"];
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
   header('location: login.php');
+  exit();
   }
 /* session_start();
 ob_start(); */

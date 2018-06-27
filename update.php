@@ -9,6 +9,7 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
     header('location: login.php');
+    exit();
     }
     //$apname = $_SESSION['name'][$ap];
     $score = isset($_POST['score']) ? $_POST['score'] : '';

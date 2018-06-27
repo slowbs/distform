@@ -5,7 +5,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
 //$ap = $_SESSION['user']['apid'];
 if (!isAdmin()) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: ../login.php');
+	header('location: ../login.php');
+	exit();
 }
 ?>
 
