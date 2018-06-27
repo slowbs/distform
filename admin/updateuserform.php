@@ -1,11 +1,12 @@
 <?php 
-include('functions.php');
+include 'functions.php';
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 //$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 //$ap = $_SESSION['user']['apid'];
-if (!isset($_SESSION['user']) || $_SESSION['user']['id'] != $id || $_SESSION['user']['user_type'] != 'admin'){
+if (!isAdmin()) {
+    $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
-    }
+}
 ?>
 
 <!DOCTYPE html>

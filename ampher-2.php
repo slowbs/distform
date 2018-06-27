@@ -1,3 +1,9 @@
+<?php
+include 'functions.php';
+if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
+  header('location: login.php');
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
