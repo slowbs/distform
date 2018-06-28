@@ -29,14 +29,10 @@ include('functions.php');
 </head>
 
 <body>
-<div class="container-fluid" align="center" style="background-color: #8cf19d;">
+<div class="container" align="center">
 <br>
 <h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
   <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
-  <br>
-  </div>
-  <br>
-  <div class="container">
   <div class="container">
   <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
   </div>

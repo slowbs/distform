@@ -20,14 +20,11 @@ $ap = $_SESSION['user']['apid'];
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container-fluid" align="center" style="background-color: #8cf19d;">
+<div class="container" align="center">
 <br>
 <h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
   <h2 align="center">สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช</h2>
   <br>
-  </div>
-  <br>
-  <div class="container" align="center">
 <div align="right">
 <div class="btn-group">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

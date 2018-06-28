@@ -23,6 +23,10 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="fuk.css">
   <script src="fuk.js"></script>
+  <!-- export -->
+  <script src="xlsx.core.min.js"></script>
+  <script src="FileSaver.min.js"></script>
+  <script src="tableexport.min.js"></script>
 <?php
 ?>
   <body>
@@ -323,4 +327,7 @@ $conn = null;
 <button onclick="exportTableToCSV('members.csv')">Export HTML Table To CSV File</button>
 <a href="print.php?y=<?php echo $y ?>&ep=<?php echo $ep?>"><button type="button" class="btn btn-success">พิมพ์</button></a></div> -->
 </form>
+<script>
+$("table").tableExport();   
+</script>
 </body>

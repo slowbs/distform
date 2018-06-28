@@ -62,14 +62,12 @@ include 'db.php';
 <?php
 ?>
   <body> 
-  <div class="container-fluid" align="center" style="background-color: #8cf19d; padding-top: 10px">
-<br>
+  <br>
+  <div class="container">
+  <div class="page-header" align="center" >
   <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
-<br>
 </div>
-<br>
-<div class="container" align="center">
 <?php include 'headbutform.php' ?>
 </div>
 <div class="container-fluid">
