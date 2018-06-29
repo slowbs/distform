@@ -19,13 +19,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <!-- data-table -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+ <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+ 
   <?php
   $y = isset($_GET['y']) ? $_GET['y'] : '';
   $t = isset($_GET['t']) ? $_GET['t'] : '';
@@ -52,12 +48,8 @@
 <br>
 <table class="table table-hover table-bordered table-striped table-sm" id="myTable">
   <thead style="text-align:center" class="thead-dark">
-  <tr>
-  <th scope="col" rowspan = "2">ลำดับที่</th>
-  <th colspan = "5">รวม</th>
-  </tr>
     <tr>
-
+      <th scope="col">ลำดับที่</th>
       <th scope="col">ชื่อผู้ใช้</th>
       <th scope="col">อำเภอ</th>
       <th scope="col">แก้ไข</th>
@@ -83,10 +75,10 @@ $i = 0;
       <td><?php echo $row['username']?></td>
       <td><?php echo $row['name']?></td>
       <td><a href="updateuserform2.php?id=<?php echo $row['id'] ?>">
-      <button type="button" class="btn btn-warning">แก้ไข</button></td>
+      <button type="button" class="btn btn-warning btn-sm">แก้ไข</button></td>
       <td>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_<?php echo $row['id']?>">
+<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal_<?php echo $row['id']?>">
   ลบ
 </button>
       </td>
@@ -128,15 +120,7 @@ $i = 0;
 </body>
 <script>
 $(document).ready(function() {
-    $('#myTable').DataTable({
-      dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
-    });
+    $('#myTable').DataTable();
 } );
 </script>
 </html>

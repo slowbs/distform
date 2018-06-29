@@ -24,9 +24,16 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   <link rel="stylesheet" href="fuk.css">
   <script src="fuk.js"></script>
   <!-- export -->
-  <script src="xlsx.core.min.js"></script>
-  <script src="FileSaver.min.js"></script>
-  <script src="tableexport.min.js"></script>
+  <script src="tableExport.js"></script>
+  <script src="jquery.base64.js"></script>
+  <!-- <script type="text/javascript" src="https://nrt.hdc.moph.go.th/hdc/themes/jsTableExport/tableExport.js"></script>
+  <script type="text/javascript" src="https://nrt.hdc.moph.go.th/hdc/themes/jsTableExport/jquery.base64.js"></script> -->
+
+  <style>
+  .text{
+  mso-number-format:"\@";/*force text*/
+}
+</style>
 <?php
 ?>
   <body>
@@ -41,7 +48,7 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 </div>
 <div class="container-fluid">
 <br>
-  <table class="table table-bordered testimonial-group" >
+  <table class="table table-bordered testimonial-group" id="dataTable" >
   <thead class="thead-dark">
   <tr>
       <th scope="col" rowspan="2" style="font-size:12px">PA/สตป.</th>
@@ -323,11 +330,5 @@ $conn = null;
     </div>
   </tbody>
 </table>
-<!-- <div>
-<button onclick="exportTableToCSV('members.csv')">Export HTML Table To CSV File</button>
-<a href="print.php?y=<?php echo $y ?>&ep=<?php echo $ep?>"><button type="button" class="btn btn-success">พิมพ์</button></a></div> -->
-</form>
-<script>
-$("table").tableExport();   
-</script>
+<!-- <a href="#" onclick="$('#dataTable').tableExport({type:'excel',escape:'false'});">XLS</a> -->
 </body>
