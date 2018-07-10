@@ -43,6 +43,7 @@ include 'db.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/floatthead"></script>
   <script src="fuk.js"></script>
     <style type="text/css">
         input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
@@ -63,18 +64,20 @@ include 'db.php';
 ?>
   <body> 
   <br>
-  <div class="container">
+  <div class="container-fluid">
   <div class="page-header" align="center" >
-  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
 </div>
+</div>
+<div class="container">
 <?php include 'headbutform.php' ?>
 </div>
 <div class="container-fluid">
 <div style="float: right"><p>แก้ไขล่าสุดโดย <?php echo $editname ?> เวลา <?php echo $time ?></p></div>
 <br>
-  <table class="table table-bordered" style="width:100%">
-  <thead class="thead-dark">
+  <table class="table table-bordered sticky-header" style="width:100%">
+  <thead class="thead-dark" id="thead1">
     <tr>
       <th scope="col" style="font-size:12px; width:6%">PA/สตป.</th>
       <th scope="col" style="font-size:12px">ลำดับ</th>
@@ -92,7 +95,25 @@ include 'db.php';
       <th scope="col" style="font-size:12px">คะแนนถ่วงน้ำหนัก</th>
     </tr>
   </thead>
-  <tbody>
+<!--   <thead class="thead-dark" id="thead2">
+    <tr>
+      <th scope="col" style="font-size:12px; width:6%">PA/สตป.</th>
+      <th scope="col" style="font-size:12px">ลำดับ</th>
+      <th scope="col" style="font-size:12px; width:100%; text-align:center">ตัวชี้วัดประเมินผล</th>
+      <th scope="col" style="font-size:12px">เกณฑ์ ปี 2561</th>
+      <th scope="col" style="font-size:12px">แหล่งข้อมูล</th>
+      <th scope="col" style="font-size:12px">น้ำหนัก</th>
+      <th scope="col" style="font-size:12px">ระดับ1</th>
+      <th scope="col" style="font-size:12px">ระดับ2</th>
+      <th scope="col" style="font-size:12px">ระดับ3</th>
+      <th scope="col" style="font-size:12px">ระดับ4</th>
+      <th scope="col" style="font-size:12px">ระดับ5</th>
+      <th scope="col" style="font-size:12px">ผลการดำเนินงาน</th>
+      <th scope="col" style="font-size:12px">ค่าคะแนนที่ได้</th>
+      <th scope="col" style="font-size:12px">คะแนนถ่วงน้ำหนัก</th>
+    </tr>
+  </thead> -->
+  <tbody style="width:100%">
   <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>&t=<?php echo $t?>" method="POST">
 <?php
 include 'db.php';
@@ -116,7 +137,7 @@ try {
     <tr>
       <td align="center"><?php echo $row['pa']?></td>
       <td align="center"><?php echo $row['lumdub']?></td>
-      <td><?php echo $row['name']?></td>
+      <td ><?php echo $row['name']?></td>
       <td align="center"><?php echo $row['gane']?></td>
       <td align="center"><?php echo $row['data']?></td>
       <td align="center" class="cl6" id="koon<?php echo $row['id']?>"><?php echo $row["koon$t"]?></td>
@@ -267,3 +288,22 @@ $conn = null;
 </form>
 <br>
 </body>
+<!-- <script>
+document.onscroll = function() {
+  var scroll = $(window).scrollTop();
+  if (scroll >= 120) {
+    $("#thead2").css({
+      "position": "fixed",
+      "top": "0px"
+    });
+    $("th").css({"margin":"auto"});
+  } else {
+    $("#thead1").css({
+      "display": "none",
+    });
+  }
+};
+</script> -->
+<script>
+  $(() => $('table').floatThead());
+</script>

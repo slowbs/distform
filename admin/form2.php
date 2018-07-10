@@ -1,26 +1,23 @@
 <?php
-include 'db.php';
-include ('functions.php');
-$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
+include 'functions.php';
+if (!isAdmin()) {
+  $_SESSION['msg'] = "You must log in first";
+  header('location: ../login.php');
+  exit();
+}
 $y = isset($_GET['y']) ? $_GET['y'] : '';
+$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
-$typename = $_SESSION['name']["$t"];
-//$time = $_SESSION['time']["$t"];
-if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
-  header('location: login.php');
-  exit();
-  }
-/* session_start();
-ob_start(); */
-
-
+//$apname = $_SESSION['name'][$ap];
+//$time = $_SESSION['time'][$ap];
+$typename = $_SESSION['typename'][$ap];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello 
 include 'db.php';
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT name, time_format(time, '%d/%m/%Y %H:%i') as time, username  FROM log where apid = $ap && year = $y && ep = $ep && type = $t;";
+        $sql = "SELECT name,apid,time_format(time, '%d/%m/%Y %H:%i') as time, username FROM log where apid = $ap && year = $y && ep = $ep && type = $t;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
@@ -46,10 +43,12 @@ include 'db.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/fc-3.2.5/fh-3.1.4/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/fc-3.2.5/fh-3.1.4/datatables.min.js"></script>
   <script src="fuk.js"></script>
     <style type="text/css">
         input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
-        border-radius: 0 !important; line-height: 1 !important; border: 0 !important; height: 100%}
+        border-radius: 0 !important; line-height: 1 !important; border: 0 !important;}
 
         td {margin: 0 !important; padding: 0 !important;}
         #right {border-right-style: none;}
@@ -66,29 +65,25 @@ include 'db.php';
 ?>
   <body> 
   <br>
-  <div class="container">
+  <div class="container-fluid">
   <div class="page-header" align="center" >
-  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
 </div>
-<div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
-<a href="type.php?y=<?php echo $y ?>&ep=<?php echo $ep?>&ap=<?php echo $ap?>"><button type="button" class="btn btn-success">ย้อนกลับ</button></a>
 </div>
-<div style="float: right"><a href="index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
-
-<br><br>
+<div class="container">
+<?php include 'headbutform.php' ?>
 </div>
-<div class='container-fluid'>
+<div class="container-fluid">
 <div style="float: right"><p>แก้ไขล่าสุดโดย <?php echo $editname ?> เวลา <?php echo $time ?></p></div>
-<div style="float: left"><p>กดปุ่ม Tab เพื่อเลื่อนไปยังช่องถัดไป</p></div>
 <br>
-
-  <table class="table table-bordered" style="width:100%">
+<form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>&t=<?php echo $t?>" method="POST">
+  <table class="table table-bordered" id="example" style="width:100%; ">
   <thead class="thead-dark">
     <tr>
       <th scope="col" style="font-size:12px; width:6%">PA/สตป.</th>
-      <th scope="col" style="font-size:12px">ลำดับ</th>
-      <th scope="col" style="font-size:12px; width:100%; text-align:center">ตัวชี้วัดประเมินผล</th>
+      <th scope="col" style="font-size:12px" >ลำดับ</th>
+      <th scope="col" style="font-size:12px; width:100%; text-align:center;">ตัวชี้วัดประเมินผล</th>
       <th scope="col" style="font-size:12px">เกณฑ์ ปี 2561</th>
       <th scope="col" style="font-size:12px">แหล่งข้อมูล</th>
       <th scope="col" style="font-size:12px">น้ำหนัก</th>
@@ -103,7 +98,6 @@ include 'db.php';
     </tr>
   </thead>
   <tbody>
-  <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>&t=<?php echo $t?>" method="POST"> 
 <?php
 include 'db.php';
 try {
@@ -111,15 +105,16 @@ try {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $stmt = $conn->prepare("SELECT ap$ap.*, form_{$ep}_$y.* from form_{$ep}_$y inner join ap$ap on 
   form_{$ep}_$y.id = ap$ap.rid
-  where ap$ap.year = $y and ap$ap.ep = $ep and ap$ap.type = $t;
-  "); 
+  where ap$ap.year = $y and ap$ap.ep = $ep and ap$ap.type = $t;"); 
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
   $i=0;
+
     foreach($result as $row){
       if($row['status']==1){?>
         <tr>
         <td colspan="14" style="background-color : #d1d1d1" class="foo"><?php echo $row['name']?></td>
+        <td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td>
       </tr><?php
     }
     else if($row['status']==2){?>
@@ -145,14 +140,15 @@ try {
     </tr>
     <?php
     } 
-else if($row['status']==3){?>
+/* else if($row['status']==3){?>
         <tr>
         <td align="center"><?php echo $row['pa']?></td>
       <td align="center"><?php echo $row['lumdub']?></td>
         <td colspan="12"><?php echo $row['name']?></td>
+        <td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td><td style="display:none"></td>
       </tr><?php
-    }
-    else if($row['status']==4){?>
+    } */
+/*     else if($row['status']==4){?>
       <tr>
       <td align="center"><?php echo $row['pa']?></td>
       <td align="center"><?php echo $row['lumdub']?></td>
@@ -195,9 +191,9 @@ else if($row['status']==3){?>
         foreach($result as $row){?>
         <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
-        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
+        <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
-        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
+        <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
         name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td></tr><?php
         }
       }
@@ -215,9 +211,9 @@ else if($row['status']==3){?>
         foreach($result as $row){?>
         <?php //$newid = $row['max(id)'];?>
         <input type="hidden" name="input2[<?php echo $i?>]">
-        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
+        <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
         value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
-        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
+        <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
         name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
         }
       }
@@ -236,9 +232,9 @@ else if($row['status']==3){?>
         foreach($result as $row){?>
         <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
-        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
+        <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
         value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
-        <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box5"
+        <td><input type="text" class="form-control" style="text-align:center" id="box5"
         name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td></tr><?php
         }
     }
@@ -255,12 +251,12 @@ else if($row['status']==3){?>
       foreach($result as $row){?>
       <?php //$newid = $row['max(id)'];?>
       <input type="hidden" name="input2[<?php echo $i?>]">
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
+      <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
       value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" id="box6"
+      <td><input type="text" class="form-control" style="text-align:center" id="box6"
       name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
       }
-    }
+    } */
 }
 }
 catch(PDOException $e) {
@@ -271,9 +267,21 @@ $conn = null;
     </div>
   </tbody>
 </table>
+<br>
 <div align="right" style="padding-right: 108px">
 <button type="submit" class="btn btn-primary" style="width:100px">บันทึก</button>
 </div>
 </form>
 <br>
 </body>
+<script>
+$('#example').dataTable( {
+  "paging":false,
+  "searching":false,
+  "ordering":false,
+  "info":false,
+  fixedHeader: {
+        header: true
+    },
+} );
+</script>

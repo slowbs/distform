@@ -22,23 +22,25 @@ $typename = $_SESSION['typename'][$t];
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/floatthead"></script>
   <link rel="stylesheet" href="fuk.css">
   <script src="fuk.js"></script>
 <?php
 ?>
   <body>
-  <div class="container">
+  <div class="container-fluid">
   <div class="page-header" align="center">
 <br>
-<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>รวมคะแนนทุกอำเภอ ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
 
-</div>
+</div></div>
+<div class="container">
 <?php include 'headbutform.php' ?>
 </div>
 <div class="container-fluid">
 <br>
-  <table class="table table-bordered testimonial-group" >
+  <table class="table table-bordered testimonial-group sticky-head" >
   <thead class="thead-dark">
   <tr>
       <th scope="col" rowspan="2" style="font-size:12px">PA/สตป.</th>
@@ -300,3 +302,6 @@ $conn = null;
 <!-- <button onclick="exportTableToCSV('members.csv')">Export HTML Table To CSV File</button> -->
 </form>
 </body>
+<script>
+  $(() => $('table').floatThead());
+</script>

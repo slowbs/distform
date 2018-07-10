@@ -33,10 +33,12 @@
 
 <body>
 
-<div class="container" align="center">
+<div class="container-fluid" align="center">
 <br>
-<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>รายมิติ ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
+</div>
+<div class="container">
 <?php include 'headbutform.php' ?>
 <br>
 <table class="table table-hover table-bordered table-striped table-sm">

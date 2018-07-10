@@ -21,13 +21,12 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/floatthead"></script>
   <link rel="stylesheet" href="fuk.css">
   <script src="fuk.js"></script>
-  <!-- export -->
+<!--   export
   <script src="tableExport.js"></script>
-  <script src="jquery.base64.js"></script>
-  <!-- <script type="text/javascript" src="https://nrt.hdc.moph.go.th/hdc/themes/jsTableExport/tableExport.js"></script>
-  <script type="text/javascript" src="https://nrt.hdc.moph.go.th/hdc/themes/jsTableExport/jquery.base64.js"></script> -->
+  <script src="jquery.base64.js"></script> -->
 
   <style>
   .text{
@@ -37,18 +36,19 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 <?php
 ?>
   <body>
-  <div class="container">
+  <div class="container-fluid">
   <div class="page-header" align="center">
   <br>
 <h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
-  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 
-</div>
+</div></div>
+<div class="container">
 <?php include 'headbut.php' ?>
 </div>
 <div class="container-fluid">
 <br>
-  <table class="table table-bordered testimonial-group" id="dataTable" >
+  <table class="table table-bordered" id="example">
   <thead class="thead-dark">
   <tr>
       <th scope="col" rowspan="2" style="font-size:12px">PA/สตป.</th>
@@ -327,8 +327,11 @@ catch(PDOException $e) {
 }
 $conn = null;
 ?>
-    </div>
   </tbody>
 </table>
+</div>
 <!-- <a href="#" onclick="$('#dataTable').tableExport({type:'excel',escape:'false'});">XLS</a> -->
 </body>
+<script>
+  $(() => $('table').floatThead());
+</script>

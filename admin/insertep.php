@@ -17,7 +17,7 @@ include 'db.php';
         $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
             $newyear = $row['Max(year)'];
-            $newep = $row['Max(ep2)']+1;
+            $newep = $row['Max(ep2)']+3;
             $tnum = $row['tnum'];
             //echo {$newep}_$newyear;
             $sql = "INSERT INTO year (year,ep) VALUES ($newyear,$newep);

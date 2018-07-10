@@ -31,9 +31,9 @@ $typename = $_SESSION['typename'][$t];
 </head>
 
 <body>
-<div class="container" align="center">
+<div class="container-fluid" align="center">
 <br>
-<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
 <?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
   <div class="container">
   <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
