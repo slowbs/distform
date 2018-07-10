@@ -36,13 +36,14 @@ include 'db.php';
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT * FROM year order by year";
+    $sql = "SELECT year.*, quarter.month FROM year right join quarter on year.ep = quarter.quarter order by year;";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
     foreach($result as $row){?>
         <a class="btn btn-primary"  href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>&ap=<?php echo $ap?>" role="button">
         <?php echo "{$row['ep']}/{$row['year']}"; ?></a><?php
+        $_SESSION['quarter'][$row['ep']] = $row['month'];
     }  
 }
 catch(PDOException $e)

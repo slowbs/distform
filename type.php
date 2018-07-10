@@ -11,6 +11,7 @@ $ap = $_SESSION['user']['apid'];
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
+$month = $_SESSION['quarter']["$ep"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@ $t = isset($_GET['t']) ? $_GET['t'] : '';
 <br>
 <div class="container" align="center">
 <h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
-  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช ครั้งที่ <strong><span style='color:blue'>$ep</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+  <?php echo "<h2 align='center'>รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน <strong><span style='color:blue'>($month)</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
   <div class="container">
   <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
   </div>
