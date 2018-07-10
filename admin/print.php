@@ -61,7 +61,7 @@ try {
     GROUP_CONCAT(ap3.valuekoon ORDER by ap3.type) as ap3
     from form_{$ep}_$y, ap1, ap2, ap3
     where ap1.rid = form_{$ep}_$y.id
-    and ap1.year = 2558 and ap1.ep = 1
+    and ap1.year = $y and ap1.ep = $ep
     and ap1.id = ap2.id and ap1.id = ap3.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -71,7 +71,7 @@ try {
     GROUP_CONCAT(ap6.valuekoon ORDER by ap6.type) as ap3
     from form_{$ep}_$y, ap4, ap5, ap6
     where ap4.rid = form_{$ep}_$y.id
-    and ap4.year = 2558 and ap4.ep = 1
+    and ap4.year = $y and ap4.ep = $ep
     and ap4.id = ap5.id and ap4.id = ap6.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -81,7 +81,7 @@ try {
     GROUP_CONCAT(ap9.valuekoon ORDER by ap9.type) as ap3
     from form_{$ep}_$y, ap7, ap8, ap9
     where ap7.rid = form_{$ep}_$y.id
-    and ap7.year = 2558 and ap7.ep = 1
+    and ap7.year = $y and ap7.ep = $ep
     and ap7.id = ap8.id and ap7.id = ap9.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -91,7 +91,7 @@ try {
     GROUP_CONCAT(ap12.valuekoon ORDER by ap12.type) as ap3
     from form_{$ep}_$y, ap10, ap11, ap12
     where ap10.rid = form_{$ep}_$y.id
-    and ap10.year = 2558 and ap10.ep = 1
+    and ap10.year = $y and ap10.ep = $ep
     and ap10.id = ap11.id and ap10.id = ap12.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -101,7 +101,7 @@ try {
     GROUP_CONCAT(ap15.valuekoon ORDER by ap15.type) as ap3
     from form_{$ep}_$y, ap13, ap14, ap15
     where ap13.rid = form_{$ep}_$y.id
-    and ap13.year = 2558 and ap13.ep = 1
+    and ap13.year = $y and ap13.ep = $ep
     and ap13.id = ap14.id and ap13.id = ap15.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -111,7 +111,7 @@ try {
     GROUP_CONCAT(ap18.valuekoon ORDER by ap18.type) as ap3
     from form_{$ep}_$y, ap16, ap17, ap18
     where ap16.rid = form_{$ep}_$y.id
-    and ap16.year = 2558 and ap16.ep = 1
+    and ap16.year = $y and ap16.ep = $ep
     and ap16.id = ap17.id and ap16.id = ap18.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -121,7 +121,7 @@ try {
     GROUP_CONCAT(ap21.valuekoon ORDER by ap21.type) as ap3
     from form_{$ep}_$y, ap19, ap20, ap21
     where ap19.rid = form_{$ep}_$y.id
-    and ap19.year = 2558 and ap19.ep = 1
+    and ap19.year = $y and ap19.ep = $ep
     and ap19.id = ap20.id and ap19.id = ap21.id
     GROUP by form_{$ep}_$y.id
     UNION ALL
@@ -131,7 +131,7 @@ try {
     '' as ap3
     from form_{$ep}_$y, ap22, ap23
     where ap22.rid = form_{$ep}_$y.id
-    and ap22.year = 2558 and ap22.ep = 1
+    and ap22.year = $y and ap22.ep = $ep
     and ap22.id = ap23.id
     GROUP by form_{$ep}_$y.id");
     $stmt->execute();
