@@ -10,6 +10,7 @@ if (!isAdmin()) {
 $y = isset($_GET['y']) ? $_GET['y'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
+$month = $_SESSION['quarter']["$ep"];
 //echo $id; // ผลลัพธ์คือแสดงข้อความ Hello
 
 ?>
@@ -37,7 +38,7 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   <div class="page-header" align="center">
   <br>
 <h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
-  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+  <?php echo "<h2 align='center'>รอบ <strong><span>$ep</span></strong> เดือน <strong><span>($month)</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span>$y</span></strong></h2>"?>
 
 </div>
 </div>

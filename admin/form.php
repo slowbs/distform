@@ -9,6 +9,7 @@ $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
+$month = $_SESSION['quarter']["$ep"];
 //$apname = $_SESSION['name'][$ap];
 //$time = $_SESSION['time'][$ap];
 $typename = $_SESSION['typename'][$ap];
@@ -66,8 +67,8 @@ include 'db.php';
   <br>
   <div class="container-fluid">
   <div class="page-header" align="center" >
-  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
-<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong></h2>";?>
+  <?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน <strong><span style='color:blue'>($month)</span></strong></h2>"?>
+<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></strong> อำเภอ <strong><span style='color:blue'>$apname</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>";?>
 </div>
 </div>
 <div class="container">

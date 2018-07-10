@@ -23,6 +23,7 @@
   $t = isset($_GET['t']) ? $_GET['t'] : '';
   $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
   $typename = $_SESSION['typename'][$t];
+  $month = $_SESSION['quarter']["$ep"];
   ?>
   <style>
   @page {
@@ -35,8 +36,8 @@
 
 <div class="container-fluid" align="center">
 <br>
-<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
-<?php echo "<h2 align='center'>รายมิติ ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน <strong><span style='color:blue'>($month)</span></strong></h2>"?>
+<?php echo "<h2 align='center'>รายมิติ ระดับ <strong><span style='color:blue'>$typename</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>";?>
 </div>
 <div class="container">
 <?php include 'headbutform.php' ?>

@@ -11,6 +11,7 @@ $y = isset($_GET['y']) ? $_GET['y'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $typename = $_SESSION['typename'][$t];
+$month = $_SESSION['quarter']["$ep"];
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +34,8 @@ $typename = $_SESSION['typename'][$t];
 <body>
 <div class="container-fluid" align="center">
 <br>
-<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
-<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong></h2>";?>
+<?php echo "<h2 align='center'>สำนักงานสาธารณสุขจังหวัดนครศรีธรรมราช รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน <strong><span style='color:blue'>($month)</span></strong></h2>"?>
+<?php echo "<h2 align='center'>ระดับ <strong><span style='color:blue'>$typename</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>";?>
   <div class="container">
   <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></a>
   <a href="type.php?y=<?php echo $y ?>&ep=<?php echo $ep ?>"><button type="button" class="btn btn-success">ย้อนกลับ</button></a>
