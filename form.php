@@ -49,10 +49,10 @@ include 'db.php';
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="fuk.js"></script>
     <style type="text/css">
-        input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
-        border-radius: 0 !important; line-height: 1 !important; border: 0 !important; height: 100%}
+        textarea {display: block !important; padding: 3px 0 0 0 !important; margin: 0 !important; width: 100% !important; height:100% !important;
+        border-radius: 0 !important; line-height: 1 !important; border: 0 !important; resize:none !important;}
 
-        td {margin: 0 !important; padding: 0 !important;}
+        td {margin: 0 !important; padding: 0 !important; height:22px !important;}
         #right {border-right-style: none;}
         #left {border-left-style: none;}
         .foo
@@ -136,12 +136,12 @@ try {
       <td align="center" class="cl1" id="gane3_<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
       <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
-      <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
-      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
-      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-      <td style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
-      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
+      <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
+      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></textarea></td>
+      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
+      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
+      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
+      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
     
     </tr>
     <?php
@@ -171,12 +171,12 @@ else if($row['status']==3){?>
         <td style="display:none;" id="gane4_<?php echo $row['id']?>">4</td>
         <td align="center" class="cl1"><?php echo $row['gane5']?></td>
         <td style="display:none;" id="gane5_<?php echo $row['id']?>">5</td>
-        <td><input type="text" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
-        id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></td>
-        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
-        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></td>
-        <td  style="background-color : #e9ecef"><input type="text" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
-        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></td>
+        <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
+        id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></textarea></td>
+        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
+        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
+        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
+        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
       
       </tr>
       <?php

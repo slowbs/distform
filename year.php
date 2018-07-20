@@ -36,7 +36,7 @@ include 'db.php';
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT year.*, quarter.month FROM year right join quarter on year.ep = quarter.quarter order by year;";
+    $sql = "SELECT year.*, quarter.month FROM year left join quarter on year.ep = quarter.quarter order by year;";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
