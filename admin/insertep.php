@@ -39,166 +39,35 @@ include 'db.php';
             ALTER TABLE form_{$newep}_$newyear CHANGE `COL 13` gane5 varchar(10);
             ALTER TABLE form_{$newep}_$newyear CHANGE `COL 14` status int(5);
             ALTER TABLE form_{$newep}_$newyear CHANGE `COL 15` kor int(3);
-            INSERT INTO ap1(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
+            CREATE table sync as select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
 inner join pa where not exists 
 (select * from ap1
             where ap1.year = year.year and ap1.ep = year.ep and ap1.type = pa.type and ap1.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap2(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap2
-            where ap2.year = year.year and ap2.ep = year.ep and ap2.type = pa.type and ap2.rid = form_{$newep}_$newyear.id)
             ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
-
-INSERT INTO ap3(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap3
-            where ap3.year = year.year and ap3.ep = year.ep and ap3.type = pa.type and ap3.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap4(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap4
-            where ap4.year = year.year and ap4.ep = year.ep and ap4.type = pa.type and ap4.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap5(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap5
-            where ap5.year = year.year and ap5.ep = year.ep and ap5.type = pa.type and ap5.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap6(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap6
-            where ap6.year = year.year and ap6.ep = year.ep and ap6.type = pa.type and ap6.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
-
-INSERT INTO ap7(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap7
-            where ap7.year = year.year and ap7.ep = year.ep and ap7.type = pa.type and ap7.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap8(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap8
-            where ap8.year = year.year and ap8.ep = year.ep and ap8.type = pa.type and ap8.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-     
-INSERT INTO ap9(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap9
-            where ap9.year = year.year and ap9.ep = year.ep and ap9.type = pa.type and ap9.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap10(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap10
-            where ap10.year = year.year and ap10.ep = year.ep and ap10.type = pa.type and ap10.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
-
-INSERT INTO ap11(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap11
-            where ap11.year = year.year and ap11.ep = year.ep and ap11.type = pa.type and ap11.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap12(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap12
-            where ap12.year = year.year and ap12.ep = year.ep and ap12.type = pa.type and ap12.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap13(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap13
-            where ap13.year = year.year and ap13.ep = year.ep and ap13.type = pa.type and ap13.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap14(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap14
-            where ap14.year = year.year and ap14.ep = year.ep and ap14.type = pa.type and ap14.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
-
-INSERT INTO ap15(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap15
-            where ap15.year = year.year and ap15.ep = year.ep and ap15.type = pa.type and ap15.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap16(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap16
-            where ap16.year = year.year and ap16.ep = year.ep and ap16.type = pa.type and ap16.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id; 
-
-INSERT INTO ap17(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap17
-            where ap17.year = year.year and ap17.ep = year.ep and ap17.type = pa.type and ap17.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap18(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap18
-            where ap18.year = year.year and ap18.ep = year.ep and ap18.type = pa.type and ap18.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
-
-INSERT INTO ap19(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap19
-            where ap19.year = year.year and ap19.ep = year.ep and ap19.type = pa.type and ap19.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap20(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap20
-            where ap20.year = year.year and ap20.ep = year.ep and ap20.type = pa.type and ap20.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap21(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap21
-            where ap21.year = year.year and ap21.ep = year.ep and ap21.type = pa.type and ap21.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
-
-INSERT INTO ap22(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap22
-            where ap22.year = year.year and ap22.ep = year.ep and ap22.type = pa.type and ap22.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
-
-INSERT INTO ap23(`year`,`ep`, `rid`, `type`) 
-select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
-inner join pa where not exists 
-(select * from ap23
-            where ap23.year = year.year and ap23.ep = year.ep and ap23.type = pa.type and ap23.rid = form_{$newep}_$newyear.id)
-            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;     
+INSERT INTO ap1(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap2(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap3(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap4(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap5(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap6(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap7(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap8(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap9(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap10(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap11(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap12(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap13(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap14(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap15(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap16(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap17(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap18(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap19(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap20(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap21(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap22(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap23(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+drop table sync;
 INSERT INTO total_score (`name`,`apid`,`time`, `ep`,`type`) 
             select ampher.name , ampher.id, year.year, year.ep, pa.type from ampher INNER join year
             inner join pa where not exists

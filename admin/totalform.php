@@ -98,7 +98,7 @@ include 'db.php';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("select form_{$ep}_$y.*,ap1.value 'ap1.value', ap1.valuegane 'ap1.valuegane', ap1.valuekoon 'ap1.valuekoon',
+  $stmt = $conn->prepare("SELECT form_{$ep}_$y.*,ap1.value 'ap1.value', ap1.valuegane 'ap1.valuegane', ap1.valuekoon 'ap1.valuekoon',
   ap2.value 'ap2.value', ap2.valuegane 'ap2.valuegane', ap2.valuekoon 'ap2.valuekoon',
   ap3.value 'ap3.value', ap3.valuegane 'ap3.valuegane', ap3.valuekoon 'ap3.valuekoon',
   ap4.value 'ap4.value', ap4.valuegane 'ap4.valuegane', ap4.valuekoon 'ap4.valuekoon',
