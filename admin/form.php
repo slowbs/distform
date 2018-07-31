@@ -45,7 +45,7 @@ include 'db.php';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/floatthead"></script>
-  <script src="fuk.js"></script>
+  <script src="mathround.js"></script>
     <style type="text/css">
         input {display: block !important; padding: 0 !important; margin: 0 !important; width: 100% !important; 
         border-radius: 0 !important; line-height: 1 !important; border: 0 !important;}
