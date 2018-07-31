@@ -59,10 +59,10 @@ $(document).ready(function fuk() {
         }   
        }
        /* var scorekoon = parseFloat(scorekoon).toFixed(2) */
-       var scorekoon = Math.round(scorekoon * 100) / 100  // result .12
+       var scorekoon = Math.round(scorekoon * 100) / 100
        var newscore = (scorekoon*koon)/100;
        /* var newscore = parseFloat(newscore).toFixed(2) */
-       var newscore = Math.round(newscore * 100) / 100  // result .12
+       var newscore = Math.round(newscore * 100) / 100
         $("#box2_"+boxid).val(newscore)
         $("#box_"+boxid).val(scorekoon)
        }

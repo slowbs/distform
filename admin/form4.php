@@ -147,12 +147,12 @@ try {
       <td align="center" class="cl1" id="gane3_<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
       <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
-      <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
-      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></textarea></td>
-      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
-      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
-      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
-      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
+      <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
+      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"><?php echo $row["value"]?></textarea></td>
+      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
+      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuegane"]?></textarea></td>
+      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
+      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuekoon"]?></textarea></td>
     
     </tr>
     <?php
@@ -182,12 +182,12 @@ else if($row['status']==3){?>
         <td style="display:none;" id="gane4_<?php echo $row['id']?>">4</td>
         <td align="center" class="cl1"><?php echo $row['gane5']?></td>
         <td style="display:none;" id="gane5_<?php echo $row['id']?>">5</td>
-        <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
-        id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></textarea></td>
-        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
-        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
-        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
-        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
+        <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
+        id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"><?php echo $row["value"]?></textarea></td>
+        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
+        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuegane"]?></textarea></td>
+        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
+        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuekoon"]?></textarea></td>
       
       </tr>
       <?php

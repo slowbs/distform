@@ -57,9 +57,11 @@ $(document).ready(function fuk() {
             var scorekoon = 1;
         }   
        }
-       var scorekoon = parseFloat(scorekoon).toFixed(2)
+       /* var scorekoon = parseFloat(scorekoon).toFixed(2) */
+       var scorekoon = Math.round(scorekoon * 100) / 100
        var newscore = (scorekoon*koon)/100;
-       var newscore = parseFloat(newscore).toFixed(2)
+       /* var newscore = parseFloat(newscore).toFixed(2) */
+       var newscore = Math.round(newscore * 100) / 100
         $("#box2_"+boxid).val(newscore)
         $("#box_"+boxid).val(scorekoon)
        }
@@ -83,16 +85,20 @@ $(document).ready(function fuk() {
            sum2 = (sum*percent)/maxscore;
             }
         });
-        sum = parseFloat(sum).toFixed(2)
-        sum2 = parseFloat(sum2).toFixed(2)
+/*      sum = parseFloat(sum).toFixed(2)
+        sum2 = parseFloat(sum2).toFixed(2) */
+        sum = Math.round(sum * 100) / 100  // result .12
+        sum2 = Math.round(sum2 * 100) / 100  // result .12
         $("#box3_"+kor).val(sum)
         $("#box4_"+kor).val(sum2)
         var sum3 = parseFloat($("#box3_1").val() || 0)+parseFloat($("#box3_2").val() || 0)
         +parseFloat($("#box3_3").val() || 0)+parseFloat($("#box3_4").val() || 0)
         var sum4 = parseFloat($("#box4_1").val() || 0)+parseFloat($("#box4_2").val() || 0)
         +parseFloat($("#box4_3").val() || 0)+parseFloat($("#box4_4").val() || 0)
-        sum3 = parseFloat(sum3).toFixed(2)
-        sum4 = parseFloat(sum4).toFixed(2)
+/*      sum3 = parseFloat(sum3).toFixed(2)
+        sum4 = parseFloat(sum4).toFixed(2) */
+        sum3 = Math.round(sum3 * 100) / 100  // result .12
+        sum4 = Math.round(sum4 * 100) / 100  // result .12
         $("#box5").val(sum3)
         $("#box6").val(sum4)
 
