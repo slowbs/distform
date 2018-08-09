@@ -40,10 +40,20 @@ try {
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-    foreach($result as $row){?>
-        <a class="btn btn-primary"  href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>&ap=<?php echo $ap?>" role="button">
+    foreach($result as $row){
+      if($row['status'] == '0'){?>
+              <a class="btn btn-primary"  href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>&ap=<?php echo $ap?>" role="button">
         <?php echo "{$row['ep']}/{$row['year']}"; ?></a><?php
         $_SESSION['quarter'][$row['ep']] = $row['month'];
+        $_SESSION["y{$row['year']}"][$row['ep']] = $row['status'];        
+      }
+      else if($row['status'] == '1'){
+        ?>
+        <a class="btn btn-secondary"  href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>&ap=<?php echo $ap?>" role="button">
+        <?php echo "{$row['ep']}/{$row['year']}"; ?></a><?php
+        $_SESSION['quarter'][$row['ep']] = $row['month'];
+        $_SESSION["y{$row['year']}"][$row['ep']] = $row['status'];
+      }
     }  
 }
 catch(PDOException $e)

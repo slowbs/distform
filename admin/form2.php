@@ -10,7 +10,6 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $month = $_SESSION['quarter']["$ep"];
-$status = $_SESSION["y{$y}"]["$ep"];
 //$apname = $_SESSION['name'][$ap];
 //$time = $_SESSION['time'][$ap];
 $typename = $_SESSION['typename'][$ap];
@@ -73,7 +72,6 @@ include 'db.php';
 </div>
 </div>
 <div class="container">
-<!-- <?php echo $status ?> -->
 <?php include 'headbutform.php' ?>
 </div>
 <div class="container-fluid">
@@ -150,11 +148,11 @@ try {
       <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
       <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
-      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>" <?php echo $lstatus ?>><?php echo $row["value"]?></textarea></td>
+      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"><?php echo $row["value"]?></textarea></td>
       <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
-      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly><?php echo $row["valuegane"]?></textarea></td>
+      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuegane"]?></textarea></td>
       <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
-      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly><?php echo $row["valuekoon"]?></textarea></td>
+      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuekoon"]?></textarea></td>
     
     </tr>
     <?php
@@ -187,9 +185,9 @@ else if($row['status']==3){?>
         <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
         id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"><?php echo $row["value"]?></textarea></td>
         <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
-        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly><?php echo $row["valuegane"]?></textarea></td>
+        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuegane"]?></textarea></td>
         <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
-        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly><?php echo $row["valuekoon"]?></textarea></td>
+        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuekoon"]?></textarea></td>
       
       </tr>
       <?php
@@ -210,9 +208,9 @@ else if($row['status']==3){?>
         <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
-        value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly></td>
+        value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box3_<?php echo $i?>"
-        name="scorei[<?php echo $i?>]" readonly value="<?php echo $row["m$i"]?>"></td></tr><?php
+        name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td></tr><?php
         }
       }
       else if($row['status']==6){?>
@@ -230,9 +228,9 @@ else if($row['status']==3){?>
         <?php //$newid = $row['max(id)'];?>
         <input type="hidden" name="input2[<?php echo $i?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
-        value="<?php echo $row["sum(koon$t)"]?>" readonly></td>
+        value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box4_<?php echo $i?>"
-        name="score2i[<?php echo $i?>]" readonly value="<?php echo $row["mp$i"]?>"></td></tr><?php
+        name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
         }
       }
       else if($row['status']==7){?>
@@ -251,9 +249,9 @@ else if($row['status']==3){?>
         <?php $maxscore = ($row["sum(koon$t)"]*5)/100;?>
         <input type="hidden" name="input2[<?php echo $i ?>]">
         <td><input type="text" class="form-control" style="text-align:center" id="maxscore_<?php echo $i?>" 
-        value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly></td>
+        value="<?php echo $maxscore ?>" name="score3_[<?php echo $i?>]" readonly="readonly"></td>
         <td><input type="text" class="form-control" style="text-align:center" id="box5"
-        name="scorei[<?php echo $i?>]" readonly value="<?php echo $row["m$i"]?>"></td></tr><?php
+        name="scorei[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["m$i"]?>"></td></tr><?php
         }
     }
     else if($row['status']==8){?>
@@ -270,9 +268,9 @@ else if($row['status']==3){?>
       <?php //$newid = $row['max(id)'];?>
       <input type="hidden" name="input2[<?php echo $i?>]">
       <td><input type="text" class="form-control" style="text-align:center" id="percent_<?php echo $row['kor']?>" 
-      value="<?php echo $row["sum(koon$t)"]?>" readonly></td>
+      value="<?php echo $row["sum(koon$t)"]?>" readonly="readonly"></td>
       <td><input type="text" class="form-control" style="text-align:center" id="box6"
-      name="score2i[<?php echo $i?>]" readonly value="<?php echo $row["mp$i"]?>"></td></tr><?php
+      name="score2i[<?php echo $i?>]" readonly="readonly" value="<?php echo $row["mp$i"]?>"></td></tr><?php
       }
     }
 }

@@ -11,10 +11,10 @@ $(document).ready(function fuk() {
        var koon = $("#koon"+boxid).text()
        if ( score != "" ){
            if (isNaN(score)){
-               alert("กรุณากรอกเฉพาะตัวเลข")
-               $("#"+boxid).val("")
-               $("#box2_"+boxid).val("")
-               $("#box_"+boxid).val("")
+            alert("กรุณากรอกเฉพาะตัวเลข")
+            $("#"+boxid).val("")
+            $("#box2_"+boxid).val("")
+            $("#box_"+boxid).val("")
            }
            else{
        if(gane1 < gane5){
@@ -57,9 +57,11 @@ $(document).ready(function fuk() {
             var scorekoon = 1;
         }   
        }
-       var scorekoon = parseFloat(scorekoon).toFixed(2)
+       /* var scorekoon = parseFloat(scorekoon).toFixed(2) */
+       var scorekoon = Math.round(scorekoon * 100) / 100
        var newscore = (scorekoon*koon)/100;
-       var newscore = parseFloat(newscore).toFixed(2)
+       /* var newscore = parseFloat(newscore).toFixed(2) */
+       var newscore = Math.round(newscore * 100) / 100
         $("#box2_"+boxid).val(newscore)
         $("#box_"+boxid).val(scorekoon)
        }
@@ -83,16 +85,20 @@ $(document).ready(function fuk() {
            sum2 = (sum*percent)/maxscore;
             }
         });
-        sum = parseFloat(sum).toFixed(2)
-        sum2 = parseFloat(sum2).toFixed(2)
+/*      sum = parseFloat(sum).toFixed(2)
+        sum2 = parseFloat(sum2).toFixed(2) */
+        sum = Math.round(sum * 100) / 100  // result .12
+        sum2 = Math.round(sum2 * 100) / 100  // result .12
         $("#box3_"+kor).val(sum)
         $("#box4_"+kor).val(sum2)
         var sum3 = parseFloat($("#box3_1").val() || 0)+parseFloat($("#box3_2").val() || 0)
         +parseFloat($("#box3_3").val() || 0)+parseFloat($("#box3_4").val() || 0)
         var sum4 = parseFloat($("#box4_1").val() || 0)+parseFloat($("#box4_2").val() || 0)
         +parseFloat($("#box4_3").val() || 0)+parseFloat($("#box4_4").val() || 0)
-        sum3 = parseFloat(sum3).toFixed(2)
-        sum4 = parseFloat(sum4).toFixed(2)
+/*      sum3 = parseFloat(sum3).toFixed(2)
+        sum4 = parseFloat(sum4).toFixed(2) */
+        sum3 = Math.round(sum3 * 100) / 100  // result .12
+        sum4 = Math.round(sum4 * 100) / 100  // result .12
         $("#box5").val(sum3)
         $("#box6").val(sum4)
 
@@ -112,3 +118,45 @@ $(document).ready(function fuk() {
         //alert(kor)
     });*/
 });
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+function exportTableToCSV(filename) {
+
+    var csv = ["\ufeff"];
+    var rows = document.querySelectorAll("table tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+        
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+        csv.push(row.join(","));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}

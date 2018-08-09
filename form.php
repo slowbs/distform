@@ -7,6 +7,7 @@ $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 $typename = $_SESSION['name']["$t"];
 $month = $_SESSION['quarter']["$ep"];
+$status = $_SESSION["y{$y}"]["$ep"];
 //$time = $_SESSION['time']["$t"];
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
   header('location: login.php');
@@ -47,6 +48,7 @@ include 'db.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/floatthead"></script>
   <script src="fuk.js"></script>
     <style type="text/css">
         textarea {display: block !important; padding: 3px 0 0 0 !important; margin: 0 !important; width: 100% !important; height:100% !important;
@@ -106,6 +108,12 @@ include 'db.php';
   <tbody>
   <form action="update.php?y=<?php echo $y?>&ap=<?php echo $ap?>&ep=<?php echo $ep?>&t=<?php echo $t?>" method="POST"> 
 <?php
+if ($status == '0') {
+  $lstatus = "";
+}
+else if ($status == '1') {
+  $lstatus = "readonly";
+}
 include 'db.php';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -136,12 +144,12 @@ try {
       <td align="center" class="cl1" id="gane3_<?php echo $row['id']?>"><?php echo $row['gane3']?></td>
       <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
-      <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
-      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></textarea></td>
-      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
-      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
-      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
-      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
+      <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
+      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>" <?php echo $lstatus ?>><?php echo $row["value"]?></textarea></td>
+      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
+      id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuegane"]?></textarea></td>
+      <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
+      id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuekoon"]?></textarea></td>
     
     </tr>
     <?php
@@ -171,12 +179,12 @@ else if($row['status']==3){?>
         <td style="display:none;" id="gane4_<?php echo $row['id']?>">4</td>
         <td align="center" class="cl1"><?php echo $row['gane5']?></td>
         <td style="display:none;" id="gane5_<?php echo $row['id']?>">5</td>
-        <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center" value="<?php echo $row["value"]?>" 
-        id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"></textarea></td>
-        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuegane"]?>"
-        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
-        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" value="<?php echo $row["valuekoon"]?>"
-        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"></textarea></td>
+        <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
+        id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>" <?php echo $lstatus ?>><?php echo $row["value"]?></textarea></td>
+        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
+        id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuegane"]?></textarea></td>
+        <td  style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
+        id="box2_<?php echo $row['id']?>" name="score2[<?php echo $row['id']?>]" readonly="readonly"><?php echo $row["valuekoon"]?></textarea></td>
       
       </tr>
       <?php
@@ -278,3 +286,6 @@ $conn = null;
 </form>
 <br>
 </body>
+<script>
+  $(() => $('table').floatThead());
+</script>

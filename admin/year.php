@@ -61,18 +61,52 @@ try {
   $stmt = $conn->prepare($sql);
   $stmt->execute();
   $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-  foreach($result as $row){?>
-  <div class="btn-group">
+  foreach($result as $row){
+    if($row['status']=='0'){?>
+      <div class="btn-group">
   <a class="btn btn-primary" href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>"><?php echo "{$row['ep']}/{$row['year']}"; ?></button></a>
   <?php $_SESSION['quarter'][$row['ep']] = $row['month']; ?>
+  <?php $_SESSION["y{$row['year']}"][$row['ep']] = $row['status']; ?>
   <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">ล็อค</a>
+    <a class="dropdown-item" href="lock.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>">ล็อค</a>
     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal_<?php echo $row['id']?>">ลบ</a>
   </div>
-</div>
+</div><?
+      
+    }
+    else{
+      ?>
+      <div class="btn-group">
+  <a class="btn btn-secondary" href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>"><?php echo "{$row['ep']}/{$row['year']}"; ?></button></a>
+  <?php $_SESSION['quarter'][$row['ep']] = $row['month']; ?>
+  <?php $_SESSION["y{$row['year']}"][$row['ep']] = $row['status']; ?>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="unlock.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>">ปลดล็อค</a>
+    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal_<?php echo $row['id']?>">ลบ</a>
+  </div>
+</div><?
+
+    }
+    ?>
+<!--   <div class="btn-group">
+  <a class="btn btn-primary" href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>"><?php echo "{$row['ep']}/{$row['year']}"; ?></button></a>
+  <?php $_SESSION['quarter'][$row['ep']] = $row['month']; ?>
+  <?php $_SESSION["y{$row['year']}"][$row['ep']] = $row['status']; ?>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="lock.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>">ล็อค</a>
+    <a class="dropdown-item" href="unlock.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>">ปลดล็อค</a>
+    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal_<?php echo $row['id']?>">ลบ</a>
+  </div>
+</div> -->
       <!-- <a class="btn btn-primary"  href="type.php?y=<?php echo $row['year']?>&ep=<?php echo $row['ep']?>" role="button">
       <?php echo "{$row['ep']}/{$row['year']}"; ?></a> -->
 
