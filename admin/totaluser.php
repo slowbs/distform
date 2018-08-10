@@ -124,7 +124,7 @@ $i = 0;
 <script>
 $(document).ready(function() {
     var table = $('#myTable').DataTable( {
-      "bFilter": false,
+      
         fixedHeader: {
             header: true,
             footer: true
