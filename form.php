@@ -112,7 +112,7 @@ if ($status == '0') {
   $lstatus = "";
 }
 else if ($status == '1') {
-  $lstatus = "readonly";
+  $lstatus = "disabled";
 }
 include 'db.php';
 try {

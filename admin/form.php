@@ -150,7 +150,7 @@ try {
       <td align="center" class="cl1" id="gane4_<?php echo $row['id']?>"><?php echo $row['gane4']?></td>
       <td align="center" class="cl1" id="gane5_<?php echo $row['id']?>"><?php echo $row['gane5']?></td>
       <td><textarea rows="1" class="form-control test <?php echo $row['kor']?>" style="text-align:center"
-      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>" <?php echo $lstatus ?>><?php echo $row["value"]?></textarea></td>
+      id="<?php echo $row['id']?>" name="input[<?php echo $row['id']?>]" tabindex="<?php echo $row['id']?>"><?php echo $row["value"]?></textarea></td>
       <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center"
       id="box_<?php echo $row['id']?>" name="score[<?php echo $row['id']?>]" readonly><?php echo $row["valuegane"]?></textarea></td>
       <td style="background-color : #e9ecef"><textarea rows="1" class="form-control" style="text-align:center" 
