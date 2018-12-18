@@ -1,4 +1,12 @@
 $(document).ready(function fuk() {
+    $(".test").focus(
+        function(){
+            $(this).css("background-color","yellow");
+        });
+        $(".test").blur(
+            function(){
+                $(this).css("background-color","#FFFFEE");
+            });
     $(".test").on('input', function () {
        var score = this.value;
        var boxid = this.id;

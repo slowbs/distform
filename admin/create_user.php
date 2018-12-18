@@ -49,7 +49,7 @@
 		</div>
         <div class="input-group">
 		<label>อำเภอ</label>
-		<select name="ampher" id="user_type" style="width:93%; height:30px" >
+		<select name="ampher" id="ampher" style="width:93%; height:30px" >
 		<option value=""></option>
 		<?php
 include 'db.php';

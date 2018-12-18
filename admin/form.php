@@ -48,8 +48,8 @@ include 'db.php';
   <script src="https://unpkg.com/floatthead"></script>
   <script src="fuk.js"></script>
     <style type="text/css">
-        textarea {display: block !important; padding: 3px 0 0 0 !important; margin: 0 !important; width: 100% !important; height:100% !important;
-        border-radius: 0 !important; line-height: 1 !important; border: 0 !important; resize:none !important;}
+        textarea {display: block !important; padding: 3px 0 0 0 !important; width: 100% !important; height:100% !important;
+        line-height: 1 !important; border: 0 !important; resize:none !important; box-shadow: none !important;}
 
         td {margin: 0 !important; padding: 0 !important; height:22px !important;}
         #right {border-right-style: none;}
