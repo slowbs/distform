@@ -33,7 +33,7 @@
 				</h3>
 			</div>
 		<?php endif ?>
-		<!-- logged in user information -->
+		<!-- logged in user information before add viewform-->
 		<div class="profile_info">
 			<img src="images/user_profile.png"  >
 
