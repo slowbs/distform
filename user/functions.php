@@ -188,7 +188,7 @@
 					//$_SESSION['success']  = "You are now logged in";
 					$ap = $_SESSION['user']['id'];
 					echo "<script>
-					window.location.href='user/year.php';
+					window.location.href='year.php';
             		</script>";
 					
 				}

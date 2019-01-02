@@ -6,7 +6,7 @@ if (!isAdmin()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
 }
-$ap = $_SESSION['user']['apid'];
+//$ap = $_SESSION['user']['apid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

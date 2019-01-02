@@ -1,17 +1,9 @@
-<?php 
-	include('functions.php');
-	//$ap = isset($_GET['ap']) ? $_GET['ap'] : '';
-    //$ap = $_SESSION['user']['apid'];
-    if (!isLoggedIn()) {
-		$_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-    exit();
-    }
-$ap = $_SESSION['user']['apid'];
-$y = isset($_GET['y']) ? $_GET['y'] : '';
-$ep = isset($_GET['ep']) ? $_GET['ep'] : '';
-$t = isset($_GET['t']) ? $_GET['t'] : '';
-$month = $_SESSION['quarter']["$ep"];
+<?php
+include('functions.php');
+    $y = isset($_GET['y']) ? $_GET['y'] : '';
+    $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
+    $t = isset($_GET['t']) ? $_GET['t'] : '';
+    $month = $_SESSION['quarter']["$ep"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,63 +23,24 @@ $month = $_SESSION['quarter']["$ep"];
 </head>
 
 <body>
+<div class="container-fluid" align="center">
 <br>
-<div class="container" align="center">
-<h1 align="center">การประเมินผลการพัฒนางานสาธารณสุข </h1>
-  <?php echo "<h2 align='center'>รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน <strong><span style='color:blue'>($month)</span></strong> ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
+  <?php echo "<h2 align='center'>การประเมินผลการพัฒนางานสาธารณสุข รอบ <strong><span style='color:blue'>$ep</span></strong> เดือน <strong><span style='color:blue'>($month)</span></strong></h2>
+  <h2 align='center'>ประจำปีงบประมาณ พ.ศ. <strong><span style='color:blue'>$y</span></strong></h2>"?>
   <div class="container">
-  <div style="float: left"><a href="year.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
+  <div style="float: left"><a href="index.php"><button type="button" class="btn btn-success">หน้าหลัก</button></div>
   </div>
   <div class="container">
-  <div style="float: right"><a href="index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div>
+  <!-- <div style="float: right"><a href="../index.php?logout='1'"><button type="button" class="btn btn-danger">ออกจากระบบ</button></a></div> -->
   <br><br><br><div class="container" align="center">
 <?php
 include 'db.php';
-//include '../ctype.php';
+include 'ctype.php';
 ?>
-<br>
-<table class="table table-hover table-sm">
-  <thead style="text-align:center" class="thead-dark">
-    <tr>
-      <th scope="col">ลำดับที่</th>
-      <th scope="col">ชื่อ</th>
-      <th scope="col">แก้ไขล่าสุดเมื่อ</th>
-      <th scope="col">แก้ไขล่าสุดโดย</th>
-    </tr>
-  </thead>
-  <tbody style="text-align:center">
-<?php
-include 'db.php';
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT pa.*,log.apid, time_format(log.time, '%d/%m/%Y %H:%i') as time, log.username from log left join pa on log.type = pa.id where log.apid = $ap and log.year = $y and log.ep = $ep
-    GROUP By log.id";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->FetchAll(PDO::FETCH_ASSOC);
-    foreach($result as $row){?>
-        <tr>
-      <th scope="row"><?php echo $row['id'] ?></th>
-      <th><a href="form.php?y=<?php echo $y ?>&ap=<?php echo $row['apid'] ?>&ep=<?php echo $ep ?>&t=<?php echo $row['type'] ?>"
-            role="button"><?php echo $row['name']; ?></button></a>
-            <?php $_SESSION['name'][$row['id']] = $row['name'];
-                  $_SESSION['time'][$row['id']] = $row['time'];                   
-            ?></td>
-      <td><?php echo $row['time'] ?></td>
-      <td><?php echo $row['username'] ?></td>
-    </tr>
-    <?php
-    }  
-    
-}
-catch(PDOException $e)
-    {
-    echo $sql . "<br>" . $e->getMessage();
-    }
-
-$conn = null;
-?>
+<br><!--<a href="total.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-warning">รายมิติ</button></a>-->
+<a href="totaltype.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-warning">รวมคะแนนทุกระดับ</button></a>
+  <br>
+  <!-- <div align="right"><a href="index.php">หน้าหลัก</a></div> -->
 </div>
 
 </body>

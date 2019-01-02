@@ -42,7 +42,7 @@ include('functions.php');
   <br><br><br><div class="container" align="center">
 <?php
 include 'db.php';
-include '../ctype.php';
+include '../user/ctype.php';
 ?>
 <br><!--<a href="total.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-warning">รายมิติ</button></a>-->
 <a href="totaltype.php?y=<?php echo $y?>&ep=<?php echo $ep?>"<button class="btn btn-warning">รวมคะแนนทุกระดับ</button></a>
