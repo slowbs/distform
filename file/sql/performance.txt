@@ -1,0 +1,67 @@
+//sync ap
+select year.year, year.ep, form_6_2561.id, pa.type FROM form_6_2561 INNER join year
+inner join pa where not exists 
+(select DISTINCT * from ap22
+            where ap22.year = year.year and ap22.ep = year.ep and ap22.type = pa.type and ap22.rid = form_6_2561.id)
+            ORDER by year.year, year.ep, pa.type, form_6_2561.id;
+
+//create view
+CREATE VIEW sync AS
+select year.year, year.ep, form_6_2563.id, pa.type FROM form_6_2563 INNER join year
+inner join pa where not exists 
+(select DISTINCT * from ap1
+            where ap1.year = year.year and ap1.ep = year.ep and ap1.type = pa.type and ap1.rid = form_6_2563.id)
+            ORDER by year.year, year.ep, pa.type, form_6_2563.id;
+
+
+
+//sync from create table
+CREATE table sync2 as select year.year, year.ep, form_6_2563.id, pa.type FROM form_6_2563 INNER join year
+inner join pa where not exists 
+(select * from ap1
+            where ap1.year = year.year and ap1.ep = year.ep and ap1.type = pa.type and ap1.rid = form_6_2563.id)
+            ORDER by year.year, year.ep, pa.type, form_6_2563.id;
+INSERT INTO ap3(`year`,`ep`, `rid`, `type`) select sync2.year, sync2.ep, sync2.id, sync2.type FROM sync2;
+INSERT INTO ap4(`year`,`ep`, `rid`, `type`) select sync2.year, sync2.ep, sync2.id, sync2.type FROM sync2;
+INSERT INTO ap5(`year`,`ep`, `rid`, `type`) select sync2.year, sync2.ep, sync2.id, sync2.type FROM sync2;
+drop table sync2;
+
+
+//sync from create table full
+CREATE table sync as select year.year, year.ep, form_{$newep}_$newyear.id, pa.type FROM form_{$newep}_$newyear INNER join year
+inner join pa where not exists 
+(select * from ap1
+            where ap1.year = year.year and ap1.ep = year.ep and ap1.type = pa.type and ap1.rid = form_{$newep}_$newyear.id)
+            ORDER by year.year, year.ep, pa.type, form_{$newep}_$newyear.id;
+INSERT INTO ap1(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap2(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap3(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap4(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap5(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap6(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap7(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap8(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap9(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap10(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap11(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap12(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap13(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap14(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap15(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap16(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap17(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap18(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap19(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap20(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap21(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap22(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+INSERT INTO ap23(`year`,`ep`, `rid`, `type`) select sync.year, sync.ep, sync.id, sync.type FROM sync;
+drop table sync;
+
+
+
+//delete synced
+DELETE FROM `ap3` WHERE year = 2563;
+DELETE FROM `ap4` WHERE year = 2563;
+DELETE FROM `ap5` WHERE year = 2563;
+

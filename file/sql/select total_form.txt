@@ -1,0 +1,30 @@
+select form_1_2558.*,ap1.value 'ap1.value', ap1.valuegane 'ap1.valuegane', ap1.valuekoon 'ap1.valuekoon',
+ap2.value 'ap2.value', ap2.valuegane 'ap2.valuegane', ap2.valuekoon 'ap2.valuekoon',
+ap3.value 'ap3.value', ap3.valuegane 'ap3.valuegane', ap3.valuekoon 'ap3.valuekoon',
+ap4.value 'ap4.value', ap4.valuegane 'ap4.valuegane', ap4.valuekoon 'ap4.valuekoon',
+ap5.value 'ap5.value', ap5.valuegane 'ap5.valuegane', ap5.valuekoon 'ap5.valuekoon',
+ap6.value 'ap6.value', ap6.valuegane 'ap6.valuegane', ap6.valuekoon 'ap6.valuekoon',
+ap7.value 'ap7.value', ap7.valuegane 'ap7.valuegane', ap7.valuekoon 'ap7.valuekoon',
+ap8.value 'ap8.value', ap8.valuegane 'ap8.valuegane', ap8.valuekoon 'ap8.valuekoon',
+ap9.value 'ap9.value', ap9.valuegane 'ap9.valuegane', ap9.valuekoon 'ap9.valuekoon',
+ap10.value 'ap10.value', ap10.valuegane 'ap10.valuegane', ap10.valuekoon 'ap10.valuekoon',
+ap11.value 'ap11.value', ap11.valuegane 'ap11.valuegane', ap11.valuekoon 'ap11.valuekoon',
+ap12.value 'ap12.value', ap12.valuegane 'ap12.valuegane', ap12.valuekoon 'ap12.valuekoon',
+ap13.value 'ap13.value', ap13.valuegane 'ap13.valuegane', ap13.valuekoon 'ap13.valuekoon',
+ap14.value 'ap14.value', ap14.valuegane 'ap14.valuegane', ap14.valuekoon 'ap14.valuekoon',
+ap15.value 'ap15.value', ap15.valuegane 'ap15.valuegane', ap15.valuekoon 'ap15.valuekoon',
+ap16.value 'ap16.value', ap16.valuegane 'ap16.valuegane', ap16.valuekoon 'ap16.valuekoon',
+ap17.value 'ap17.value', ap17.valuegane 'ap17.valuegane', ap17.valuekoon 'ap17.valuekoon',
+ap18.value 'ap18.value', ap18.valuegane 'ap18.valuegane', ap18.valuekoon 'ap18.valuekoon',
+ap19.value 'ap19.value', ap19.valuegane 'ap19.valuegane', ap19.valuekoon 'ap19.valuekoon',
+ap20.value 'ap20.value', ap20.valuegane 'ap20.valuegane', ap20.valuekoon 'ap20.valuekoon',
+ap21.value 'ap21.value', ap21.valuegane 'ap21.valuegane', ap21.valuekoon 'ap21.valuekoon',
+ap22.value 'ap22.value', ap22.valuegane 'ap22.valuegane', ap22.valuekoon 'ap22.valuekoon',
+ap23.value 'ap23.value', ap23.valuegane 'ap23.valuegane', ap23.valuekoon 'ap23.valuekoon'
+FROM form_1_2558,ap1,ap2,ap3,ap4,ap5,ap6,ap7,ap8,ap9,ap10,ap11,ap12,ap13,
+ap14,ap15,ap16,ap17,ap18,ap19,ap20,ap21,ap22,ap23
+where ap1.year = 2558 and ap1.ep = 1 and ap1.type = 1 and ap1.id = ap2.id and form_1_2558.id = ap1.rid
+and ap2.id = ap3.id and ap3.id = ap4.id and ap4.id = ap5.id and ap5.id = ap6.id 
+and ap6.id = ap7.id and ap7.id = ap8.id and ap8.id = ap9.id and ap9.id = ap10.id and ap10.id = ap11.id
+and ap11.id = ap12.id and ap12.id = ap13.id and ap13.id = ap14.id and ap14.id = ap15.id and ap15.id = ap16.id and ap16.id = ap17.id 
+and ap17.id = ap18.id  and ap18.id = ap19.id and ap19.id = ap20.id and ap20.id = ap21.id and ap21.id = ap22.id and ap22.id = ap23.id

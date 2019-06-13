@@ -8,7 +8,7 @@ $ap = isset($_GET['ap']) ? $_GET['ap'] : '';
 $ep = isset($_GET['ep']) ? $_GET['ep'] : '';
 $t = isset($_GET['t']) ? $_GET['t'] : '';
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
-    header('location: login.php');
+    header('location: ../login.php');
     exit();
     }
     //$apname = $_SESSION['name'][$ap];

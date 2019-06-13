@@ -1,0 +1,105 @@
+RENAME TABLE `table 14` TO form_1_2558;
+DELETE FROM `form_1_2558` WHERE `COL 14` = 'status';
+ALTER TABLE form_1_2558 add column id int PRIMARY key NOT NULL AUTO_INCREMENT first;
+ALTER TABLE form_1_2558 CHANGE `COL 1` pa varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 2` lumdub varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 3` name varchar(200);
+ALTER TABLE form_1_2558 CHANGE `COL 4` gane varchar(15);
+ALTER TABLE form_1_2558 CHANGE `COL 5` data varchar(15);
+ALTER TABLE form_1_2558 CHANGE `COL 6` koon1 decimal(10,2);
+ALTER TABLE form_1_2558 CHANGE `COL 7` koon2 decimal(10,2);
+ALTER TABLE form_1_2558 CHANGE `COL 8` koon3 decimal(10,2);
+ALTER TABLE form_1_2558 CHANGE `COL 9` gane1 varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 10` gane2 varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 11` gane3 varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 12` gane4 varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 13` gane5 varchar(10);
+ALTER TABLE form_1_2558 CHANGE `COL 14` status int(5);
+ALTER TABLE form_1_2558 CHANGE `COL 15` kor int(3);
+
+
+RENAME TABLE `table 14` TO form_2562;
+DELETE FROM `form_2562` WHERE `COL 15` = 'status';
+ALTER TABLE form_2561 add column id int PRIMARY key NOT NULL AUTO_INCREMENT first;
+ALTER TABLE form_2562 CHANGE `COL 1` pa varchar(8),CHANGE `COL 2` lumdub varchar(10),
+CHANGE `COL 3` name varchar(150),CHANGE `COL 4` gane varchar(10),CHANGE `COL 5` data varchar(8),
+CHANGE `COL 6` koon varchar(10),CHANGE `COL 7` gane1 varchar(8),CHANGE `COL 8` gane2 varchar(8),
+CHANGE `COL 9` gane3 varchar(8),CHANGE `COL 10` gane4 varchar(8),CHANGE `COL 11` gane5 varchar(8),
+CHANGE `COL 12` value varchar(10),CHANGE `COL 13` valuegane varchar(10),CHANGE `COL 14` valuekoon varchar(10),
+CHANGE `COL 15` status int(3),CHANGE `COL 16` kor int(3);
+INSERT INTO ap1 (`value`) select "" from form_2562 where not exists (select id from ap1
+                  where form_2562.id = ap1.id);
+INSERT INTO ap2 (`value`) select "" from form_2562 where not exists (select id from ap2
+                  where form_2562.id = ap2.id);
+INSERT INTO ap3 (`value`) select "" from form_2562 where not exists (select id from ap3
+                  where form_2562.id = ap3.id);
+INSERT INTO ap4 (`value`) select "" from form_2562 where not exists (select id from ap4
+                  where form_2562.id = ap4.id);
+INSERT INTO ap5 (`value`) select "" from form_2562 where not exists (select id from ap5
+                  where form_2562.id = ap5.id);
+INSERT INTO ap6 (`value`) select "" from form_2562 where not exists (select id from ap6
+                  where form_2562.id = ap6.id);
+INSERT INTO ap7 (`value`) select "" from form_2562 where not exists (select id from ap7
+                  where form_2562.id = ap7.id);
+INSERT INTO ap8 (`value`) select "" from form_2562 where not exists (select id from ap8
+                  where form_2562.id = ap8.id);
+INSERT INTO ap9 (`value`) select "" from form_2562 where not exists (select id from ap9
+                  where form_2562.id = ap9.id);
+INSERT INTO ap10 (`value`) select "" from form_2562 where not exists (select id from ap10
+                  where form_2562.id = ap10.id);
+INSERT INTO ap11 (`value`) select "" from form_2562 where not exists (select id from ap11
+                  where form_2562.id = ap11.id);
+INSERT INTO ap12 (`value`) select "" from form_2562 where not exists (select id from ap12
+                  where form_2562.id = ap12.id);
+INSERT INTO ap13 (`value`) select "" from form_2562 where not exists (select id from ap13
+                  where form_2562.id = ap13.id);
+INSERT INTO ap14 (`value`) select "" from form_2562 where not exists (select id from ap14
+                  where form_2562.id = ap14.id);
+INSERT INTO ap15 (`value`) select "" from form_2562 where not exists (select id from ap15
+                  where form_2562.id = ap15.id);
+INSERT INTO ap16 (`value`) select "" from form_2562 where not exists (select id from ap16
+                  where form_2562.id = ap16.id);
+INSERT INTO ap17 (`value`) select "" from form_2562 where not exists (select id from ap17
+                  where form_2562.id = ap17.id);
+INSERT INTO ap18 (`value`) select "" from form_2562 where not exists (select id from ap18
+                  where form_2562.id = ap18.id);
+INSERT INTO ap19 (`value`) select "" from form_2562 where not exists (select id from ap19
+                  where form_2562.id = ap19.id);
+INSERT INTO ap20 (`value`) select "" from form_2562 where not exists (select id from ap20
+                  where form_2562.id = ap20.id);
+INSERT INTO ap21 (`value`) select "" from form_2562 where not exists (select id from ap21
+                  where form_2562.id = ap21.id);
+INSERT INTO ap22 (`value`) select "" from form_2562 where not exists (select id from ap22
+                  where form_2562.id = ap22.id);
+INSERT INTO ap23 (`value`) select "" from form_2562 where not exists (select id from ap23
+                  where form_2562.id = ap23.id);
+
+
+SELECT ap1.*, form_1_2558.* from form_1_2558 inner join ap1 on 
+  form_1_2558.id = ap1.rid
+  where ap1.year = 2558 and ap1.ep = 1 and ap1.type = 1;
+
+RENAME TABLE `table 31` TO form_2_2558;
+ALTER TABLE form_2_2558 add column id int PRIMARY key NOT NULL AUTO_INCREMENT first;
+
+RENAME TABLE `table $tnum` TO form_{$newep}_$newyear;
+DELETE FROM `form_{$newep}_$newyear` WHERE `COL 14` = 'status';
+ALTER TABLE form_{$newep}_$newyear add column id int PRIMARY key NOT NULL AUTO_INCREMENT first;
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 1` pa varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 2` lumdub varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 3` name varchar(200);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 4` gane varchar(15);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 5` data varchar(15);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 6` koon1 decimal(10,2);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 7` koon2 decimal(10,2);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 8` koon3 decimal(10,2);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 9` gane1 varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 10` gane2 varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 11` gane3 varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 12` gane4 varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 13` gane5 varchar(10);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 14` status int(5);
+ALTER TABLE form_{$newep}_$newyear CHANGE `COL 15` kor int(3);
+
+
+

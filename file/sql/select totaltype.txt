@@ -1,0 +1,185 @@
+select form_1_2558.*, 
+ap1.valuekoon 'ap1_vk1',
+(CASE WHEN ap1.type = 2 THEN ap1.value ELSE '' END) as ap1_vk2,
+(CASE WHEN ap1.type = 3 THEN ap1.value ELSE '' END) as ap1_vk3,
+ap2.valuekoon 'ap2_vk1',
+(CASE WHEN ap2.type = 2 THEN ap2.value ELSE '' END) as ap2_vk2,
+(CASE WHEN ap2.type = 3 THEN ap2.value ELSE '' END) as ap2_vk3,
+ap3.valuekoon 'ap3_vk1',
+(CASE WHEN ap3.type = 2 THEN ap3.value ELSE '' END) as ap3_vk2,
+(CASE WHEN ap3.type = 3 THEN ap3.value ELSE '' END) as ap3_vk3,
+ap4.valuekoon 'ap4_vk1',
+(CASE WHEN ap4.type = 2 THEN ap4.value ELSE '' END) as ap4_vk2,
+(CASE WHEN ap4.type = 3 THEN ap4.value ELSE '' END) as ap4_vk3,
+ap5.valuekoon 'ap5_vk1',
+(CASE WHEN ap5.type = 2 THEN ap5.value ELSE '' END) as ap5_vk2,
+(CASE WHEN ap5.type = 3 THEN ap5.value ELSE '' END) as ap5_vk3,
+ap6.valuekoon 'ap6_vk1',
+(CASE WHEN ap6.type = 2 THEN ap6.value ELSE '' END) as ap6_vk2,
+(CASE WHEN ap6.type = 3 THEN ap6.value ELSE '' END) as ap6_vk3,
+ap7.valuekoon 'ap7_vk1',
+(CASE WHEN ap7.type = 2 THEN ap7.value ELSE '' END) as ap7_vk2,
+(CASE WHEN ap7.type = 3 THEN ap7.value ELSE '' END) as ap7_vk3,
+ap8.valuekoon 'ap8_vk1',
+(CASE WHEN ap8.type = 2 THEN ap8.value ELSE '' END) as ap8_vk2,
+(CASE WHEN ap8.type = 3 THEN ap8.value ELSE '' END) as ap8_vk3,
+ap9.valuekoon 'ap9_vk1',
+(CASE WHEN ap9.type = 2 THEN ap9.value ELSE '' END) as ap9_vk2,
+(CASE WHEN ap9.type = 3 THEN ap9.value ELSE '' END) as ap9_vk3,
+ap10.valuekoon 'ap10_vk1',
+(CASE WHEN ap10.type = 2 THEN ap10.value ELSE '' END) as ap10_vk2,
+(CASE WHEN ap10.type = 3 THEN ap10.value ELSE '' END) as ap10_vk3,
+ap11.valuekoon 'ap11_vk1',
+(CASE WHEN ap11.type = 2 THEN ap11.value ELSE '' END) as ap11_vk2,
+(CASE WHEN ap11.type = 3 THEN ap11.value ELSE '' END) as ap11_vk3,
+ap12.valuekoon 'ap12_vk1',
+(CASE WHEN ap12.type = 2 THEN ap12.value ELSE '' END) as ap12_vk2,
+(CASE WHEN ap12.type = 3 THEN ap12.value ELSE '' END) as ap12_vk3,
+ap13.valuekoon 'ap13_vk1',
+(CASE WHEN ap13.type = 2 THEN ap13.value ELSE '' END) as ap13_vk2,
+(CASE WHEN ap13.type = 3 THEN ap13.value ELSE '' END) as ap13_vk3,
+ap14.valuekoon 'ap14_vk1',
+(CASE WHEN ap14.type = 2 THEN ap14.value ELSE '' END) as ap14_vk2,
+(CASE WHEN ap14.type = 3 THEN ap14.value ELSE '' END) as ap14_vk3,
+ap15.valuekoon 'ap15_vk1',
+(CASE WHEN ap15.type = 2 THEN ap15.value ELSE '' END) as ap15_vk2,
+(CASE WHEN ap15.type = 3 THEN ap15.value ELSE '' END) as ap15_vk3,
+ap16.valuekoon 'ap16_vk1',
+(CASE WHEN ap16.type = 2 THEN ap16.value ELSE '' END) as ap16_vk2,
+(CASE WHEN ap16.type = 3 THEN ap16.value ELSE '' END) as ap16_vk3,
+ap17.valuekoon 'ap17_vk1',
+(CASE WHEN ap17.type = 2 THEN ap17.value ELSE '' END) as ap17_vk2,
+(CASE WHEN ap17.type = 3 THEN ap17.value ELSE '' END) as ap17_vk3,
+ap18.valuekoon 'ap18_vk1',
+(CASE WHEN ap18.type = 2 THEN ap18.value ELSE '' END) as ap18_vk2,
+(CASE WHEN ap18.type = 3 THEN ap18.value ELSE '' END) as ap18_vk3,
+ap19.valuekoon 'ap19_vk1',
+(CASE WHEN ap19.type = 2 THEN ap19.value ELSE '' END) as ap19_vk2,
+(CASE WHEN ap19.type = 3 THEN ap19.value ELSE '' END) as ap19_vk3,
+ap20.valuekoon 'ap20_vk1',
+(CASE WHEN ap20.type = 2 THEN ap20.value ELSE '' END) as ap20_vk2,
+(CASE WHEN ap20.type = 3 THEN ap20.value ELSE '' END) as ap20_vk3,
+ap21.valuekoon 'ap21_vk1',
+(CASE WHEN ap21.type = 2 THEN ap21.value ELSE '' END) as ap21_vk2,
+(CASE WHEN ap21.type = 3 THEN ap21.value ELSE '' END) as ap21_vk3,
+ap22.valuekoon 'ap22_vk1',
+(CASE WHEN ap22.type = 2 THEN ap22.value ELSE '' END) as ap22_vk2,
+(CASE WHEN ap22.type = 3 THEN ap22.value ELSE '' END) as ap22_vk3,
+ap23.valuekoon 'ap23_vk1',
+(CASE WHEN ap23.type = 2 THEN ap23.value ELSE '' END) as ap23_vk2,
+(CASE WHEN ap23.type = 3 THEN ap23.value ELSE '' END) as ap23_vk3
+from form_1_2558, ap1,ap2,ap3,ap4,ap5,ap6,ap7,ap8,ap9,ap10,ap11,
+ap12,ap13,ap14,ap15,ap16,ap17,ap18,ap19,ap20,ap21,ap22,ap23
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1
+and ap1.id = ap2.id and ap2.id = ap3.id
+and ap3.id = ap4.id and ap4.id = ap5.id
+and ap5.id = ap6.id and ap6.id = ap7.id
+and ap7.id = ap8.id and ap8.id = ap9.id
+and ap9.id = ap10.id and ap10.id = ap11.id
+and ap11.id = ap12.id and ap12.id = ap13.id
+and ap13.id = ap14.id and ap14.id = ap15.id
+and ap15.id = ap16.id and ap16.id = ap17.id
+and ap17.id = ap18.id and ap18.id = ap19.id
+and ap19.id = ap20.id and ap20.id = ap21.id
+and ap21.id = ap22.id and ap22.id = ap23.id
+GROUP by ap1.rid
+
+
+
+select form_1_2558.*, 
+ap1.valuekoon 'ap1_vk1',
+(CASE WHEN ap1.type = 2 THEN ap1.value ELSE '' END) as ap1_vk2,
+(CASE WHEN ap1.type = 3 THEN ap1.value ELSE '' END) as ap1_vk3,
+ap3.valuekoon 'ap3_vk1',
+(CASE WHEN ap3.type = 2 THEN ap3.value ELSE '' END) as ap3_vk2,
+(CASE WHEN ap3.type = 3 THEN ap3.value ELSE '' END) as ap3_vk3
+from form_1_2558, ap1,ap3
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1 
+and ap3.rid = form_1_2558.id 
+and ap3.year = 2558 and ap3.ep = 1
+GROUP by ap3.rid
+
+
+select form_1_2558.*, 
+GROUP_CONCAT(valuekoon ORDER by type) as vk
+from form_1_2558, ap1
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1 
+GROUP by form_1_2558.id
+
+
+select form_1_2558.*, 
+GROUP_CONCAT(ap1.valuekoon ORDER by ap1.type) as ap1,
+GROUP_CONCAT(ap3.valuekoon ORDER by ap3.type) as ap3,
+GROUP_CONCAT(ap4.valuekoon ORDER by ap4.type) as ap4
+from form_1_2558, ap1, ap3,ap4
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1 
+and ap1.id = ap3.id and ap1.id = ap4.id
+GROUP by form_1_2558.id
+
+
+select form_1_2558.*, 
+GROUP_CONCAT(ap1.valuekoon ORDER by ap1.type) as ap1,
+GROUP_CONCAT(ap2.valuekoon ORDER by ap3.type) as ap2,
+GROUP_CONCAT(ap3.valuekoon ORDER by ap3.type) as ap3
+from form_1_2558, ap1, ap2, ap3
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1 
+and ap1.id = ap2.id and ap1.id = ap3.id
+GROUP by form_1_2558.id
+UNION ALL
+select form_1_2558.*, 
+GROUP_CONCAT(ap4.valuekoon ORDER by ap4.type) as ap4,
+GROUP_CONCAT(ap5.valuekoon ORDER by ap5.type) as ap5,
+GROUP_CONCAT(ap6.valuekoon ORDER by ap6.type) as ap6
+from form_1_2558, ap4, ap5, ap6
+where ap4.rid = form_1_2558.id 
+and ap4.year = 2558 and ap4.ep = 1 
+and ap4.id = ap5.id and ap4.id = ap6.id
+GROUP by form_1_2558.id
+
+
+select form_1_2558.*, 
+GROUP_CONCAT(ap1.valuekoon ORDER by ap1.type) as ap1,
+GROUP_CONCAT(ap2.valuekoon ORDER by ap2.type) as ap2,
+GROUP_CONCAT(ap3.valuekoon ORDER by ap3.type) as ap3,
+GROUP_CONCAT(ap4.valuekoon ORDER by ap4.type) as ap4,
+GROUP_CONCAT(ap5.valuekoon ORDER by ap5.type) as ap5,
+GROUP_CONCAT(ap6.valuekoon ORDER by ap6.type) as ap6,
+GROUP_CONCAT(ap7.valuekoon ORDER by ap7.type) as ap7,
+GROUP_CONCAT(ap8.valuekoon ORDER by ap8.type) as ap8,
+GROUP_CONCAT(ap9.valuekoon ORDER by ap9.type) as ap9,
+GROUP_CONCAT(ap10.valuekoon ORDER by ap10.type) as ap10,
+GROUP_CONCAT(ap11.valuekoon ORDER by ap11.type) as ap11,
+GROUP_CONCAT(ap12.valuekoon ORDER by ap12.type) as ap12,
+GROUP_CONCAT(ap13.valuekoon ORDER by ap13.type) as ap13,
+GROUP_CONCAT(ap14.valuekoon ORDER by ap14.type) as ap14,
+GROUP_CONCAT(ap15.valuekoon ORDER by ap15.type) as ap15,
+GROUP_CONCAT(ap16.valuekoon ORDER by ap16.type) as ap16,
+GROUP_CONCAT(ap17.valuekoon ORDER by ap17.type) as ap17,
+GROUP_CONCAT(ap18.valuekoon ORDER by ap18.type) as ap18,
+GROUP_CONCAT(ap19.valuekoon ORDER by ap19.type) as ap19,
+GROUP_CONCAT(ap20.valuekoon ORDER by ap20.type) as ap20,
+GROUP_CONCAT(ap21.valuekoon ORDER by ap21.type) as ap21,
+GROUP_CONCAT(ap22.valuekoon ORDER by ap22.type) as ap22,
+GROUP_CONCAT(ap23.valuekoon ORDER by ap23.type) as ap23
+from form_1_2558, ap1, ap2, ap3, ap4, ap5, ap6, ap7, ap8, 
+ap9, ap10, ap11, ap12, ap13, ap14, ap15, ap16, ap17, ap18, 
+ap19, ap20, ap21, ap22, ap23
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1 
+and ap1.id = ap2.id and ap1.id = ap3.id 
+and ap1.id = ap4.id and ap1.id = ap5.id
+and ap1.id = ap6.id and ap1.id = ap7.id
+and ap1.id = ap8.id and ap1.id = ap9.id
+and ap1.id = ap10.id and ap1.id = ap11.id
+and ap1.id = ap12.id and ap1.id = ap13.id
+and ap1.id = ap14.id and ap1.id = ap15.id
+and ap1.id = ap16.id and ap1.id = ap17.id
+and ap1.id = ap18.id and ap1.id = ap19.id
+and ap1.id = ap20.id and ap1.id = ap21.id
+and ap1.id = ap22.id and ap1.id = ap23.id
+GROUP by form_1_2558.id

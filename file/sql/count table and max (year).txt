@@ -1,0 +1,7 @@
+select COUNT(*), year FROM information_schema.tables inner join ssj.year on 1 where table_schema = 'ssj' 
+and year = (select max(year) from ssj.year) GROUP by table_name;
+
+select count(*) as tnum, Max(year) from 
+(
+ SELECT *,max(year) FROM information_schema.tables, ssj.year WHERE table_schema = 'ssj' 
+and year = (select max(year) from ssj.year) GROUP by table_name) as fuk;

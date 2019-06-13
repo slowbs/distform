@@ -1,0 +1,556 @@
+CREATE TABLE ap3 (
+    id int NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int,
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE ap2 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+
+INSERT INTO `ap1`(`value`) VALUES (""),(""),("");
+
+alter table ap1 add column value_2560 varchar (10) not null;
+alter table ap2 add column value_2560 varchar (10) not null;
+alter table ap3 add column value_2560 varchar (10) not null;
+
+alter table ap1 add column valuekoon_2560 varchar (10) not null, add column valuegane_2560 varchar (10) not null;
+
+??? ID ???? int and A.I.
+??? status ???? int
+
+practice
+
+DROP TABLE ap1;
+DROP TABLE ap2;
+DROP TABLE ap3;
+DROP TABLE ap4;
+DROP TABLE ap5;
+DROP TABLE ap6;
+DROP TABLE ap7;
+DROP TABLE ap8;
+DROP TABLE ap9;
+DROP TABLE ap10;
+DROP TABLE ap11;
+DROP TABLE ap12;
+DROP TABLE ap13;
+DROP TABLE ap14;
+DROP TABLE ap15;
+DROP TABLE ap16;
+DROP TABLE ap17;
+DROP TABLE ap18;
+DROP TABLE ap19;
+DROP TABLE ap20;
+DROP TABLE ap21;
+DROP TABLE ap22;
+DROP TABLE ap23;
+
+CREATE TABLE ap1 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap2 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap3 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap4 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap5 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap6 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap7 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap8 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap9 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap10 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap11 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap12 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap13 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap14 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap15 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap16 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap17 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap18 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap19 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap20 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap21 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap22 (id int primary key NOT NULL AUTO_INCREMENT);
+CREATE TABLE ap23 (id int primary key NOT NULL AUTO_INCREMENT);
+
+CREATE TABLE ap1 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap2 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap3 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap4 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap5 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap6 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap7 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap8 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap9 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap10 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap11 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap12 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap13 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap14 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap15 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap16 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap17 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap18 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap19 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap20 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap21 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap22 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+CREATE TABLE ap23 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year varchar(10) NOT NULL,
+    ep varchar(5) NOT NULL,
+    type varchar(5) NOT NULL,
+    rid varchar(5) NOT NULL
+);
+
+
+
+select form_1_2558.*,ap1.value 'ap1.value', ap1.valuegane 'ap1.valuegane', ap1.valuekoon 'ap1.valuekoon',
+ap2.value 'ap2.value', ap2.valuegane 'ap2.valuegane', ap2.valuekoon 'ap3.valuekoon'
+FROM form_1_2558,ap1,ap2
+where ap1.year = 2558 and ap1.ep = 1 and ap1.type = 1 and ap1.id = ap2.id and form_1_2558.id = ap1.rid
+
+
+select form_1_2558.*, ap1.value 'ap1.value', ap1.valuegane 'ap1.valuegane', ap1.valuekoon 'ap1.valuekoon'
+FROM form_1_2558 INNER join ap1 on form_1_2558.id = ap1.rid
+where ap1.year = 2558 and ap1.ep = 1 and ap1.type = 1
+
+
+
+CREATE TABLE ap1 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap2 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap3 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap4 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap5 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap6 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap7 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap8 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap9 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap10 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap11 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap12 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap13 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap14 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap15 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap16 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap17 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap18 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap19 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap20 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap21 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap22 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);
+CREATE TABLE ap23 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+    year int(10) NOT NULL,
+    ep int(5) NOT NULL,
+    type int(5) NOT NULL,
+    rid int(5) NOT NULL
+);

@@ -1,0 +1,27 @@
+// Delete ap from year
+delete from year where year = 2560 and ep = 1;
+delete from log where year = 2560 and ep = 1;
+delete from total_score where time = 2560 and ep = 1;
+DELETE FROM ap1 where year = 2560 and ep = 1;
+DELETE FROM ap2 where year = 2560 and ep = 1;
+DELETE FROM ap3 where year = 2560 and ep = 1;
+DELETE FROM ap4 where year = 2560 and ep = 1;
+DELETE FROM ap5 where year = 2560 and ep = 1;
+DELETE FROM ap6 where year = 2560 and ep = 1;
+DELETE FROM ap7 where year = 2560 and ep = 1;
+DELETE FROM ap8 where year = 2560 and ep = 1;
+DELETE FROM ap9 where year = 2560 and ep = 1;
+DELETE FROM ap10 where year = 2560 and ep = 1;
+DELETE FROM ap11 where year = 2560 and ep = 1;
+DELETE FROM ap12 where year = 2560 and ep = 1;
+DELETE FROM ap13 where year = 2560 and ep = 1;
+DELETE FROM ap14 where year = 2560 and ep = 1;
+DELETE FROM ap15 where year = 2560 and ep = 1;
+DELETE FROM ap16 where year = 2560 and ep = 1;
+DELETE FROM ap17 where year = 2560 and ep = 1;
+DELETE FROM ap18 where year = 2560 and ep = 1;
+DELETE FROM ap19 where year = 2560 and ep = 1;
+DELETE FROM ap20 where year = 2560 and ep = 1;
+DELETE FROM ap21 where year = 2560 and ep = 1;
+DELETE FROM ap22 where year = 2560 and ep = 1;
+DELETE FROM ap23 where year = 2560 and ep = 1;

@@ -10,7 +10,7 @@ $month = $_SESSION['quarter']["$ep"];
 $status = $_SESSION["y{$y}"]["$ep"];
 //$time = $_SESSION['time']["$t"];
 if (!isset($_SESSION['user']) || $_SESSION['user']['apid'] != $ap){
-  header('location: login.php');
+  header('location: ../login.php');
   exit();
   }
 /* session_start();

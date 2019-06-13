@@ -1,0 +1,102 @@
+select form_1_2558.*, 
+ap1.valuekoon 'ap1_vk1',
+(CASE
+    WHEN ap1.type = 2 THEN ap1.value
+    ELSE ""
+END) as ap1_vk2,
+(CASE
+    WHEN ap1.type = 3 THEN ap1.value
+    ELSE ""
+END) as ap1_vk3,
+ap2.valuekoon 'ap2_vk1',
+(CASE
+    WHEN ap2.type = 2 THEN ap2.value
+    ELSE ""
+END) as ap2_vk2,
+(CASE
+    WHEN ap2.type = 3 THEN ap2.value
+    ELSE ""
+END) as ap2_vk3,
+ap3.valuekoon 'ap3_vk1',
+(CASE
+    WHEN ap3.type = 2 THEN ap3.value
+    ELSE ""
+END) as ap3_vk2,
+(CASE
+    WHEN ap3.type = 3 THEN ap3.value
+    ELSE ""
+END) as ap3_vk3
+from form_1_2558, ap1,ap2,ap3
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1
+and ap1.id = ap2.id and ap2.id = ap3.id
+GROUP by ap1.rid
+union all
+select form_1_2558.*, 
+ap4.valuekoon 'ap1_vk1',
+(CASE
+    WHEN ap4.type = 2 THEN ap4.value
+    ELSE ""
+END) as ap1_vk2,
+(CASE
+    WHEN ap4.type = 3 THEN ap4.value
+    ELSE ""
+END) as ap1_vk3,
+ap5.valuekoon 'ap2_vk1',
+(CASE
+    WHEN ap5.type = 2 THEN ap5.value
+    ELSE ""
+END) as ap2_vk2,
+(CASE
+    WHEN ap5.type = 3 THEN ap5.value
+    ELSE ""
+END) as ap2_vk3,
+ap6.valuekoon 'ap3_vk1',
+(CASE
+    WHEN ap6.type = 2 THEN ap6.value
+    ELSE ""
+END) as ap3_vk2,
+(CASE
+    WHEN ap6.type = 3 THEN ap6.value
+    ELSE ""
+END) as ap3_vk3
+from form_1_2558, ap4,ap5,ap6
+where ap4.rid = form_1_2558.id 
+and ap4.year = 2558 and ap4.ep = 1
+and ap4.id = ap5.id and ap5.id = ap6.id
+GROUP by ap4.rid
+union all
+select form_1_2558.*, 
+ap7.valuekoon 'ap1_vk1',
+(CASE
+    WHEN ap7.type = 2 THEN ap7.value
+    ELSE ""
+END) as ap1_vk2,
+(CASE
+    WHEN ap7.type = 3 THEN ap7.value
+    ELSE ""
+END) as ap1_vk3,
+ap8.valuekoon 'ap2_vk1',
+(CASE
+    WHEN ap8.type = 2 THEN ap8.value
+    ELSE ""
+END) as ap2_vk2,
+(CASE
+    WHEN ap8.type = 3 THEN ap8.value
+    ELSE ""
+END) as ap2_vk3,
+ap9.valuekoon 'ap3_vk1',
+(CASE
+    WHEN ap9.type = 2 THEN ap9.value
+    ELSE ""
+END) as ap3_vk2,
+(CASE
+    WHEN ap9.type = 3 THEN ap9.value
+    ELSE ""
+END) as ap3_vk3
+from form_1_2558, ap7,ap8,ap9
+where ap7.rid = form_1_2558.id 
+and ap7.year = 2558 and ap7.ep = 1
+and ap7.id = ap8.id and ap8.id = ap9.id
+GROUP by ap7.rid
+

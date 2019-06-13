@@ -1,0 +1,3 @@
+UPDATE ap2 INNER JOIN sso
+    ON ap2.rid = sso.id
+SET ap2.value = sso.2 where year = 2561 and ep = 6 and type = 2;

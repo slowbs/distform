@@ -1,0 +1,52 @@
+select * FROM
+(select form_1_2558.*, 
+ap1.valuekoon 'ap1_vk1',
+(CASE
+    WHEN ap1.type = 2 THEN ap1.value
+    ELSE ""
+END) as ap1_vk2,
+(CASE
+    WHEN ap1.type = 3 THEN ap1.value
+    ELSE ""
+END) as ap1_vk3,
+ap2.valuekoon 'ap2_vk1',
+(CASE
+    WHEN ap2.type = 2 THEN ap2.value
+    ELSE ""
+END) as ap2_vk2,
+(CASE
+    WHEN ap2.type = 3 THEN ap2.value
+    ELSE ""
+END) as ap2_vk3
+from form_1_2558, ap1,ap2
+where ap1.rid = form_1_2558.id 
+and ap1.year = 2558 and ap1.ep = 1
+and ap1.id = ap2.id
+GROUP by ap1.rid
+UNION ALL
+select form_1_2558.*, 
+ap3.valuekoon 'ap1_vk1',
+(CASE
+    WHEN ap3.type = 2 THEN ap3.value
+    ELSE ""
+END) as ap1_vk2,
+(CASE
+    WHEN ap3.type = 3 THEN ap3.value
+    ELSE ""
+END) as ap1_vk3,
+ap4.valuekoon 'ap2_vk1',
+(CASE
+    WHEN ap4.type = 2 THEN ap4.value
+    ELSE ""
+END) as ap2_vk2,
+(CASE
+    WHEN ap4.type = 3 THEN ap4.value
+    ELSE ""
+END) as ap2_vk3
+from form_1_2558, ap3,ap4
+where ap3.rid = form_1_2558.id 
+and ap3.year = 2558 and ap3.ep = 1
+and ap3.id = ap4.id
+GROUP by ap3.rid
+ ) dum
+ORDER by dum.id

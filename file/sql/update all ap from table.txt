@@ -1,0 +1,69 @@
+UPDATE ap1 INNER JOIN kpso
+    ON ap1.rid = kpso.id
+SET ap1.value = kpso.1 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap2 INNER JOIN kpso
+    ON ap2.rid = kpso.id
+SET ap2.value = kpso.2 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap3 INNER JOIN kpso
+    ON ap3.rid = kpso.id
+SET ap3.value = kpso.3 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap4 INNER JOIN kpso
+    ON ap4.rid = kpso.id
+SET ap4.value = kpso.4 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap5 INNER JOIN kpso
+    ON ap5.rid = kpso.id
+SET ap5.value = kpso.5 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap6 INNER JOIN kpso
+    ON ap6.rid = kpso.id
+SET ap6.value = kpso.6 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap7 INNER JOIN kpso
+    ON ap7.rid = kpso.id
+SET ap7.value = kpso.7 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap8 INNER JOIN kpso
+    ON ap8.rid = kpso.id
+SET ap8.value = kpso.8 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap9 INNER JOIN kpso
+    ON ap9.rid = kpso.id
+SET ap9.value = kpso.9 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap10 INNER JOIN kpso
+    ON ap10.rid = kpso.id
+SET ap10.value = kpso.10 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap11 INNER JOIN kpso
+    ON ap11.rid = kpso.id
+SET ap11.value = kpso.11 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap12 INNER JOIN kpso
+    ON ap12.rid = kpso.id
+SET ap12.value = kpso.12 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap13 INNER JOIN kpso
+    ON ap13.rid = kpso.id
+SET ap13.value = kpso.13 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap14 INNER JOIN kpso
+    ON ap14.rid = kpso.id
+SET ap14.value = kpso.14 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap15 INNER JOIN kpso
+    ON ap15.rid = kpso.id
+SET ap15.value = kpso.15 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap16 INNER JOIN kpso
+    ON ap16.rid = kpso.id
+SET ap16.value = kpso.16 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap17 INNER JOIN kpso
+    ON ap17.rid = kpso.id
+SET ap17.value = kpso.17 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap18 INNER JOIN kpso
+    ON ap18.rid = kpso.id
+SET ap18.value = kpso.18 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap19 INNER JOIN kpso
+    ON ap19.rid = kpso.id
+SET ap19.value = kpso.19 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap20 INNER JOIN kpso
+    ON ap20.rid = kpso.id
+SET ap20.value = kpso.20 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap21 INNER JOIN kpso
+    ON ap21.rid = kpso.id
+SET ap21.value = kpso.21 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap22 INNER JOIN kpso
+    ON ap22.rid = kpso.id
+SET ap22.value = kpso.22 where year = 2561 and ep = 6 and type = 3;
+UPDATE ap23 INNER JOIN kpso
+    ON ap23.rid = kpso.id
+SET ap23.value = kpso.23 where year = 2561 and ep = 6 and type = 3;

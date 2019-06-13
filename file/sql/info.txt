@@ -1,0 +1,200 @@
+﻿CREATE TABLE ap3 (
+    id int primary key NOT NULL AUTO_INCREMENT,
+    value varchar(10) NOT NULL,
+    valuegane varchar(10) NOT NULL,
+    valuekoon varchar(10) NOT NULL,
+);
+
+create table users(
+    id int primary key NOT NULL AUTO_INCREMENT,
+    username varchar(30) NOT NULL,
+    user_type varchar(30) NOT NULL,
+    password varchar(50) NOT NULL,
+    apid varchar(10) NOT NULL
+);
+
+CREATE TABLE ap3 (id int primary key NOT NULL AUTO_INCREMENT);
+
+INSERT INTO `ap1`(`value`) VALUES (""),(""),("");
+
+alter table ap1 add column value_2560 varchar (10) not null;
+alter table ap2 add column value_2560 varchar (10) not null;
+alter table ap3 add column value_2560 varchar (10) not null;
+
+alter table ap1 add column valuekoon_2560 varchar (10) not null, add column valuegane_2560 varchar (10) not null;
+
+แก้ ID เป็น int and A.I.
+แก้ status เป็น int
+
+ALTER TABLE form2  MODIFY id int not null AUTO_INCREMENT;
+
+RENAME TABLE `table 11` TO form_2560;
+DELETE FROM `form2` WHERE `COL 15` = 'status';
+ALTER TABLE form_2560 add column id int PRIMARY key NOT NULL AUTO_INCREMENT first;
+ALTER TABLE form_2560 CHANGE `COL 1` pa varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 2` lumdub varchar(10);
+ALTER TABLE form_2560 CHANGE `COL 3` name varchar(150);
+ALTER TABLE form_2560 CHANGE `COL 4` gane varchar(10);
+ALTER TABLE form_2560 CHANGE `COL 5` data varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 6` koon varchar(10);
+ALTER TABLE form_2560 CHANGE `COL 7` gane1 varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 8` gane2 varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 9` gane3 varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 10` gane4 varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 11` gane5 varchar(8);
+ALTER TABLE form_2560 CHANGE `COL 12` value varchar(10);
+ALTER TABLE form_2560 CHANGE `COL 13` valuegane varchar(10);
+ALTER TABLE form_2560 CHANGE `COL 14` valuekoon varchar(10);
+ALTER TABLE form_2560 CHANGE `COL 15` status int(3);
+ALTER TABLE form_2560 CHANGE `COL 16` kor int(3);
+
+// Add ap id for make apid = form_ id
+INSERT INTO ap1 (`value`) 
+select "" from form_2560
+where not exists (select id from ap1
+                  where form_2560.id = ap1.id);
+
+select total_score.*, kor, sum(koon) from form_2559 inner join total_score 
+where total_score.id = 1 && form_2559.kor = 2;
+
+SELECT ap1.*, form_2559.* from form_2559 inner join ap1 on form_2559.id = ap1.id;
+
+
+            set @i = 0
+            WHILE 
+            alter table ap@i add column value_2569 varchar (10) not null, add column valuekoon_2569 varchar (10) not null, 
+            add column valuegane_2569 varchar (10) not null;
+            set @i = @i+1;
+
+
+
+//insert for sync total_score table
+INSERT INTO total_score (`name`,`apid`,`time`, `ep`) 
+select ampher.name , ampher.id, year.year, year.ep from ampher INNER join year where not exists 
+(select time from total_score
+            where total_score.time = year.year and total_score.ep = year.ep)ORDER by year.year, year.ep, ampher.id ;
+
+
+//insert for sync log table
+INSERT INTO log (`apid`,`name`,`year`, `ep`)
+SELECT ampher.id, ampher.name, year.year, year.ep from ampher inner join year where not EXISTS
+(select time, ep from log where log.year = year.year AND log.year = year.ep)ORDER by year.year, year.ep, ampher.id ;
+
+
+
+
+
+
+alter table ap2 
+DROP COLUMN value_2560, DROP COLUMN valuekoon_2560, DROP COLUMN valuegane_2560,
+DROP COLUMN value_2561, DROP COLUMN valuekoon_2561, DROP COLUMN valuegane_2561,
+DROP COLUMN value_2562, DROP COLUMN valuekoon_2562, DROP COLUMN valuegane_2562,
+DROP COLUMN value_2563, DROP COLUMN valuekoon_2563, DROP COLUMN valuegane_2563;
+
+
+SELECT form_2561.*, ap1.*,ap2.*,ap3.*,ap4.*, ap5.*, ap6.*, ap7.*, ap8.*, ap9.*, ap10.*, ap11.*, ap12.*, ap13.*, ap14.*, ap15.*, ap16.*, ap17.*,ap18.*, ap19.*, ap20.*, ap21.*, ap22.*, ap23.* FROM form_2561 WHERE 1
+
+
+SELECT form_2561.*, ap1.*,ap2.*,ap3.*,ap4.*, ap5.*, ap6.*, ap7.*, ap8.*, ap9.*, ap10.*, ap11.*, ap12.*, ap13.*, ap14.*, ap15.*, ap16.*, ap17.*,ap18.*, ap19.*, ap20.*, ap21.*, ap22.*, ap23.* FROM form_2561 left join ap1, ap2, ap3, ap4, ap5, ap6, ap7, ap8, ap9, ap10, ap11, ap12, ap13, ap14, ap15, ap16, ap17, ap18, ap19, ap20, ap21, ap22, ap23 on form_2561 = ap1.id
+
+SELECT form_2561.*, ap1.*, ap2.*, ap3.*, ap4.*,ap5.*, ap6.*, ap7.*, ap8.* from form_2561, ap1, ap2,ap3,ap4,ap5,ap6,ap7,ap8 where form_2561.id = ap1.id and ap1.id = ap2.id and ap2.id = ap3.id and ap3.id = ap4.id and ap4.id = ap5.id and ap5.id = ap6.id and ap6.id = ap7.id and ap7.id = ap8.id
+
+SELECT form_2561.*, ap1.value_2561, ap1.valuekoon_2561, ap1.valuegane_2561, ap2.value_2561, ap2.valuekoon_2561, ap2.valuegane_2561 ,
+ ap3.value_2561, ap3.valuekoon_2561, ap3.valuegane_2561,  ap4.value_2561, ap4.valuekoon_2561, ap4.valuegane_2561 
+from form_2561, ap1, ap2,ap3,ap4 where form_2561.id = ap1.id and ap1.id = ap2.id and ap2.id = ap3.id and ap3.id = ap4.id
+
+
+select form_2561.*, ap1.*, ap2.*,ap3.*,ap4.*,ap5.*, ap6.*, ap7.*, ap8.* FROM form_2561 LEFT join ap1 on form_2561.id = ap1.id
+ LEFT join ap2 on form_2561.id = ap2.id
+ left join ap3 on form_2561.id = ap3.id
+ left join ap4 on form_2561.id = ap4.id
+ left join ap5 on form_2561.id = ap5.id
+ left join ap6 on form_2561.id = ap6.id
+ left join ap7 on form_2561.id = ap7.id
+ left join ap8 on form_2561.id = ap8.id
+
+SELECT form_2561.*, ap1.*, ap2.*, ap3.*, ap4.*,ap5.*, ap6.*, ap7.*, ap8.*,ap9.*,ap10.*,ap11.*, ap12.*, ap13.*, ap14.*, ap15.*, ap16.*, ap17.*, ap18.*, ap19.*, ap20.*, ap21.*, ap22.*, ap23.* from form_2561, ap1, ap2,ap3,ap4,ap5,ap6,ap7,ap8,ap9, ap10, ap11, ap12, ap13, ap14, ap15, ap16, ap17, ap18, ap19, ap20, ap21, ap22, ap23 where form_2561.id = ap1.id and ap1.id = ap2.id and ap2.id = ap3.id and ap3.id = ap4.id and ap4.id = ap5.id and ap5.id = ap6.id and ap6.id = ap7.id and ap7.id = ap8.id and ap8.id = ap9.id and ap9.id = ap10.id and ap10.id = ap11.id
+and ap11.id = ap12.id and ap12.id = ap13.id and ap13.id = ap14.id and ap14.id = ap15.id and ap15.id = ap16.id and ap16.id = ap17.id 
+and ap17.id = ap18.id  and ap18.id = ap19.id and ap19.id = ap20.id and ap20.id = ap21.id and ap21.id = ap22.id and ap22.id = ap23.id
+
+
+select id as ap1_$y
+SELECT form_$y.*, ap1.id 'ap1_id', ap2.id 'ap2_id' , ap3.id 'ap3_id', ap4.id 'ap4_id',ap5.id 'ap5_id', ap6.id 'ap6_id', ap7.id 'ap7_id', ap8.id 'ap8_id',
+ap9.id 'ap9_id',ap10.id 'ap10_id',ap11.id 'ap11_id', ap12.id 'ap12_id', ap13.id 'ap13_id', ap14.id 'ap14_id', ap15.id 'ap15_id', ap16.id 'ap16_id', 
+ap17.id 'ap17_id', ap18.id 'ap18_id', ap19.id 'ap19_id', ap20.id 'ap20_id', ap21.id 'ap21_id', ap22.id 'ap22_id', ap23.id 'ap23_id',
+ap1.value_$y 'ap1_value_$y', ap2.value_$y 'ap2_value_$y' , ap3.value_$y 'ap3_value_$y', ap4.value_$y 'ap4_value_$y',ap5.value_$y 'ap5_value_$y', 
+ap6.value_$y 'ap6_value_$y', ap7.value_$y 'ap7_value_$y', ap8.value_$y 'ap8_value_$y',ap9.value_$y 'ap9_value_$y',ap10.value_$y 'ap10_value_$y',
+ap11.value_$y 'ap11_value_$y', ap12.value_$y 'ap12_value_$y', ap13.value_$y 'ap13_value_$y', ap14.value_$y 'ap14_value_$y', ap15.value_$y 'ap15_value_$y', 
+ap16.value_$y 'ap16_value_$y', ap17.value_$y 'ap17_value_$y', ap18.value_$y 'ap18_value_$y', ap19.value_$y 'ap19_value_$y', ap20.value_$y 'ap20_value_$y', 
+ap21.value_$y 'ap21_value_$y', ap22.value_$y 'ap22_value_$y', ap23.value_$y 'ap23_value_$y',
+ap1.valuegane_$y 'ap1_valuegane_$y', ap2.valuegane_$y 'ap2_valuegane_$y' , ap3.valuegane_$y 'ap3_valuegane_$y', ap4.valuegane_$y 'ap4_valuegane_$y',
+ap5.valuegane_$y 'ap5_valuegane_$y', ap6.valuegane_$y 'ap6_valuegane_$y', ap7.valuegane_$y 'ap7_valuegane_$y', ap8.valuegane_$y 'ap8_valuegane_$y',
+ap9.valuegane_$y 'ap9_valuegane_$y',ap10.valuegane_$y 'ap10_valuegane_$y',ap11.valuegane_$y 'ap11_valuegane_$y', ap12.valuegane_$y 'ap12_valuegane_$y', 
+ap13.valuegane_$y 'ap13_valuegane_$y', ap14.valuegane_$y 'ap14_valuegane_$y', ap15.valuegane_$y 'ap15_valuegane_$y', ap16.valuegane_$y 'ap16_valuegane_$y', 
+ap17.valuegane_$y 'ap17_valuegane_$y', ap18.valuegane_$y 'ap18_valuegane_$y', ap19.valuegane_$y 'ap19_valuegane_$y', ap20.valuegane_$y 'ap20_valuegane_$y', 
+ap21.valuegane_$y 'ap21_valuegane_$y', ap22.valuegane_$y 'ap22_valuegane_$y', ap23.valuegane_$y 'ap23_valuegane_$y',
+ap1.valuekoon_$y 'ap1_valuekoon_$y', ap2.valuekoon_$y 'ap2_valuekoon_$y' , ap3.valuekoon_$y 'ap3_valuekoon_$y', ap4.valuekoon_$y 'ap4_valuekoon_$y',
+ap5.valuekoon_$y 'ap5_valuekoon_$y', ap6.valuekoon_$y 'ap6_valuekoon_$y', ap7.valuekoon_$y 'ap7_valuekoon_$y', ap8.valuekoon_$y 'ap8_valuekoon_$y',
+ap9.valuekoon_$y 'ap9_valuekoon_$y',ap10.valuekoon_$y 'ap10_valuekoon_$y',ap11.valuekoon_$y 'ap11_valuekoon_$y', ap12.valuekoon_$y 'ap12_valuekoon_$y', 
+ap13.valuekoon_$y 'ap13_valuekoon_$y', ap14.valuekoon_$y 'ap14_valuekoon_$y', ap15.valuekoon_$y 'ap15_valuekoon_$y', ap16.valuekoon_$y 'ap16_valuekoon_$y', 
+ap17.valuekoon_$y 'ap17_valuekoon_$y', ap18.valuekoon_$y 'ap18_valuekoon_$y', ap19.valuekoon_$y 'ap19_valuekoon_$y', ap20.valuekoon_$y 'ap20_valuekoon_$y', 
+ap21.valuekoon_$y 'ap21_valuekoon_$y', ap22.valuekoon_$y 'ap22_valuekoon_$y', ap23.valuekoon_$y 'ap23_valuekoon_$y' 
+from form_2561, ap1, ap2,ap3,ap4,ap5,ap6,ap7,ap8,ap9, ap10, ap11, ap12, ap13, ap14, ap15, ap16, ap17, ap18, ap19, ap20, ap21, ap22, 
+ap23 where form_2561.id = ap1.id and ap1.id = ap2.id and ap2.id = ap3.id and ap3.id = ap4.id and ap4.id = ap5.id and ap5.id = ap6.id 
+and ap6.id = ap7.id and ap7.id = ap8.id and ap8.id = ap9.id and ap9.id = ap10.id and ap10.id = ap11.id
+and ap11.id = ap12.id and ap12.id = ap13.id and ap13.id = ap14.id and ap14.id = ap15.id and ap15.id = ap16.id and ap16.id = ap17.id 
+and ap17.id = ap18.id  and ap18.id = ap19.id and ap19.id = ap20.id and ap20.id = ap21.id and ap21.id = ap22.id and ap22.id = ap23.id
+
+select from _2561
+SELECT form_2561.*, ap1.id 'ap1_id', ap2.id 'ap2_id' , ap3.id 'ap3_id', ap4.id 'ap4_id',ap5.id 'ap5_id', ap6.id 'ap6_id', ap7.id 'ap7_id', ap8.id 'ap8_id',
+ap9.id 'ap9_id',ap10.id 'ap10_id',ap11.id 'ap11_id', ap12.id 'ap12_id', ap13.id 'ap13_id', ap14.id 'ap14_id', ap15.id 'ap15_id', ap16.id 'ap16_id', 
+ap17.id 'ap17_id', ap18.id 'ap18_id', ap19.id 'ap19_id', ap20.id 'ap20_id', ap21.id 'ap21_id', ap22.id 'ap22_id', ap23.id 'ap23_id',
+ap1.value_2561 'ap1_value_2561', ap2.value_2561 'ap2_value_2561' , ap3.value_2561 'ap3_value_2561', ap4.value_2561 'ap4_value_2561',ap5.value_2561 'ap5_value_2561', 
+ap6.value_2561 'ap6_value_2561', ap7.value_2561 'ap7_value_2561', ap8.value_2561 'ap8_value_2561',ap9.value_2561 'ap9_value_2561',ap10.value_2561 'ap10_value_2561',
+ap11.value_2561 'ap11_value_2561', ap12.value_2561 'ap12_value_2561', ap13.value_2561 'ap13_value_2561', ap14.value_2561 'ap14_value_2561', ap15.value_2561 'ap15_value_2561', 
+ap16.value_2561 'ap16_value_2561', ap17.value_2561 'ap17_value_2561', ap18.value_2561 'ap18_value_2561', ap19.value_2561 'ap19_value_2561', ap20.value_2561 'ap20_value_2561', 
+ap21.value_2561 'ap21_value_2561', ap22.value_2561 'ap22_value_2561', ap23.value_2561 'ap23_value_2561',
+ap1.valuegane_2561 'ap1_valuegane_2561', ap2.valuegane_2561 'ap2_valuegane_2561' , ap3.valuegane_2561 'ap3_valuegane_2561', ap4.valuegane_2561 'ap4_valuegane_2561',
+ap5.valuegane_2561 'ap5_valuegane_2561', ap6.valuegane_2561 'ap6_valuegane_2561', ap7.valuegane_2561 'ap7_valuegane_2561', ap8.valuegane_2561 'ap8_valuegane_2561',
+ap9.valuegane_2561 'ap9_valuegane_2561',ap10.valuegane_2561 'ap10_valuegane_2561',ap11.valuegane_2561 'ap11_valuegane_2561', ap12.valuegane_2561 'ap12_valuegane_2561', 
+ap13.valuegane_2561 'ap13_valuegane_2561', ap14.valuegane_2561 'ap14_valuegane_2561', ap15.valuegane_2561 'ap15_valuegane_2561', ap16.valuegane_2561 'ap16_valuegane_2561', 
+ap17.valuegane_2561 'ap17_valuegane_2561', ap18.valuegane_2561 'ap18_valuegane_2561', ap19.valuegane_2561 'ap19_valuegane_2561', ap20.valuegane_2561 'ap20_valuegane_2561', 
+ap21.valuegane_2561 'ap21_valuegane_2561', ap22.valuegane_2561 'ap22_valuegane_2561', ap23.valuegane_2561 'ap23_valuegane_2561',
+ap1.valuekoon_2561 'ap1_valuekoon_2561', ap2.valuekoon_2561 'ap2_valuekoon_2561' , ap3.valuekoon_2561 'ap3_valuekoon_2561', ap4.valuekoon_2561 'ap4_valuekoon_2561',
+ap5.valuekoon_2561 'ap5_valuekoon_2561', ap6.valuekoon_2561 'ap6_valuekoon_2561', ap7.valuekoon_2561 'ap7_valuekoon_2561', ap8.valuekoon_2561 'ap8_valuekoon_2561',
+ap9.valuekoon_2561 'ap9_valuekoon_2561',ap10.valuekoon_2561 'ap10_valuekoon_2561',ap11.valuekoon_2561 'ap11_valuekoon_2561', ap12.valuekoon_2561 'ap12_valuekoon_2561', 
+ap13.valuekoon_2561 'ap13_valuekoon_2561', ap14.valuekoon_2561 'ap14_valuekoon_2561', ap15.valuekoon_2561 'ap15_valuekoon_2561', ap16.valuekoon_2561 'ap16_valuekoon_2561', 
+ap17.valuekoon_2561 'ap17_valuekoon_2561', ap18.valuekoon_2561 'ap18_valuekoon_2561', ap19.valuekoon_2561 'ap19_valuekoon_2561', ap20.valuekoon_2561 'ap20_valuekoon_2561', 
+ap21.valuekoon_2561 'ap21_valuekoon_2561', ap22.valuekoon_2561 'ap22_valuekoon_2561', ap23.valuekoon_2561 'ap23_valuekoon_2561' 
+from form_2561, ap1, ap2,ap3,ap4,ap5,ap6,ap7,ap8,ap9, ap10, ap11, ap12, ap13, ap14, ap15, ap16, ap17, ap18, ap19, ap20, ap21, ap22, 
+ap23 where form_2561.id = ap1.id and ap1.id = ap2.id and ap2.id = ap3.id and ap3.id = ap4.id and ap4.id = ap5.id and ap5.id = ap6.id 
+and ap6.id = ap7.id and ap7.id = ap8.id and ap8.id = ap9.id and ap9.id = ap10.id and ap10.id = ap11.id
+and ap11.id = ap12.id and ap12.id = ap13.id and ap13.id = ap14.id and ap14.id = ap15.id and ap15.id = ap16.id and ap16.id = ap17.id 
+and ap17.id = ap18.id  and ap18.id = ap19.id and ap19.id = ap20.id and ap20.id = ap21.id and ap21.id = ap22.id and ap22.id = ap23.id
+
+select insert ep
+SELECT max(year),max(ep) FROM year ORDER BY year DESC, ep DESC LIMIT 1
+
+//insert into ap (new)
+INSERT INTO ap1(`year`,`ep`, `rid`, `type`) 
+select year.year, year.ep, form_1_2558.id, pa.type FROM form_1_2558 INNER join year
+inner join pa where not exists 
+(select * from ap1
+            where ap1.year = year.year and ap1.ep = year.ep and ap1.type = pa.type and ap1.rid = form_1_2558.id)
+            ORDER by year.year, year.ep, pa.type, form_1_2558.id;                  
+
+//insert into total_score (new)
+INSERT INTO total_score (`name`,`apid`,`time`, `ep`,`type`) 
+select ampher.name , ampher.id, year.year, year.ep, pa.type from ampher INNER join year
+inner join pa where not exists
+(select time from total_score
+            where total_score.time = year.year and total_score.ep = year.ep)
+            ORDER by year.year, year.ep, pa.type, ampher.id ;
+
+//insert into log (new)
+INSERT INTO log (`apid`,`name`,`year`, `ep`,`type`)
+SELECT ampher.id, ampher.name, year.year, year.ep, pa.type from ampher inner join year 
+inner join pa where not EXISTS
+(select time, ep from log 
+	    where log.year = year.year AND log.ep = year.ep and log.type = pa.type)
+ORDER by year.year, year.ep, pa.type, ampher.id;
